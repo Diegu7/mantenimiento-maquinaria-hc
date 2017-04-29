@@ -1,24 +1,5 @@
-# README
+# Machinery Maintenance
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Made with Ruby 2.4.0 and Rails 5.1.0
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Project for Honducaribe made by UNITEC students of the Software Engineering II class (2017 Period II)
