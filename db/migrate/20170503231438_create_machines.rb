@@ -3,7 +3,7 @@ class CreateMachines < ActiveRecord::Migration[5.1]
     create_table :machines do |t|
       t.name :text
       t.tipe :text
-      t.marca :text
+      t.brand :text
 
       t.timestamps
     end
