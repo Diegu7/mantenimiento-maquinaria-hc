@@ -1,7 +1,12 @@
 class MachinesController < ApplicationController
+  def index
+    @machines= Machine.all.order(:name)
+  end
+
   def new
     @machine= new Machine
   end
+
   def create
     @machine= new Machine(machine_params)
 
@@ -14,15 +19,27 @@ class MachinesController < ApplicationController
   end
 
   def edit
+    @machine= Machine.find(params[:id])
   end
 
   def delete
+    @machine= Machine.find(params[:id])
+    @machine.destroy
+    redirect_to root_path
   end
 
   def update
+    @machine= Machine.find(params[:id])
+
+    if(@machine.update_attributes(machine_params))
+      redirect_to @machine
+    else
+      render :edit
+    end
   end
 
   protected
     def machine_params
       params.require(:machine).permit(:name, :tipe, :brand);
+    end
 end
