@@ -2,85 +2,77 @@
     <section class="sidebar">
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-            <!-- start EQUIPOS -->
-                <li class="header">EQUIPOS</li>
+            <li class="header">OPCIONES</li>
 
-                <li class="active">
-                    <a href="#">
-                        <i class="fa fa-link"></i>
-                        <span>Categor&iacute;as</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-link"></i>
-                        <span>Tipos</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-link"></i>
-                        <span>Marcas</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-link"></i>
-                        <span>M&aacute;quinas</span>
-                    </a>
-                </li>
-            <!-- end EQUIPOS -->
-
-            <!-- start EQUIPOS -->
-                <li class="header">EQUIPOS</li>
-
-                <li class="active">
-                    <a href="#">
-                        <i class="fa fa-link"></i>
-                        <span>Categor&iacute;as</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-link"></i>
-                        <span>Tipos</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-link"></i>
-                        <span>Marcas</span>
-                    </a>
-                </li>
-
-                <li>
-                    <a href="#">
-                        <i class="fa fa-link"></i>
-                        <span>M&aacute;quinas</span>
-                    </a>
-                </li>
-            <!-- end EQUIPOS -->
-            <!-- start INVENTARIOS -->
-                <li class="header">INVENTARIOS</li>
-            <!-- end INVENTARIOS -->
+            <li class="active">
+                <%= link_to root_path do %>
+                    <i class="fa fa-home"></i>
+                    Inicio
+                <% end %>
+            </li>
 
             <li class="treeview">
                 <a href="#">
-                    <i class="fa fa-link"></i>
-                    <span>Multilevel</span>
-                    <span class="pull-right-container">
-                        <i class="fa fa-angle-left pull-right"></i>
-                    </span>
+                    <i class="fa fa-cog"></i>
+                    <span>Equipos</span>
                 </a>
 
                 <ul class="treeview-menu">
-                    <li><a href="#">Link in level 2</a></li>
-                    <li><a href="#">Link in level 2</a></li>
+                    <li><a href="#">Categor&iacute;as</a></li>
+                    <li><a href="#">Tipos</a></li>
+                    <li><a href="#">Marcas</a></li>
+                    <li><a href="#">M&aacute;quinas</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-archive"></i>
+                    <span>Inventarios</span>
+                </a>
+
+                <ul class="treeview-menu">
+                    <li><a href="#">Productos</a></li>
+                    <li><a href="#">Marcas</a></li>
+                    <li><a href="#">Piezas</a></li>
+                    <li><a href="#">Repuestos</a></li>
+                    <li><a href="#">Entrada de inventario</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-wrench"></i>
+                    <span>Mantenimiento</span>
+                </a>
+
+                <ul class="treeview-menu">
+                    <li><a href="#">Ingresar kilometraje</a></li>
+                    <li><a href="#">Nuevo mantenimiento correctivo</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-file-text"></i>
+                    <span>Reportes</span>
+                </a>
+
+                <ul class="treeview-menu">
+                    <li><a href="#">Durabilidad de repuestos</a></li>
+                    <li><a href="#">Historial de mantenimientos</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-cogs"></i>
+                    <span>Configuraciones</span>
+                </a>
+
+                <ul class="treeview-menu">
+                    <li><a href="#">Crear usuario</a></li>
+                    <li><a href="#">Notificaciones</a></li>
                 </ul>
             </li>
         </ul>
