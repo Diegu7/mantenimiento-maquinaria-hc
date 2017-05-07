@@ -4,7 +4,11 @@ class MachinesController < ApplicationController
   end
 
   def new
-    @machine= new Machine
+    @machine= Machine.new
+  end
+
+  def show
+    @machine= Machine.find(params[:id])
   end
 
   def create
@@ -22,7 +26,7 @@ class MachinesController < ApplicationController
     @machine= Machine.find(params[:id])
   end
 
-  def delete
+  def destroy
     @machine= Machine.find(params[:id])
     @machine.destroy
     redirect_to root_path
