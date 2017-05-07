@@ -1,9 +1,20 @@
-<div class= "box box-primary">
 <form role= "form">
   <%= form_for(machine) do |f| %>
     <div class="form-group">
       <%= f.label :name, "Modelo" %>
-      <%= f.text_field :name, class: "form-control" %>
+      <%= f.text_field :name, id:"exampleInputEmail1", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :tipe, "Tipo" %>
+      <%= f.text_field :tipe, id:"exampleInputEmail1", class: "form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :brand, "Marca" %>
+      <%= f.text_field :brand, id:"exampleInputEmail1", class: "form-control" %>
+    </div>
+    <div class="btn-group" role="group">
+      <%= f.submit "Save" ,class: "btn btn-default"%>
+      <%= link_to "Cancel", machines_path,class: "btn btn-default" %>
     </div>
   <% end %>
 </form>
