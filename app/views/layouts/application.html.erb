@@ -39,8 +39,16 @@
       <footer class="main-footer">
         <!-- To the right -->
         <div class="pull-right hidden-xs">
-          <i class="fa fa-bug"></i>
-          Entorno de desarrollo
+          <% if Rails.env.development? %>
+            <i class="fa fa-bug"></i>
+            Entorno de desarrollo
+          <% elsif Rails.env.test? %>
+            <i class="fa fa-user-md"></i>
+            Entorno de prueba
+          <% elsif Rails.env.production? %>
+            <i class="fa fa-check-circle"></i>
+            Entorno de producci&iacute;on
+          <% end %>
         </div>
         <!-- Default to the left -->
         <strong>Mantenimiento de maquinaria:</strong> Proyecto en desarrollo
