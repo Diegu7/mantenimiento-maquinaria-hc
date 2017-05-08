@@ -6,13 +6,13 @@ git_source(:github) do |repo_name|
 end
 
 # Use ionicons
-gem 'ionicons-rails'
+gem 'ionicons-rails', '~> 2.0'
 # Use font-awesome
-gem "font-awesome-rails"
+gem 'font-awesome-rails', '~> 4.7'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.0'
 #Use jQuery
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 4.3'
 # Use Postgres as the database for Active Record
 gem 'pg', '~> 0.18.4'
 # Use Puma as the app server
