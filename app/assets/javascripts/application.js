@@ -17,5 +17,3 @@
 //= require admin-lte/bootstrap/js/bootstrap.min
 //= require admin-lte/dist/js/app.min
 //= require jquery-slimscroll/jquery.slimscroll.min
-//= require moment/min/moment.min
-//= require fullcalendar/dist/fullcalendar.min
