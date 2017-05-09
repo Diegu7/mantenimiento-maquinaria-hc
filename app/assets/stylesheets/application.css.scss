@@ -12,9 +12,10 @@
  *
  *= require_tree .
  *= require_self
- *= require admin-lte/bootstrap/css/bootstrap
- *= require admin-lte/dist/css/AdminLTE
- *= require admin-lte/dist/css/skins/skin-green
+ *= require admin-lte/bootstrap/css/bootstrap.min
+ *= require admin-lte/dist/css/AdminLTE.min
+ *= require admin-lte/dist/css/skins/skin-green.min
+ *= require fullcalendar/dist/fullcalendar.min
  */
 @import 'font-awesome';
 @import 'ionicons';

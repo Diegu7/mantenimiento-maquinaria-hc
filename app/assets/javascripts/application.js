@@ -11,9 +11,9 @@
 // about supported directives.
 //
 //= require rails-ujs
-//= require_tree .
 //= require jquery
 //= require jquery_ujs
-//= require admin-lte/bootstrap/js/bootstrap
-//= require admin-lte/dist/js/app.js
-//= require jquery-slimscroll/jquery.slimscroll.min.js
+//= require_tree .
+//= require admin-lte/bootstrap/js/bootstrap.min
+//= require admin-lte/dist/js/app.min
+//= require jquery-slimscroll/jquery.slimscroll.min
