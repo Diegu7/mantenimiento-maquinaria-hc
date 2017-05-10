@@ -3,6 +3,12 @@
     Nueva Maquinaria
     <small><%=@machine.tipe%></small>
   </h1>
+
+  <ol class="breadcrumb">
+		<li><i class="fa fa-cog"></i> <span>Equipos</span></li>
+		<li><%= link_to "Máquinas", machines_path %></li>
+		<li class="active">Nuevo</li>
+	</ol>
   <%= render partial: "shared/errors", locals: { obj: @machine } %>
 </section>
 <section class = "content">
