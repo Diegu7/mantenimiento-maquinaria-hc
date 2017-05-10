@@ -3,16 +3,17 @@
 #
 # Setting Up Postgres
 # su - postgres
-# create role myapp with createdb login password 'password1';
+# create role honducaribe with createdb login password 'secret';
 # rake db:setup
 
 development:
   adapter: postgresql
   encoding: unicode
-  database: myapp_development
+  database: hc_machinery_development
+  host: localhost
   pool: 5
-  username: myapp
-  password: password1
+  username: honducaribe
+  password: secret
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -21,15 +22,16 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: myapp_test
+  database: hc_machinery_test
+  host: localhost
   pool: 5
-  username: myapp
-  password: password1
+  username: honducaribe
+  password: secret
 
 production:
   adapter: postgresql
   encoding: unicode
-  database: myapp_production
+  database: hc_machinery_production
   pool: 5
-  username: myapp
-  password: password1
+  username: honducaribe
+  password: secret
