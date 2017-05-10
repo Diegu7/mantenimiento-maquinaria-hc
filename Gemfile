@@ -5,6 +5,9 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+#Use Ruby 2.4.0
+ruby '2.4.0'
+
 # Use ionicons
 gem 'ionicons-rails', '~> 2.0'
 # Use font-awesome
