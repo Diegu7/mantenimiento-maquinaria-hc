@@ -1,8 +1,14 @@
 <section class ="content-header" >
   <h1>
-    <%=@machine.name%>
-    <small><%=@machine.tipe%></small>
+    Máquinas
+    <small><%=@machine.name%></small>
   </h1>
+
+  <ol class="breadcrumb">
+		<li><i class="fa fa-cog"></i> <span>Equipos</span></li>
+		<li><%= link_to "Máquinas", machines_path %></li>
+		<li class="active"><%= @machine.name %></li>
+	</ol>
 </section>
 <section class = "content">
 </section>

@@ -1,10 +1,17 @@
 <section class ="content-header" >
   <h1>
-    Nueva Maquinaria
-    <small><%=@machine.tipe%></small>
+    Máquinas
+    <small>Nuevo</small>
   </h1>
+
+  <ol class="breadcrumb">
+		<li><i class="fa fa-cog"></i> <span>Equipos</span></li>
+		<li><%= link_to "Máquinas", machines_path %></li>
+		<li class="active">Nuevo</li>
+	</ol>
   <%= render partial: "shared/errors", locals: { obj: @machine } %>
 </section>
+
 <section class = "content">
   <div class= "row">
     <div class= "col-md-6">
