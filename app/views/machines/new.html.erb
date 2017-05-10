@@ -3,16 +3,20 @@
     Nueva Maquinaria
     <small><%=@machine.tipe%></small>
   </h1>
+  <%= render partial: "shared/errors", locals: { obj: @machine } %>
 </section>
 <section class = "content">
   <div class= "row">
     <div class= "col-md-6">
-      <div class= "box box-default">
-        <div class= "box-header">
-          <h3 class= "box-title">Por favor llenar todas las casillas</h3>
-        </div>
+      <div class= "box box-success">
         <div class= "box-body">
-          <%= render partial: "form", locals: {machine: @machine}%>
+          <%= form_for(@machine) do |f| %>
+            <%= render partial: "form", locals: {f: f}%>
+            <div class= "input-group-btn">
+              <%= f.submit "Crear",class: "btn bg-green btn-flat"%>
+              <%= link_to "Cancelar", machines_path,class: "btn bg-red btn-flat" %>
+            </div>
+          <% end %>
         </div>
       </div>
     </div>

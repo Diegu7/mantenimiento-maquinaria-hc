@@ -12,7 +12,7 @@ class MachinesController < ApplicationController
   end
 
   def create
-    @machine= new Machine(machine_params)
+    @machine= Machine.new(machine_params)
 
     if(@machine.save)
       redirect_to @machine, notice: "Se agrego exitosamente"
@@ -29,7 +29,7 @@ class MachinesController < ApplicationController
   def destroy
     @machine= Machine.find(params[:id])
     @machine.destroy
-    redirect_to root_path
+    redirect_to machines_path
   end
 
   def update
