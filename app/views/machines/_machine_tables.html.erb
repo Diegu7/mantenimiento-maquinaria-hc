@@ -1,0 +1,34 @@
+<!--BOX HEADER -->
+<div class ="box box-success">
+  <div class= "box-header">
+    <h1 class= "box-title">Search bar will go here</h1>
+    <div class= "box-tools pull-right">
+      <%= link_to "Nuevo Equipo",new_machine_path ,class:"btn bg-green btn-flat"%>
+    </div>
+  </div>
+  <!--BOX HEADER -->
+  <div class = "box-body">
+    <div id= "example2_wrapper" class= "dataTables_wrapper form-inline dt-bootstrap">
+      <div class= "row">
+        <div class= "col-sm-12">
+          <table id= "example2" class= "table table-bordered table-hover dataTable" role= "grid" aria-describedby= "example2_info">
+            <thead>
+              <tr role= "row">
+                <th>Nombre</th>
+                <th>Categoria</th>
+                <th>Marca</th>
+                <th width= "1"></th>
+              </tr>
+            </thead>
+            <tbody>
+                <%= render machines %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+        <div class= "box-footer">
+          <%=render partial: "machine_tables_footer"%>
+        </div>
+    </div>
+  </div>
+</div>
