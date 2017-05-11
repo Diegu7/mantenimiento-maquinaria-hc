@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170511055439) do
+ActiveRecord::Schema.define(version: 20170511195935) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -41,14 +41,27 @@ ActiveRecord::Schema.define(version: 20170511055439) do
 
   create_table "machines", force: :cascade do |t|
     t.text "name"
-    t.datetime "registered_at"
-    t.datetime "changed_at"
+    t.text "tipe"
+    t.text "brand"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "machine_category_id"
     t.bigint "machine_section_id"
+    t.string "image_url"
     t.index ["machine_category_id"], name: "index_machines_on_machine_category_id"
     t.index ["machine_section_id"], name: "index_machines_on_machine_section_id"
+  end
+
+  create_table "materials_for_maintenances", force: :cascade do |t|
+    t.integer "used_quantity"
+    t.bigint "programmed_maintenance_id"
+    t.bigint "product_id"
+    t.datetime "registered_at"
+    t.datetime "changed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["product_id"], name: "index_materials_for_maintenances_on_product_id"
+    t.index ["programmed_maintenance_id"], name: "index_materials_for_maintenances_on_programmed_maintenance_id"
   end
 
   create_table "mileage_logs", force: :cascade do |t|
@@ -60,6 +73,18 @@ ActiveRecord::Schema.define(version: 20170511055439) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["machine_id"], name: "index_mileage_logs_on_machine_id"
+  end
+
+  create_table "postponed_maintenance_logs", force: :cascade do |t|
+    t.text "reason"
+    t.date "previous_date"
+    t.date "new_date"
+    t.bigint "programmed_maintenance_id"
+    t.datetime "registered_at"
+    t.datetime "changed_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["programmed_maintenance_id"], name: "index_postponed_maintenance_logs_on_programmed_maintenance_id"
   end
 
   create_table "product_brands", force: :cascade do |t|
@@ -118,6 +143,8 @@ ActiveRecord::Schema.define(version: 20170511055439) do
     t.datetime "changed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.decimal "frequency_in_hours"
+    t.decimal "frequency_in_days"
     t.index ["machine_area_id"], name: "index_required_maintenances_on_machine_area_id"
     t.index ["machine_id"], name: "index_required_maintenances_on_machine_id"
   end
@@ -135,7 +162,10 @@ ActiveRecord::Schema.define(version: 20170511055439) do
 
   add_foreign_key "machines", "machine_categories"
   add_foreign_key "machines", "machine_sections"
+  add_foreign_key "materials_for_maintenances", "products"
+  add_foreign_key "materials_for_maintenances", "programmed_maintenances"
   add_foreign_key "mileage_logs", "machines"
+  add_foreign_key "postponed_maintenance_logs", "programmed_maintenances"
   add_foreign_key "products", "product_brands"
   add_foreign_key "products", "product_categories"
   add_foreign_key "programmed_maintenances", "machines"
