@@ -1,0 +1,23 @@
+<div class="box box-success">
+  <div class="box-header">
+    <div class="box-tools">
+      <%= link_to "Nuevo Equipo",new_machine_path ,class:"btn bg-green btn-flat"%>
+    </div>
+  </div>
+
+  <div class="box-body table-responsive no-padding">
+    <table class="table table-hover">
+      <thead>
+        <tr role="row">
+          <th>Nombre</th>
+          <th>Categoría</th>
+          <th>Marca</th>
+          <th width="1"></th>
+        </tr>
+      </thead>
+      <tbody>
+          <%= render machines %>
+      </tbody>
+    </table>
+  </div>
+</div>

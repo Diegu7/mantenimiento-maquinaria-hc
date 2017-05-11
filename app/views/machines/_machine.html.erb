@@ -3,19 +3,21 @@
 	<td><%= machine.tipe %></td>
 	<td><%= machine.brand %></td>
 	<td>
-		<div class= "input-group-btn">
-			<%=link_to machine, class: "btn bg-purple btn-flat" do%>
-			<span class= "fa fa-file-text"></span>
+		<div class="input-group-btn">
+			<%= link_to machine, class: "btn bg-purple btn-flat" do %>
+			<span class="fa fa-file-text"></span>
 			<font>Ver</font>
-			<%end%>
-			<%=link_to edit_machine_path(machine.id), class: "btn bg-blue btn-flat" do%>
-				<span class= "fa fa-pencil"></span>
+			<% end %>
+
+			<%= link_to edit_machine_path(machine), class: "btn bg-blue btn-flat" do %>
+				<span class="fa fa-pencil"></span>
 				<font>Editar</font>
-			<%end%>
-			<%=link_to machine, class: "btn bg-red btn-flat",method: :delete, data:{confirm: "Seguro que deseas borrar #{machine.name}?"} do%>
-				<span class= "fa fa-trash"></span>
+			<% end %>
+
+			<%= link_to machine, class: "btn bg-red btn-flat", method: :delete, data: { confirm: "¿Seguro que deseas borrar #{machine.name}?" } do %>
+				<span class="fa fa-trash"></span>
 				<font>Borrar</font>
-			<%end%>
+			<% end %>
 		</div>
 	</td>
 </tr>
