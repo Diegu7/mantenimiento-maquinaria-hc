@@ -1,6 +1,6 @@
-<section class = "content-header">
+<section class="content-header">
 	<h1>
-		M&aacute;quinas
+		Máquinas
 		<small>Índice</small>
 	</h1>
 
@@ -11,10 +11,6 @@
 	</ol>
 </section>
 
-<section class = "content">
-	<div class = "row">
-		<div class = "col-xs-12">
-			<%=render partial: "machine_tables", locals:{machines: @machines}%>
-		</div>
-	</div>
+<section class="content">
+	<%= render partial: "machines_table", locals: { machines: @machines } %>
 </section>
