@@ -1,6 +1,6 @@
-class CreateMachines < ActiveRecord::Migration[5.1]
+class CreateMachineSections < ActiveRecord::Migration[5.1]
   def change
-    create_table :machines do |t|
+    create_table :machine_sections do |t|
       t.text :name
      
       t.datetime :registered_at

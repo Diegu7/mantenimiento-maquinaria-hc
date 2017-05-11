@@ -1,0 +1,2 @@
+class MachineCategoriesController < ApplicationController
+end
