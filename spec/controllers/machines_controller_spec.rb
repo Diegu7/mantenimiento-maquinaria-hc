@@ -16,12 +16,12 @@ RSpec.describe MachinesController, type: :controller do
     it "loads all of the machines into @machines" do
       machine1, machine2, machine3 = Machine.create(
               name: Faker::Name.name,
-              tipe: Faker::Team.name,
-              brand: Faker::Team.sport), 
+              machine_category: Faker::Team.name,
+              section: Faker::Team.sport), 
           Machine.create(  
               name: Faker::Name.name,
-              tipe: Faker::Team.name,
-              brand: Faker::Team.sport), Machine.create!
+              machine_section: Faker::Team.name,
+              machine_category: Faker::Team.sport), Machine.create!
             get :index
 
       expect(assigns(:machines)).to match_array([machine1, machine2])

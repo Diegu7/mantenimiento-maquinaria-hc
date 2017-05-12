@@ -16,33 +16,25 @@ ActiveRecord::Schema.define(version: 20170511195935) do
   enable_extension "plpgsql"
 
   create_table "machine_areas", force: :cascade do |t|
-    t.text "name"
-    t.datetime "registered_at"
-    t.datetime "changed_at"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "machine_categories", force: :cascade do |t|
-    t.text "name"
-    t.datetime "registered_at"
-    t.datetime "changed_at"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "machine_sections", force: :cascade do |t|
-    t.text "name"
-    t.datetime "registered_at"
-    t.datetime "changed_at"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "machines", force: :cascade do |t|
-    t.text "name"
-    t.text "tipe"
-    t.text "brand"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "machine_category_id"
@@ -56,8 +48,6 @@ ActiveRecord::Schema.define(version: 20170511195935) do
     t.integer "used_quantity"
     t.bigint "programmed_maintenance_id"
     t.bigint "product_id"
-    t.datetime "registered_at"
-    t.datetime "changed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_id"], name: "index_materials_for_maintenances_on_product_id"
@@ -68,8 +58,6 @@ ActiveRecord::Schema.define(version: 20170511195935) do
     t.datetime "date"
     t.integer "hours"
     t.bigint "machine_id"
-    t.datetime "registered_at"
-    t.datetime "changed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["machine_id"], name: "index_mileage_logs_on_machine_id"
@@ -80,38 +68,30 @@ ActiveRecord::Schema.define(version: 20170511195935) do
     t.date "previous_date"
     t.date "new_date"
     t.bigint "programmed_maintenance_id"
-    t.datetime "registered_at"
-    t.datetime "changed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["programmed_maintenance_id"], name: "index_postponed_maintenance_logs_on_programmed_maintenance_id"
   end
 
   create_table "product_brands", force: :cascade do |t|
-    t.text "name"
-    t.datetime "registered_at"
-    t.datetime "changed_at"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "product_categories", force: :cascade do |t|
-    t.text "name"
-    t.datetime "registered_at"
-    t.datetime "changed_at"
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "products", force: :cascade do |t|
-    t.text "name"
+    t.string "name"
     t.integer "initial_stock"
     t.integer "current_stock"
     t.string "image_url"
     t.bigint "product_category_id"
     t.bigint "product_brand_id"
-    t.datetime "registered_at"
-    t.datetime "changed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["product_brand_id"], name: "index_products_on_product_brand_id"
@@ -120,15 +100,13 @@ ActiveRecord::Schema.define(version: 20170511195935) do
 
   create_table "programmed_maintenances", force: :cascade do |t|
     t.text "description"
-    t.date "scheduled_date"
+    t.date "scheduled_at"
     t.integer "estimated_duration"
     t.text "comments"
-    t.boolean "is_done"
-    t.date "done_on"
-    t.boolean "is_preventive"
+    t.boolean "done?"
+    t.date "done_at"
+    t.boolean "preventive?"
     t.bigint "machine_id"
-    t.datetime "registered_at"
-    t.datetime "changed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["machine_id"], name: "index_programmed_maintenances_on_machine_id"
@@ -139,8 +117,6 @@ ActiveRecord::Schema.define(version: 20170511195935) do
     t.integer "estimated_duration"
     t.bigint "machine_id"
     t.bigint "machine_area_id"
-    t.datetime "registered_at"
-    t.datetime "changed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.decimal "frequency_in_hours"
@@ -150,11 +126,9 @@ ActiveRecord::Schema.define(version: 20170511195935) do
   end
 
   create_table "technical_specifications", force: :cascade do |t|
-    t.text "key"
-    t.text "value"
+    t.string "key"
+    t.string "value"
     t.bigint "machine_id"
-    t.datetime "registered_at"
-    t.datetime "changed_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["machine_id"], name: "index_technical_specifications_on_machine_id"

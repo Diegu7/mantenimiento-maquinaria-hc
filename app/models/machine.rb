@@ -8,6 +8,6 @@ class Machine < ApplicationRecord
   has_many :programmed_maintenances
   
   validates_presence_of :name
-  validates_presence_of :section
-  validates_presence_of :category
+  validates_presence_of :machine_section
+  validates_presence_of :machine_category
 end
