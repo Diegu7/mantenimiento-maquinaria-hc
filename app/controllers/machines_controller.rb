@@ -44,6 +44,7 @@ class MachinesController < ApplicationController
 
   protected
     def machine_params
-      params.require(:machine).permit(:name, :tipe, :brand);
+      #params.require(:machine).permit(:name, :category, :section);
+      params.require(:machine).permit(:name);
     end
 end

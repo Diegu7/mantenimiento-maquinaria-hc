@@ -1,11 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Machine, type: :model do
-  it "is valid with a name, tipe and brand" do
+  it "is valid with a name, category and section" do
     machine = Machine.new(
       name: Faker::Name.name,
-      tipe: Faker::Team.name,
-      brand: Faker::Team.sport)
+      machine_category: Faker::Team.name,
+      machine_section: Faker::Team.sport)
     expect(machine).to be_valid
   end
 
@@ -15,16 +15,16 @@ RSpec.describe Machine, type: :model do
     expect(machine.errors[:name]).to include("can't be blank")
   end
   
-  it "is invalid without a type" do
-    machine = Machine.new(tipe: nil)
+  it "is invalid without a category" do
+    machine = Machine.new(machine_category: nil)
     machine.valid?
-    expect(machine.errors[:tipe]).to include("can't be blank")
+    expect(machine.errors[:machine_category]).to include("can't be blank")
   end
 
-  it "is invalid without a brand" do
-    machine = Machine.new(brand: nil)
+  it "is invalid without a section" do
+    machine = Machine.new(machine_section: nil)
     machine.valid?
-    expect(machine.errors[:brand]).to include("can't be blank")
+    expect(machine.errors[:machine_section]).to include("can't be blank")
   end
 
 end

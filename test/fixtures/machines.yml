@@ -2,10 +2,10 @@
 
 one:
   name: MyText
-  tipe: MyText
-  brand: MyText
+  machine_category: MyText
+  machine_section: MyText
 
 two:
   name: MyText
-  tipe: MyText
-  brand: MyText
+  machine_category: MyText
+  machine_section: MyText
