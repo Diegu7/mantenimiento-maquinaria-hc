@@ -1,20 +1,20 @@
 class MachinesController < ApplicationController
   def index
-    @machines= Machine.all.order(:name)
+    @machines = Machine.all.order(:name)
   end
 
   def new
-    @machine= Machine.new
+    @machine = Machine.new
   end
 
   def show
-    @machine= Machine.find(params[:id])
+    @machine = Machine.find(params[:id])
   end
 
   def create
-    @machine= Machine.new(machine_params)
+    @machine = Machine.new(machine_params)
 
-    if(@machine.save)
+    if @machine.save
       redirect_to @machine
     else
       flash[:errors] = "No se pudo registrar la maquina"
@@ -23,19 +23,19 @@ class MachinesController < ApplicationController
   end
 
   def edit
-    @machine= Machine.find(params[:id])
+    @machine = Machine.find(params[:id])
   end
 
   def destroy
-    @machine= Machine.find(params[:id])
+    @machine = Machine.find(params[:id])
     @machine.destroy
     redirect_to machines_path
   end
 
   def update
-    @machine= Machine.find(params[:id])
+    @machine = Machine.find(params[:id])
 
-    if(@machine.update_attributes(machine_params))
+    if @machine.update_attributes(machine_params)
       redirect_to @machine
     else
       render :edit
@@ -44,7 +44,6 @@ class MachinesController < ApplicationController
 
   protected
     def machine_params
-      #params.require(:machine).permit(:name, :category, :section);
-      params.require(:machine).permit(:name);
+      params.require(:machine).permit(:name, :machine_category_id, :machine_section_id)
     end
 end

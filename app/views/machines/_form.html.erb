@@ -3,12 +3,10 @@
   <%= f.text_field :name, class: "form-control" %>
 </div>
 <div class="form-group">
-  <%= f.label :machine_category, "Categoría" %>
-  <%-# f.select :machine_category, ["Categoría 1", "Categoría 2", "Categoría 3"], {}, class: "form-control" -%>
-  <%= select_tag "machine_category", options_for_select([ "Planta", "Rodaje" ], "Planta"), class: "form-control" %>
+  <%= f.label :machine_category_id, "Categoría" %>
+  <%= f.select :machine_category_id, MachineCategory.pluck(:name, :id), {}, class: "form-control" %>
 </div>
 <div class="form-group">
-  <%= f.label :machine_section, "Sección" %>
-  <%-# f.select :machine_section, ["Marca 1", "Marca 2", "Marca 3"], {}, class: "form-control" -%>
-  <%= select_tag "machine_section", options_for_select([ "Desfibrado", "General" ], "General"), class: "form-control" %>
+  <%= f.label :machine_section_id, "Sección" %>
+  <%= f.select :machine_section_id, MachineSection.pluck(:name, :id), {}, class: "form-control" %>
 </div>
