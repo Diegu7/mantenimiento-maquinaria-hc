@@ -1,0 +1,21 @@
+<div class="box box-success">
+  <div class="box-header">
+    <div class="box-tools">
+      <%= link_to "Nueva Sección",new_machine_section_path ,class:"btn bg-green btn-flat"%>
+    </div>
+  </div>
+
+  <div class="box-body table-responsive no-padding">
+    <table class="table table-hover">
+      <thead>
+        <tr role="row">
+          <th>Nombre</th>
+          <th width="1"></th>
+        </tr>
+      </thead>
+      <tbody>
+          <%= render machine_sections %>
+      </tbody>
+    </table>
+  </div>
+</div>

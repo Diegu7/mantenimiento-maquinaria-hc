@@ -1,0 +1,16 @@
+<section class="content-header">
+	<h1>
+		Secciones de Máquinas
+		<small>Índice</small>
+	</h1>
+
+	<ol class="breadcrumb">
+		<li><i class="fa fa-cog"></i> <span>Secciones</span></li>
+		<li><%= link_to "Secciones de Máquinas", machine_sections_path %></li>
+		<li class="active">Índice</li>
+	</ol>
+</section>
+
+<section class="content">
+	<%= render partial: "machine_sections_table", locals: { machine_sections: @machine_sections } %>
+</section>
