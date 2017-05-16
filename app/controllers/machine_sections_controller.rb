@@ -15,7 +15,7 @@ class MachineSectionsController < ApplicationController
         @machine_section = MachineSection.new(machine_sections_params)
 
         if @machine_section.save
-            redirect_to @machine_section
+            redirect_to machine_sections_path
         else
             flash[:errors] = "No se pudo crear la sección"
             render :new
@@ -30,7 +30,7 @@ class MachineSectionsController < ApplicationController
         @machine_section = MachineSection.find(params[:id])
 
         if @machine_section.update_attributes(machine_sections_params)
-            redirect_to @machine_section
+            redirect_to machine_sections_path
         else
             render :edit
         end
