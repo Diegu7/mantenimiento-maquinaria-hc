@@ -1,0 +1,16 @@
+<tr>
+	<td><%= product_brand.name %></td>
+	<td>
+		<div class="input-group-btn">
+			<%= link_to edit_product_brand_path(product_brand), class: "btn bg-blue btn-flat" do %>
+				<span class="fa fa-pencil"></span>
+				<font>Editar</font>
+			<% end %>
+
+			<%= link_to product_brand, class: "btn bg-red btn-flat", method: :delete, data: { confirm: "¿Seguro que deseas borrar #{product_brand.name}?" } do %>
+				<span class="fa fa-trash"></span>
+				<font>Borrar</font>
+			<% end %>
+		</div>
+	</td>
+</tr>
