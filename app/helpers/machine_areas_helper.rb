@@ -1,0 +1,2 @@
+module MachineAreasHelper
+end
