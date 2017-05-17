@@ -6,12 +6,4 @@ class Product < ApplicationRecord
     validates :initial_stock, :current_stock, :minimum, :maximum, numericality: true
 
     mount_uploader :image, ImageUploader
-
-    def get_image
-        if self.image.blank?
-            "product_default.jpg"
-        else
-            self.image
-        end
-    end
 end
