@@ -13,20 +13,20 @@
 <% if @product.new_record? %>  
   <div class="form-group">
     <%= f.label :initial_stock, "Existencia inicial" %>
-    <%= f.text_field :initial_stock, class: "form-control" %>
+    <%= f.number_field :initial_stock, class: "form-control" %>
   </div>
   <div class="form-group">
     <%= f.label :current_stock, "Existencia actual" %>
-    <%= f.text_field :current_stock, class: "form-control" %>
+    <%= f.number_field :current_stock, class: "form-control" %>
   </div>
 <% end %>
 <div class="form-group">
   <%= f.label :minimum, "Existencia minima" %>
-  <%= f.text_field :minimum, class: "form-control" %>
+  <%= f.number_field :minimum, class: "form-control" %>
 </div>
 <div class="form-group">
   <%= f.label :maximum, "Existencia maxima" %>
-  <%= f.text_field :maximum, class: "form-control" %>
+  <%= f.number_field :maximum, class: "form-control" %>
 </div>
 <div style= "margin-bottom:10px">
   <%= f.label :image, "Imagen" %>

@@ -65,23 +65,23 @@
               </tr>
             </tbody>
           </table>
-        </div>
-      </div>
 
-      <div class="footer">
-        <div class="text-left pull-left col-md-3">
-          <%= link_to products_path, class: "btn bg-purple btn-flat" do %>
-            <span class="glyphicon glyphicon-chevron-left"></span>
-            <font>Regresar</font>
-          <% end %>
-          <%= link_to edit_product_path(@product), class: "btn bg-blue btn-flat" do %>
-            <span class="fa fa-pencil"></span>
-            <font>Editar</font>
-          <% end %>
-          <%= link_to @product, class: "btn bg-red btn-flat", method: :delete, data: { confirm: "¿Seguro que deseas borrar #{@product.name}?" } do %>
-            <span class="fa fa-trash"></span>
-            <font>Borrar</font>
-          <% end %>
+          <div class="footer">
+            <div class="text-left pull-left col-md-6">
+              <%= link_to products_path, class: "btn bg-purple btn-flat" do %>
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <font>Regresar</font>
+              <% end %>
+              <%= link_to edit_product_path(@product), class: "btn bg-blue btn-flat" do %>
+                <span class="fa fa-pencil"></span>
+                <font>Editar</font>
+              <% end %>
+              <%= link_to @product, class: "btn bg-red btn-flat", method: :delete, data: { confirm: "¿Seguro que deseas borrar #{@product.name}?" } do %>
+                <span class="fa fa-trash"></span>
+                <font>Borrar</font>
+              <% end %>
+            </div>
+          </div>
         </div>
       </div>
     </div>
