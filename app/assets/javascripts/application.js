@@ -14,6 +14,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require admin-lte/bootstrap/js/bootstrap.min
+//= require bootstrap-sprockets
 //= require admin-lte/dist/js/app.min
 //= require jquery-slimscroll/jquery.slimscroll.min
