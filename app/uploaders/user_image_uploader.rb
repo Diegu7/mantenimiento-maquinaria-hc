@@ -1,4 +1,4 @@
-class ImageUploader < CarrierWave::Uploader::Base
+class UserImageUploader < CarrierWave::Uploader::Base
    permissions 0777
 
   # Choose what kind of storage to use for this uploader:
@@ -13,8 +13,7 @@ class ImageUploader < CarrierWave::Uploader::Base
 
   # Provide a default URL as a default if there hasn't been a file uploaded:
   def default_url
-    # For Rails 3.1+ asset pipeline compatibility:
-    ActionController::Base.helpers.asset_path([version_name, "default_product.jpeg"].compact.join('_'))
+    ActionController::Base.helpers.asset_path([version_name, "default_user.jpeg"].compact.join('_'))
   end
 
   # Add a white list of extensions which are allowed to be uploaded.
