@@ -11,7 +11,7 @@ RSpec.describe Product, type: :model do
   let(:product_without_valid_maximum) { build :product, maximum: -1 }
   let(:product_without_valid_minimum) { build :product, minimum: -5 }
 
-  it "is valid with a name, initial stock, current stock, image, product brand, product category minimum and maximum" do  
+  it "is valid with a name, initial stock, current stock, product brand, product category minimum and maximum" do  
     expect(valid_product).to be_valid
   end
 
