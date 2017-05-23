@@ -26,7 +26,7 @@ RSpec.describe MileageLog, type: :model do
     expect(mileage_without_valid_hours_0.errors[:hours]).to include("must be greater than 0")
   end
 
-  it "is invalid with a machine" do
+  it "is invalid without a machine" do
     mileage_without_machine.valid?
     expect(mileage_without_machine.errors[:machine]).to include("can't be blank")
   end  
