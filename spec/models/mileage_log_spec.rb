@@ -21,7 +21,7 @@ RSpec.describe MileageLog, type: :model do
     expect(mileage_without_valid_hours.errors[:hours]).to include("must be greater than 0")
   end
 
-  it "is invalid with an hours value less than 0" do
+  it "is invalid with an hours value equal to 0" do
     mileage_without_valid_hours_0.valid?
     expect(mileage_without_valid_hours_0.errors[:hours]).to include("must be greater than 0")
   end

@@ -53,4 +53,12 @@ RSpec.describe Product, type: :model do
     product_without_valid_maximum.valid?
     expect(product_without_valid_maximum.errors[:maximum]).to include("must be greater than or equal to 0")
   end
+
+  # it "should validate only integer  values for initial stock" do
+  #    expect(valid_product).to validate_numericality_of(:initial_stock).only_integer
+  # end
+
+  # it "is invalid with an initial stock value less or equal than 0" do
+  #    expect(valid_product).to validate_numericality_of(:initial_stock).is_greater_than(0)
+  # end
 end
