@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryGirl.define do    
     #factories used for Machines
     factory :machine_area do
         name "Area de Motor"
@@ -10,17 +10,7 @@ FactoryGirl.define do
     
     factory :machine do
         name "Tractor"
+        image "tractor.jpeg"
         machine_section
     end
-
-    #Factories used for creating Products
-    factory :product_brand do
-        name "Good Year"
-    end
-    
-    factory :product_category do
-        name "Aceites"
-    end
-
-
 end

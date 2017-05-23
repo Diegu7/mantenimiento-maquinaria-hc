@@ -1,9 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe Machine, type: :model do 
-  let(:valid_machine) { create :machine }
-  let(:machine_without_name) { create :machine, name: nil }
-  let(:machine_without_section) { create :machine, machine_section: nil }
+  let(:valid_machine) { build :machine }
+  let(:machine_without_name) { build :machine, name: nil }
+  let(:machine_without_image) { build :machine, image: nil }
+  let(:machine_without_section) { build :machine, machine_section: nil }
 
   it "is valid with a name and section" do  
     expect(valid_machine).to be_valid
@@ -19,4 +20,7 @@ RSpec.describe Machine, type: :model do
     expect(machine_without_section.errors[:machine_section]).to include("can't be blank")
   end
 
+  it "is valid without an image" do
+    expect(machine_without_image).to be_valid
+  end
 end
