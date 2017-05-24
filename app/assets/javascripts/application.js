@@ -15,5 +15,14 @@
 //= require jquery_ujs
 //= require_tree .
 //= require bootstrap-sprockets
+//= require bootstrap-modal
+//= require bootstrap-modalmanager
 //= require admin-lte/dist/js/app.min
 //= require jquery-slimscroll/jquery.slimscroll.min
+
+$(document).ready(function() {
+    $(".btn[data-deletion-path]").click( function() {
+        $("#deletion-modal").modal("toggle");
+        $("#delete-button").attr("href", $(this).data('deletion-path'));
+    });
+});

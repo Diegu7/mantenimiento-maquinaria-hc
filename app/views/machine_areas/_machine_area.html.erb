@@ -7,7 +7,7 @@
 				<font>Editar</font>
 			<% end %>
 
-			<%= link_to machine_area, class: "btn bg-red btn-flat", method: :delete, data: { confirm: "¿Seguro que deseas borrar #{machine_area.name}?" } do %>
+			<%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": machine_area_path(machine_area) do %>
 				<span class="fa fa-trash"></span>
 				<font>Borrar</font>
 			<% end %>
