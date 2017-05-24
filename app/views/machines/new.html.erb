@@ -34,7 +34,7 @@
                 </h3>
               </div>
               <div class="box-body">
-                <%= form_for @datasheet, url: new_machine_technical_specification_path(1) do |f| %>
+                <%= form_for @datasheet do |f| %>
                   <%= render partial: "/technical_specifications/form", locals: {f: f} %>
                 <% end %>
               </div>
