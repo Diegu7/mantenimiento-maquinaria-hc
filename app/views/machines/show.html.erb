@@ -16,31 +16,40 @@
     <div class="col-md-12">
       <div class="box box-success">
         <div class="box-body">
-          <div class="col-md-3">
-            <ul class= "list-group list-group-unbordered">
-              <li class = "list-group-item">
-                <strong><%=@machine.name%></strong>
-              </li>
-              <li class = "list-group-item">
-                <%=MachineCategory.find(@machine.id).name%>
-              </li>
-              <li class = "list-group-item">
-                <%=MachineSection.find(@machine.id).name%>
-              </li>
-            </ul>
+          <div class="col-md-4">
+            <dl>
+              <dt>Nombre</dt>
+              <dd>&nbsp;&nbsp;&nbsp;<%=@machine.name%></dd>
+              <dt>Categoria</dt>
+              <dd>&nbsp;&nbsp;&nbsp;<%=@machine.machine_category.name%></dd>
+              <dt>Seccion</dt>
+              <dd>&nbsp;&nbsp;&nbsp;<%=@machine.machine_section.name%></dd>
+            </dl>
           <%= image_tag (@machine.image_url),class: "img-responsive"%>
           </div>
-          <div class="col-md-9">
-            <div class= "box box-solid box-info">
-              <div class= "box-header ">
-                <h4 class="box-tittle">
-                  <center>Ficha Tecnica</center>
-                </h3>
-              </div>
-              <div class="box-body">
-                <%= form_for(@machine) do |f| %>
-                  <%= render partial: "form", locals: {f: f} %>
-                <% end %>
+          <div class="col-md-8">
+            <div class= "nav-tabs-custom">
+              <ul class= "nav nav-tabs">
+                <li class= "<%='active' if params[:tab]== 'tab1'%>">
+                  <a href="#tab1" data-toggle="tab">Ficha Tecnica</a>
+                </li>
+                <li class= "<%='active' if params[:tab]== 'tab2'%>">
+                  <a href="#tab2" data-toggle="tab">Ficha de Reg y Ejecucion</a>
+                </li>
+                <li class= "<%='active' if params[:tab]== 'tab3'%>">
+                  <a href="#tab3" data-toggle="tab">Cronograma/Control de Mantenimiento</a>
+                </li>
+              </ul>
+              <div class= "tab-content">
+                <div class="<%= if (params[:tab] == 'tab1' || !params[:tab])then 'tab-pane active'  else 'tab-pane' end%>" id= "tab1">
+                  <%=@machine.name%>
+                </div>
+                <div class="<%= if (params[:tab] == 'tab2')then 'tab-pane active'  else 'tab-pane' end%>" id= "tab2">
+
+                </div>
+                <div class="<%= if (params[:tab] == 'tab3')then 'tab-pane active'  else 'tab-pane' end%>" id= "tab3">
+
+                </div>
               </div>
             </div>
           </div>
