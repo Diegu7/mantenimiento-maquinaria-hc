@@ -14,7 +14,7 @@
 				<font>Editar</font>
 			<% end %>
 
-			<%= link_to product, class: "btn bg-red btn-flat", method: :delete, data: { confirm: "¿Seguro que deseas borrar #{product.name}?" } do %>
+			<%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": product_path(product) do %>
 				<span class="fa fa-trash"></span>
 				<font>Borrar</font>
 			<% end %>
