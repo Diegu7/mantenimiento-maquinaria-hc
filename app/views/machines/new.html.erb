@@ -27,7 +27,7 @@
             <% end %>
           </div>
           <div class="col-md-6">
-            <div class= "box box-info">
+            <div class= "box box-solid box-info">
               <div class= "box-header ">
                 <h4 class="box-tittle">
                   <center>Ficha Tecnica</center>
@@ -36,10 +36,6 @@
               <div class="box-body">
                 <%= form_for(@machine) do |f| %>
                   <%= render partial: "form", locals: {f: f} %>
-                  <div class="input-group-btn">
-                    <%= link_to "Cancelar", machines_path, class: "btn bg-red btn-flat" %>
-                    <%= f.submit "Crear", class: "btn bg-green btn-flat" %>
-                  </div>
                 <% end %>
               </div>
             </div>
