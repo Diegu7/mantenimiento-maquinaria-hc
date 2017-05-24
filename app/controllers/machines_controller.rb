@@ -5,6 +5,7 @@ class MachinesController < ApplicationController
 
   def new
     @machine = Machine.new
+    @datasheet= TechnicalSpecification.new
   end
 
   def show

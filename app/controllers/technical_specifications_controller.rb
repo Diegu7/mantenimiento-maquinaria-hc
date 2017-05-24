@@ -1,5 +1,6 @@
 class TechnicalSpecificationsController < ApplicationController
   def index
+    
   end
 
   def new
