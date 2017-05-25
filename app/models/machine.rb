@@ -1,5 +1,4 @@
 class Machine < ApplicationRecord  
-  belongs_to :machine_category
   belongs_to :machine_section
   
   has_many :mileage_logs
