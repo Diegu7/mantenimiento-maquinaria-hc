@@ -1,6 +1,9 @@
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
 
+  # Temporary fix for assets
+  config.serve_static_files = ENV['RAILS_SERVE_STATIC_FILES'].present?
+
   # Code is not reloaded between requests.
   config.cache_classes = true
 
