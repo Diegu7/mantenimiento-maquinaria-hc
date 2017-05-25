@@ -1,0 +1,32 @@
+<section class="content-header">
+  <h1>
+    Usuarios
+    <small>Editar</small>
+  </h1>
+
+  <ol class="breadcrumb">
+		<li><i class="fa fa-cog"></i> <span>Usuarios</span></li>
+		<li><%= link_to "Usuarios", users_path %></li>
+    <li><%= @user.username %></li>
+		<li class="active">Editar</li>
+	</ol>
+  <%= render partial: "shared/errors", locals: { obj: @user } %>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class="box-body">
+          <%= form_for(@user) do |f| %>
+            <%= render partial: "form", locals: {f: f} %>
+            <div class="input-group-btn">
+              <%= link_to "Cancelar", users_path, class: "btn bg-red btn-flat" %>
+              <%= f.submit "Actualizar", class: "btn bg-green btn-flat" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

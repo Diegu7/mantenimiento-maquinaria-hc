@@ -1,0 +1,17 @@
+<section class="content-header">
+	<h1>
+        Areas de Mantenimiento
+		<small>Índice</small>
+	</h1>
+
+	<ol class="breadcrumb">
+		<li><i class="fa fa-cog"></i> <span>Areas</span></li>
+		<li><%= link_to "Areas de Mantenimiento", machine_areas_path %></li>
+		<li class="active">Índice</li>
+	</ol>
+</section>
+
+<section class="content">
+	<%= render partial: "machine_areas_table", locals: { machine_areas: @machine_areas } %>
+	<%= render partial: "shared/deletion_modal" %>
+</section>
