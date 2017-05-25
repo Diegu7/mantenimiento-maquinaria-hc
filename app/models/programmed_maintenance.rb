@@ -5,7 +5,7 @@ class ProgrammedMaintenance < ApplicationRecord
      has_many :postponed_maintenance_logs     
      
      validates_presence_of :description
-     validates_presence_of :scheduled_date
+     validates_presence_of :scheduled_at
      validates_presence_of :estimated_duration
      validates_presence_of :comments
 end

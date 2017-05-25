@@ -1,0 +1,84 @@
+es:
+  activerecord:
+    models:
+      machine_area: Área de máquina
+      machine_category: Categoría de máquina
+      machine_section: Sección de máquina
+      machine: Máquina
+      materials_for_maintenance: Materiales para mantenimiento
+      mileage_log: Reporte de Kilometraje
+      postponed_maintenance_log: Reporte de mantenimientos pospuestos
+      product_brand: Marca de producto
+      product_category: Categoría de producto
+      product: Producto
+      programmed_maintenance: Mantenimiento programado
+      required_maintenance: Mantenimiento requerido
+      technical_specification: Ficha técnica
+      user: Usuario
+    attributes:
+      machine_area:
+        name: Nombre
+      machine_category:
+        name: Nombre
+      machine_section:
+        name: Nombre
+      machine:
+        name: Nombre
+        machine_category: Categoría de máquina
+        machine_section: Sección de máquina
+        image_url: URL de imagen
+      materials_for_maintenance:
+        used_quantity: Cantidad usada
+        programmed_maintenance: Mantenimiento programado
+        product: Producto
+      mileage_log:
+        date: Fecha
+        hours: Horas
+        machine_id: ID de máquina
+      postponed_maintenance_log:
+        reason: Razón
+        previous_date: Fecha anterior
+        new_date: Nueva fecha
+        programmed_maintenance: Mantenimiento programado
+      product_brand:
+        name: Nombre
+      product_category:
+        name: Nombre
+      product:
+        name: Nombre
+        initial_stock: Existencia inicial
+        current_stock: Existencia actual
+        image_url: URL de imagen
+        product_category: Categoría de producto
+        product_brand: Marca de producto
+        minimum: Mínimo
+        maximum: Máximo
+      programmed_maintenance:
+        description: Descripción
+        scheduled_at: Programación
+        estimated_duration: Duración estimada
+        comments: Comentarios
+        done?: Terminado
+        done_at: Terminado en
+        preventive?: Preventivo
+        machine_id: ID de máquina
+      required_maintenance:
+        description: Descripción
+        estimated_duration: Duración estimada
+        machine: Máquina
+        machine_area: Área de máquina
+        frequency_in_hours: Frecuencia en horas
+        frequency_in_days: Frecuencia en días
+      techincal_specification:
+        key: Clave
+        value: Valor
+        machine: Máquina
+      user:
+        username: Nombre de usuario
+        first_name: Primer nombre
+        middle_name: Segundo nombre
+        last_name: Apellido
+        email: Correo electrónico
+        avatar: Avatar
+        password: Contraseña
+        password_confirmation: Confirmación de contraseña

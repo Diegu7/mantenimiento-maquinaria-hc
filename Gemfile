@@ -8,6 +8,8 @@ end
 #Use Ruby 2.4.0
 ruby '2.4.0'
 
+#Use rails-i18n for internationalization
+gem 'rails-i18n', '~> 5.0.0'
 # Use ionicons
 gem 'ionicons-rails', '~> 2.0'
 # Use font-awesome
@@ -20,6 +22,10 @@ gem 'jquery-rails', '~> 4.3'
 gem 'pg', '~> 0.18.4'
 # Use Puma as the app server
 gem 'puma', '~> 3.7'
+# Use bootstrap-sass
+gem 'bootstrap-sass', '~> 3.3.6'
+# Use bootstram-modals
+gem 'bootstrap-modal-rails', '~> 2.2', '>= 2.2.5'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 5.0'
 # Use Uglifier as compressor for JavaScript assets
@@ -35,6 +41,7 @@ gem 'jbuilder', '~> 2.5'
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
+gem 'carrierwave', '~> 1.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -45,8 +52,8 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
   gem 'capybara', '~> 2.13.0'
   gem 'selenium-webdriver'
-  gem 'faker'
   gem 'rails-controller-testing'
+  gem "factory_girl_rails", "~> 4.0"
 end
 
 group :development do

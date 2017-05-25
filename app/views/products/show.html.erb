@@ -1,0 +1,92 @@
+<section class="content-header">
+  <h1>
+    Productos
+    <small><%=@product.name%></small>
+  </h1>
+
+  <ol class="breadcrumb">
+    <li><i class="fa fa-cog"></i> <span>Productos</span></li>
+    <li>
+      <%= link_to "Productos", products_path %>
+    </li>
+    <li class="active">
+      <%= @product.name %>
+    </li>
+  </ol>
+</section>
+
+<section class="content">
+  <div class="box box-warning">
+    <div class="box-header">
+      <div class="col-xs-4 item-photo">
+        <%= image_tag(@product.image_url, style: 'max-width:100%;' ) %>
+      </div>
+
+      <div class="col-md-8">
+        <h2>Detalles</h2>
+        <div class=" col-md-9 col-lg-9 box-body table-responsive no-padding">
+          <table class="table table-striped">
+            <tbody>
+              <tr>
+                <td><strong>Categoría:</strong></td>
+                <td>
+                  <%=@product.product_category.name %>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Marca:</strong></td>
+                <td>
+                  <%=@product.product_brand.name %>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Existencia Inicial:</strong></td>
+                <td>
+                  <%=@product.initial_stock %>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Existencia Actual:</strong></td>
+                <td>
+                  <%=@product.current_stock %>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Mínimo:</strong></td>
+                <td>
+                  <%=@product.minimum %>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Máximo:</strong></td>
+                <td>
+                  <%=@product.maximum %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+
+          </br>
+
+          <div class="footer">
+            <div class="btn-group col-md-offset-3">
+              <%= link_to products_path, class: "btn bg-purple btn-flat" do %>
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <font>Regresar</font>
+              <% end %>
+              <%= link_to edit_product_path(@product), class: "btn bg-blue btn-flat" do %>
+                <span class="fa fa-pencil"></span>
+                <font>Editar</font>
+              <% end %>
+              <%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": product_path(@product) do %>
+                <span class="fa fa-trash"></span>
+                <font>Borrar</font>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <%= render partial: "shared/deletion_modal" %>
+</section>

@@ -41,8 +41,15 @@ GEM
     addressable (2.5.1)
       public_suffix (~> 2.0, >= 2.0.2)
     arel (8.0.0)
+    autoprefixer-rails (7.1.1)
+      execjs
     bcrypt (3.1.11)
     bindex (0.5.0)
+    bootstrap-modal-rails (2.2.5)
+      railties (>= 3.1)
+    bootstrap-sass (3.3.7)
+      autoprefixer-rails (>= 5.2.1)
+      sass (>= 3.3.4)
     builder (3.2.3)
     byebug (9.0.6)
     capybara (2.13.0)
@@ -52,6 +59,10 @@ GEM
       rack (>= 1.0.0)
       rack-test (>= 0.5.4)
       xpath (~> 2.0)
+    carrierwave (1.1.0)
+      activemodel (>= 4.0.0)
+      activesupport (>= 4.0.0)
+      mime-types (>= 1.16)
     childprocess (0.6.3)
       ffi (~> 1.0, >= 1.0.11)
     coffee-rails (4.2.1)
@@ -67,8 +78,11 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.6.0)
     execjs (2.7.0)
-    faker (1.7.3)
-      i18n (~> 0.5)
+    factory_girl (4.8.0)
+      activesupport (>= 3.0.0)
+    factory_girl_rails (4.8.0)
+      factory_girl (~> 4.8.0)
+      railties (>= 3.0.0)
     ffi (1.9.18)
     font-awesome-rails (4.7.0.2)
       railties (>= 3.2, < 5.2)
@@ -132,6 +146,9 @@ GEM
       nokogiri (~> 1.6)
     rails-html-sanitizer (1.0.3)
       loofah (~> 2.0)
+    rails-i18n (5.0.4)
+      i18n (~> 0.7)
+      railties (~> 5.0)
     rails_real_favicon (0.0.7)
       json (>= 1.7, < 3)
       rails (>= 3.1)
@@ -220,10 +237,13 @@ PLATFORMS
 
 DEPENDENCIES
   bcrypt (~> 3.1.7)
+  bootstrap-modal-rails (~> 2.2, >= 2.2.5)
+  bootstrap-sass (~> 3.3.6)
   byebug
   capybara (~> 2.13.0)
+  carrierwave (~> 1.0)
   coffee-rails (~> 4.2)
-  faker
+  factory_girl_rails (~> 4.0)
   font-awesome-rails (~> 4.7)
   ionicons-rails (~> 2.0)
   jbuilder (~> 2.5)
@@ -233,6 +253,7 @@ DEPENDENCIES
   puma (~> 3.7)
   rails (~> 5.1.0)
   rails-controller-testing
+  rails-i18n (~> 5.0.0)
   rails_real_favicon
   rspec-rails
   sass-rails (~> 5.0)

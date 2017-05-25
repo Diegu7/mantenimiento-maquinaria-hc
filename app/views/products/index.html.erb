@@ -1,0 +1,17 @@
+<section class="content-header">
+	<h1>
+		Productos
+		<small>Índice</small>
+	</h1>
+
+	<ol class="breadcrumb">
+		<li><i class="fa fa-cog"></i> <span>Productos</span></li>
+		<li><%= link_to "Productos", products_path %></li>
+		<li class="active">Índice</li>
+	</ol>
+</section>
+
+<section class="content">
+	<%= render partial: "products_table", locals: { products: @products } %>
+	<%= render partial: "shared/deletion_modal" %>
+</section>

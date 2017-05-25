@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170512045736) do
+ActiveRecord::Schema.define(version: 20170524123840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -89,11 +89,13 @@ ActiveRecord::Schema.define(version: 20170512045736) do
     t.string "name"
     t.integer "initial_stock"
     t.integer "current_stock"
-    t.string "image_url"
     t.bigint "product_category_id"
     t.bigint "product_brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "minimum"
+    t.integer "maximum"
+    t.string "image"
     t.index ["product_brand_id"], name: "index_products_on_product_brand_id"
     t.index ["product_category_id"], name: "index_products_on_product_category_id"
   end
@@ -141,9 +143,9 @@ ActiveRecord::Schema.define(version: 20170512045736) do
     t.string "middle_name"
     t.string "last_name"
     t.string "email"
-    t.string "image_url"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
   end
 
   add_foreign_key "machines", "machine_categories"

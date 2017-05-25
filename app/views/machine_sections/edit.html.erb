@@ -19,7 +19,7 @@
       <div class="box box-success">
         <div class="box-body">
           <%= form_for(@machine_section) do |f| %>
-            <%= render partial: "form", locals: {f: f} %>
+            <%= render partial: "shared/name_form", locals: {f: f} %>
             <div class="input-group-btn">
               <%= link_to "Cancelar", machine_sections_path, class: "btn bg-red btn-flat" %>
               <%= f.submit "Actualizar", class: "btn bg-green btn-flat" %>
