@@ -9,6 +9,7 @@ FactoryGirl.define do
         initial_stock 0
         current_stock 5
         image "tornillo.jpeg"
+        specifications "De 3/4 troquelada"
         product_brand
         minimum 2
         maximum 10

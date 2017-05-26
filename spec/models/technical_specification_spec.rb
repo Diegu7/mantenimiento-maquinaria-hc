@@ -7,7 +7,7 @@ RSpec.describe TechnicalSpecification, type: :model do
   let(:specification_without_machine) { build :technical_specification, machine: nil }
 
   it "is valid with key, value and machine" do
-    expect(:valid_technical_specification).to be_valid
+    expect(valid_technical_specification).to be_valid
   end
 
   it "is invalid without a key" do
@@ -22,6 +22,6 @@ RSpec.describe TechnicalSpecification, type: :model do
   
   it "is invalid without a machine" do
     specification_without_machine.valid?
-    expect(specification_without_machine.errors[:machine]).to include("no puede estar en blanco")
+    expect(specification_without_machine.errors[:machine]).to include("debe existir")
   end
 end

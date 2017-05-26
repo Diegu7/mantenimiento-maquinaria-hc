@@ -1,9 +1,5 @@
 FactoryGirl.define do    
-    #factories used for Machines
-    factory :machine_area do
-        name "Area de Motor"
-    end
-    
+    #factories used for Machines    
     factory :machine_section do
         name "Desfibrado"
     end
