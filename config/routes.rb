@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :machine_sections, :machine_areas, except: :show
 
   resources :products
-  resources :product_categories, :product_brands, except: :show
+  resources :product_brands, except: :show
 
   resources :users, except: :show
   
