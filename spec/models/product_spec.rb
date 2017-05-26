@@ -17,7 +17,7 @@ RSpec.describe Product, type: :model do
 
   it "is valid without a name" do
     product_without_name.valid?
-    expect(product_without_name.errors[:name]).to include("can't be blank")
+    expect(product_without_name.errors[:name]).to include("no puede estar en blanco")
   end
 
   it "is invalid without a valid initial stock" do
@@ -36,12 +36,12 @@ RSpec.describe Product, type: :model do
 
   it "is invalid without a brand" do
     product_without_product_brand.valid?
-    expect(product_without_product_brand.errors[:product_brand]).to include("can't be blank")
+    expect(product_without_product_brand.errors[:product_brand]).to include("no puede estar en blanco")
   end
 
   it "is invalid without a category" do
     product_without_product_category.valid?
-    expect(product_without_product_category.errors[:product_category]).to include("can't be blank")
+    expect(product_without_product_category.errors[:product_category]).to include("no puede estar en blanco")
   end
 
   it "is invalid without a valid minimum" do

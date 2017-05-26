@@ -13,21 +13,21 @@ RSpec.describe PostponedMaintenanceLog, type: :model do
   
   it "is invalid without a reason" do
     postponed_without_reason.valid?
-    expect(postponed_without_reason.errors[:reason]).to include ("can't be blank")
+    expect(postponed_without_reason.errors[:reason]).to include ("no puede estar en blanco")
   end
   
   it "is invalid wihtout a previous date" do
     postponed_without_previous_date.valid?
-    expect(postponed_without_previous_date.errors[previous_date]).to include ("can't be blank")
+    expect(postponed_without_previous_date.errors[previous_date]).to include ("no puede estar en blanco")
   end
   
   it "is invalid without new date" do
     postponed_without_new_date.valid?
-    expect(postponed_without_new_date.errors[new_date]).to include ("can't be blank")
+    expect(postponed_without_new_date.errors[new_date]).to include ("no puede estar en blanco")
   end
   
   it "is invalid without programmed maintenance" do
     postponed_without_programmed_maintenance.valid?
-    expect(postponed_without_programmed_maintenance.errors[:programmed_maintenance]).to include ("can't be blank")
+    expect(postponed_without_programmed_maintenance.errors[:programmed_maintenance]).to include ("no puede estar en blanco")
   end
 end

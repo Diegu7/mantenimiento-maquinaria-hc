@@ -13,7 +13,7 @@ RSpec.describe MileageLog, type: :model do
   
   it "is invalid without a date" do
     mileage_without_date.valid?
-    expect(mileage_without_date.errors[:date]).to include("can't be blank")
+    expect(mileage_without_date.errors[:date]).to include("no puede estar en blanco")
   end
   
   it "is invalid with an hours value less than 0" do
@@ -28,7 +28,7 @@ RSpec.describe MileageLog, type: :model do
 
   it "is invalid without a machine" do
     mileage_without_machine.valid?
-    expect(mileage_without_machine.errors[:machine]).to include("can't be blank")
+    expect(mileage_without_machine.errors[:machine]).to include("no puede estar en blanco")
   end  
     
 end

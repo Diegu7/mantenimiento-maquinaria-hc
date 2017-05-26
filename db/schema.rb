@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526191840) do
+ActiveRecord::Schema.define(version: 20170526193510) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -71,25 +71,18 @@ ActiveRecord::Schema.define(version: 20170526191840) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "product_categories", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.integer "initial_stock"
     t.integer "current_stock"
     t.string "image"
-    t.bigint "product_category_id"
     t.bigint "product_brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "minimum"
     t.integer "maximum"
+    t.string "specifications"
     t.index ["product_brand_id"], name: "index_products_on_product_brand_id"
-    t.index ["product_category_id"], name: "index_products_on_product_category_id"
   end
 
   create_table "programmed_maintenances", force: :cascade do |t|
@@ -146,7 +139,6 @@ ActiveRecord::Schema.define(version: 20170526191840) do
   add_foreign_key "mileage_logs", "machines"
   add_foreign_key "postponed_maintenance_logs", "programmed_maintenances"
   add_foreign_key "products", "product_brands"
-  add_foreign_key "products", "product_categories"
   add_foreign_key "programmed_maintenances", "machines"
   add_foreign_key "required_maintenances", "machine_areas"
   add_foreign_key "required_maintenances", "machines"

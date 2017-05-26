@@ -23,12 +23,12 @@ RSpec.describe MaterialsForMaintenance, type: :model do
 
   it "is invalid without a programmed maintenance" do
     material_for_maintenance_without_programmed_maintenance.valid?
-    expect(material_for_maintenance_without_programmed_maintenance.errors[:programmed_maintenance]).to include("can't be blank")
+    expect(material_for_maintenance_without_programmed_maintenance.errors[:programmed_maintenance]).to include("no puede estar en blanco")
   end
   
   it "is invalid without a product" do
     material_for_maintenance_without_product.valid?
-    expect(material_for_maintenance_without_product.errors[:product]).to include("can't be blank")
+    expect(material_for_maintenance_without_product.errors[:product]).to include("no puede estar en blanco")
   end
   
 end

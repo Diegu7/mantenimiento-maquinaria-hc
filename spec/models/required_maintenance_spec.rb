@@ -18,7 +18,7 @@ RSpec.describe RequiredMaintenance, type: :model do
 
   it "is invalid without a description" do
     maintenance_without_description.valid?
-    expect(maintenance_without_description.errors[:description]).to include("can't be blank")
+    expect(maintenance_without_description.errors[:description]).to include("no puede estar en blanco")
   end
 
   it "is invalid when estimated duration is less than 0" do
@@ -33,12 +33,12 @@ RSpec.describe RequiredMaintenance, type: :model do
 
   it "is invalid without a machine area" do
     maintenance_without_machine_area.valid?
-    expect(maintenance_without_machine_area.errors[:machine_area]).to include("can't be blank")
+    expect(maintenance_without_machine_area.errors[:machine_area]).to include("no puede estar en blanco")
   end
   
   it "is invalid without a machine" do
     maintenance_without_machine.valid?
-    expect(maintenance_without_machine.errors[:machine]).to include("can't be blank")
+    expect(maintenance_without_machine.errors[:machine]).to include("no puede estar en blanco")
   end
   
   it "is invalid when frequency in hours is less than 0" do

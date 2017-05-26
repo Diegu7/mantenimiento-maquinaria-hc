@@ -21,12 +21,12 @@ RSpec.describe ProgrammedMaintenance, type: :model do
   
   it "is invalid without a description" do
     maintenance_without_description.valid?
-    expect(maintenance_without_description.errors[:description]).to include("can't be blank")
+    expect(maintenance_without_description.errors[:description]).to include("no puede estar en blanco")
   end
   
   it "is invalid without scheduled_at date" do
     maintenance_without_scheduled_at.valid?
-    expect(maintenance_without_scheduled_at.errors[:scheduled_at]).to include("can't be blank")
+    expect(maintenance_without_scheduled_at.errors[:scheduled_at]).to include("no puede estar en blanco")
   end
   
   it "is invalid with a value less or equal than 0 in estimated time" do
@@ -36,21 +36,21 @@ RSpec.describe ProgrammedMaintenance, type: :model do
 
   it "is invalid without done value" do
     maintenance_without_done.valid?
-    expect(maintenance_without_done.errors[:done]).to include("can't be blank")
+    expect(maintenance_without_done.errors[:done]).to include("no puede estar en blanco")
   end
 
   it "is invalid without done_at date value" do
     maintenance_without_done_at.valid?
-    expect(maintenance_without_done_at.errors[:done_at]).to include("can't be blank")
+    expect(maintenance_without_done_at.errors[:done_at]).to include("no puede estar en blanco")
   end
 
   it "is invalid without preventive value" do
     maintenance_without_preventive.valid?
-    expect(maintenance_without_preventive.errors[:preventive]).to include("can't be blank")
+    expect(maintenance_without_preventive.errors[:preventive]).to include("no puede estar en blanco")
   end
     
   it "is invalid without a machine" do
     maintenance_without_machine.valid?
-    expect(maintenance_without_machine.errors[:machine]).to include("can't be blank")
+    expect(maintenance_without_machine.errors[:machine]).to include("no puede estar en blanco")
   end
 end

@@ -10,6 +10,6 @@ RSpec.describe ProductCategory, type: :model do
   
   it "is invalid without a name" do
     product_category_without_name.valid?
-    expect(product_category_without_name.errors[:name]).to include("can't be blank")
+    expect(product_category_without_name.errors[:name]).to include("no puede estar en blanco")
   end  
 end
