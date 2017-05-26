@@ -10,6 +10,6 @@ RSpec.describe MachineArea, type: :model do
   
   it "is invalid without a name" do
     machine_area_without_name.valid?
-    expect(machine_area_without_name.errors[:name]).to include("can't be blank")
+    expect(machine_area_without_name.errors[:name]).to include("no puede estar en blanco")
   end  
 end

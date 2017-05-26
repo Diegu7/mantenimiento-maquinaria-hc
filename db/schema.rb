@@ -10,18 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516152545) do
+ActiveRecord::Schema.define(version: 20170526191840) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "machine_areas", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "machine_categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,10 +31,8 @@ ActiveRecord::Schema.define(version: 20170516152545) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "machine_category_id"
     t.bigint "machine_section_id"
     t.string "image"
-    t.index ["machine_category_id"], name: "index_machines_on_machine_category_id"
     t.index ["machine_section_id"], name: "index_machines_on_machine_section_id"
   end
 
@@ -148,7 +140,6 @@ ActiveRecord::Schema.define(version: 20170516152545) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "machines", "machine_categories"
   add_foreign_key "machines", "machine_sections"
   add_foreign_key "materials_for_maintenances", "products"
   add_foreign_key "materials_for_maintenances", "programmed_maintenances"
