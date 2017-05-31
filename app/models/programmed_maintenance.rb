@@ -2,7 +2,6 @@ class ProgrammedMaintenance < ApplicationRecord
      belongs_to :machine
      
      has_many :materials_for_maintenances
-     has_many :postponed_maintenance_logs     
      
      validates_presence_of :description, :scheduled_at,:estimated_duration, :comments, :done_at
 
