@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170526193510) do
+ActiveRecord::Schema.define(version: 20170531014546) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -36,6 +36,15 @@ ActiveRecord::Schema.define(version: 20170526193510) do
     t.index ["machine_section_id"], name: "index_machines_on_machine_section_id"
   end
 
+  create_table "maintenance_plans", force: :cascade do |t|
+    t.string "description"
+    t.date "scheduled_at"
+    t.date "done_at"
+    t.boolean "done?"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "materials_for_maintenances", force: :cascade do |t|
     t.integer "used_quantity"
     t.bigint "programmed_maintenance_id"
@@ -53,16 +62,6 @@ ActiveRecord::Schema.define(version: 20170526193510) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["machine_id"], name: "index_mileage_logs_on_machine_id"
-  end
-
-  create_table "postponed_maintenance_logs", force: :cascade do |t|
-    t.text "reason"
-    t.date "previous_date"
-    t.date "new_date"
-    t.bigint "programmed_maintenance_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["programmed_maintenance_id"], name: "index_postponed_maintenance_logs_on_programmed_maintenance_id"
   end
 
   create_table "product_brands", force: :cascade do |t|
@@ -137,7 +136,6 @@ ActiveRecord::Schema.define(version: 20170526193510) do
   add_foreign_key "materials_for_maintenances", "products"
   add_foreign_key "materials_for_maintenances", "programmed_maintenances"
   add_foreign_key "mileage_logs", "machines"
-  add_foreign_key "postponed_maintenance_logs", "programmed_maintenances"
   add_foreign_key "products", "product_brands"
   add_foreign_key "programmed_maintenances", "machines"
   add_foreign_key "required_maintenances", "machine_areas"
