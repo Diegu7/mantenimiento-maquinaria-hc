@@ -25,4 +25,8 @@ $(document).ready(function() {
         $("#deletion-modal").modal("toggle");
         $("#delete-button").attr("href", $(this).data('deletion-path'));
     });
+
+    $("tr[data-link]").dblclick(function() {
+        window.location = $(this).data("link")
+    });
 });
