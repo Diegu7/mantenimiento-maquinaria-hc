@@ -1,6 +1,6 @@
 class TechnicalSpecificationsController < ApplicationController
   def index
-    
+    @specifications= TechnicalSpecifications.all
   end
 
   def new
@@ -13,7 +13,6 @@ class TechnicalSpecificationsController < ApplicationController
     @datasheet = TechnicalSpecification.new(specification_params)
 
     if @datasheet.save
-      redirect_to @datasheet.Machine
     else
       flash[:errors] = "No se pudo registrar la maquina"
       render :new

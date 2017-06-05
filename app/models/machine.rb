@@ -1,4 +1,4 @@
-class Machine < ApplicationRecord  
+class Machine < ApplicationRecord
   belongs_to :machine_category
   belongs_to :machine_section
 
@@ -10,4 +10,6 @@ class Machine < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :machine_section
   validates_presence_of :machine_category
+  mount_uploader :image_url, UserImageUploader
+
 end
