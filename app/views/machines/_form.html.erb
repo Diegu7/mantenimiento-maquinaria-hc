@@ -11,6 +11,6 @@
   <%= f.select :machine_section_id, MachineSection.pluck(:name, :id), {}, class: "form-control" %>
 </div>
 <div class= "form-group">
-   <%= f.label :image_url, "Imagen" %>
-   <%= f.file_field :image_url%>
+   <%= f.label :image, "Imagen" %>
+   <%= f.file_field :image%>
 </div>

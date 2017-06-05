@@ -10,6 +10,7 @@ class Machine < ApplicationRecord
   validates_presence_of :name
   validates_presence_of :machine_section
   validates_presence_of :machine_category
-  mount_uploader :image_url, UserImageUploader
+
+  mount_uploader :image, UserImageUploader
 
 end

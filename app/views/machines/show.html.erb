@@ -25,7 +25,11 @@
               <dt>Seccion</dt>
               <dd>&nbsp;&nbsp;&nbsp;<%=@machine.machine_section.name%></dd>
             </dl>
-          <%= image_tag (@machine.image_url),class: "img-responsive"%>
+            <%unless @machine.image_url%>
+              <%=image_tag ("favicon.png"),class: "img-responsive"%>
+            <%else%>
+              <%=image_tag (@machine.image_url),class: "img-responsive"%>
+            <%end%>
           </div>
           <div class="col-md-8">
             <div class= "nav-tabs-custom">
