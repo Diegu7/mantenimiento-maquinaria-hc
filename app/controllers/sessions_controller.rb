@@ -1,30 +1,29 @@
 class SessionsController < ApplicationController
-    layout 'session'
-    skip_before_action :authenticate, except: :destroy
+  layout 'session'
+  skip_before_action :authenticate, except: :destroy
 
-    def new
-        if current_user
-            redirect_to root_path
-        end
+  def new
+    redirect_to root_path if current_user
+  end
+
+  def create
+    @user = User.find_by_username(session_params[:username])
+
+    if @user && @user.authenticate(session_params[:password])
+      login(@user)
+    else
+      flash.now[:notice] = 'Usuario o contraseña incorrecta'
+      render :new
     end
+  end
 
-    def create
-        @user = User.find_by_username(session_params[:username])
+  def destroy
+    logout
+  end
 
-        if @user && @user.authenticate(session_params[:password])
-            login(@user)
-        else
-            flash.now[:notice] = "Usuario o contraseña incorrecta"
-            render :new
-        end
-    end
+  protected
 
-    def destroy
-        logout
-    end
-
-    protected
-        def session_params
-            params.require(:session).permit(:username, :password)
-        end
+  def session_params
+    params.require(:session).permit(:username, :password)
+  end
 end

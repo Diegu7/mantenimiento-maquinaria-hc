@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   root 'dashboard#index'
 
-  get 'login', to: "sessions#new"
-  post 'login', to: "sessions#create"
-  delete 'logout', to: "sessions#destroy"
+  get 'login', to: 'sessions#new'
+  post 'login', to: 'sessions#create'
+  delete 'logout', to: 'sessions#destroy'
 
   resources :machines
   resources :technical_specifications
@@ -14,5 +14,4 @@ Rails.application.routes.draw do
   resources :product_categories, :product_brands, except: :show
 
   resources :users, except: :show
-
 end

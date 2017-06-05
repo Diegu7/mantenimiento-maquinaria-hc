@@ -18,7 +18,7 @@ class MachinesController < ApplicationController
     if @machine.save
       redirect_to @machine
     else
-      flash[:errors] = "No se pudo registrar la maquina"
+      flash[:errors] = 'No se pudo registrar la maquina'
       render :new
     end
   end
@@ -44,7 +44,8 @@ class MachinesController < ApplicationController
   end
 
   protected
-    def machine_params
-      params.require(:machine).permit(:name, :machine_category_id, :machine_section_id)
-    end
+
+  def machine_params
+    params.require(:machine).permit(:name, :machine_category_id, :machine_section_id)
+  end
 end
