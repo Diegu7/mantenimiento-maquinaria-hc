@@ -6,12 +6,23 @@
   <%= f.label :transaction_type, "Tipo de transacción" %>
     <%= f.select :transaction_type, InventoryTransaction.transaction_types.keys, {}, class: "form-control" %>
 </div>
-<h3>Detalles</h3>
-<div id='details'>
-  <%= f.fields_for :inventory_transaction_details do |detail| %>
-    <%= render 'details_fields', :f => detail %>
-  <% end %>
-  <div class="input-group-btn" align="right">
-     <%= link_to_add_association 'Agregar detalle', f, :inventory_transaction_details, class: 'btn btn-primary' %>
-  </div>
+
+<h3>Detalles de Productos</h3>
+<table class='table'>
+  <thead>
+    <tr>
+      <th>Producto</th>
+      <th>Cantidad</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody class='tasks'>
+    <%= f.fields_for :inventory_transaction_details do |detail| %>
+      <%= render 'details_fields', f: detail %>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="form-actions" align="right">
+    <%= link_to_add_association 'Agregar detalle', f, :inventory_transaction_details, class: 'btn btn-primary', data: { association_insertion_node: '.tasks', association_insertion_method: :append } %>
 </div>
