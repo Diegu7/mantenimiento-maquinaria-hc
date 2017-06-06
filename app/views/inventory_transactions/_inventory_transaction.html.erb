@@ -1,0 +1,17 @@
+<tr>
+	<td><%= inventory_transaction.date %></td>
+    <td><%= inventory_transaction.transaction_type %></td>
+	<td>
+		<div class="input-group-btn">
+		    <%= link_to inventory_transaction, class: "btn bg-purple btn-flat" do %>
+                <span class="fa fa-file-text"></span>
+                <font>Ver</font>
+			<% end %>
+
+			<%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": inventory_transaction_path(inventory_transaction) do %>
+				<span class="fa fa-trash"></span>
+				<font>Borrar</font>
+			<% end %>
+		</div>
+	</td>
+</tr>

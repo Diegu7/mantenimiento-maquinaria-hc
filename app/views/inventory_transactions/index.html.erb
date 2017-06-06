@@ -1,0 +1,17 @@
+<section class="content-header">
+	<h1>
+        Transacciones de Inventario
+		<small>Índice</small>
+	</h1>
+
+	<ol class="breadcrumb">
+		<li><i class="fa fa-cog"></i> <span>Areas</span></li>
+		<li><%= link_to "Transacciones de Inventario", inventory_transactions_path %></li>
+		<li class="active">Índice</li>
+	</ol>
+</section>
+
+<section class="content">
+	<%= render partial: "inventory_transactions_table", locals: { inventory_transactions: @inventory_transactions } %>
+	<%= render partial: "shared/deletion_modal" %>
+</section>

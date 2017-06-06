@@ -12,5 +12,6 @@ Rails.application.routes.draw do
   resources :product_brands, except: :show
 
   resources :users, except: :show
-  
+
+  resources :inventory_transactions, except: :edit
 end

@@ -1,0 +1,31 @@
+<section class ="content-header" >
+  <h1>
+    Transacción de Inventario
+    <small>Nuevo</small>
+  </h1>
+
+  <ol class="breadcrumb">
+		<li><i class="fa fa-cog"></i> <span>Equipos</span></li>
+		<li><%= link_to "Transacción de Inventario", inventory_transactions_path %></li>
+		<li class="active">Nuevo</li>
+	</ol>
+  <%= render partial: "shared/errors", locals: { obj: @inventory_transaction } %>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class="box-body">
+          <%= form_for(@inventory_transaction) do |f| %>
+            <%= render partial: "form", locals: {f: f} %>
+            <div class="input-group-btn">
+              <%= link_to "Cancelar", inventory_transactions_path, class: "btn bg-red btn-flat" %>
+              <%= f.submit "Crear", class: "btn bg-green btn-flat" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
