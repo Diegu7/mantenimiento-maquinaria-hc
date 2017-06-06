@@ -2,6 +2,11 @@ class ProductsController < ApplicationController
     def index
         @products = Product.all.order(:name)
         @product = Product.new
+
+        if params[:brand].present?
+            brand = ProductBrand.find(params[:brand])
+            @products = brand.products.order(:name)
+        end
     end
 
     def show

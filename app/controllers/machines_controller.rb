@@ -1,6 +1,11 @@
 class MachinesController < ApplicationController
   def index
     @machines = Machine.all.order(:name)
+
+    if params[:section].present?
+      section = MachineSection.find(params[:section])
+      @machines = section.machines.order(:name)
+    end
   end
 
   def new
