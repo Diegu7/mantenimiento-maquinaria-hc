@@ -19,6 +19,7 @@
 //= require bootstrap-modalmanager
 //= require admin-lte/dist/js/app.min
 //= require jquery-slimscroll/jquery.slimscroll.min
+//= require cocoon
 
 $(document).ready(function() {
     $(".btn[data-deletion-path]").click( function() {

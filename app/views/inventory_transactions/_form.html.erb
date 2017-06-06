@@ -1,8 +1,17 @@
 <div class="form-group">
   <%= f.label :done_at, "Fecha" %>
-  <%= f.date_field :done_at, class: "form-control" %>
+    <%= f.date_field :done_at,as: :date, :value => Date.today, class: 'form-control' %>
 </div>
 <div class="form-group">
   <%= f.label :transaction_type, "Tipo de transacción" %>
-  <%= f.select :transaction_type, InventoryTransaction.transaction_types.keys, {}, class: "form-control" %>
+    <%= f.select :transaction_type, InventoryTransaction.transaction_types.keys, {}, class: "form-control" %>
+</div>
+<h3>Detalles</h3>
+<div id='details'>
+  <%= f.fields_for :inventory_transaction_details do |detail| %>
+    <%= render 'details_fields', :f => detail %>
+  <% end %>
+  <div class="input-group-btn" align="right">
+     <%= link_to_add_association 'Agregar detalle', f, :inventory_transaction_details, class: 'btn btn-primary' %>
+  </div>
 </div>

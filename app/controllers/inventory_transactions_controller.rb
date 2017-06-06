@@ -5,6 +5,7 @@ class InventoryTransactionsController < ApplicationController
     
     def new
         @inventory_transaction = InventoryTransaction.new
+		@inventory_transaction.inventory_transaction_details.build
     end
     
     def create
@@ -36,6 +37,6 @@ class InventoryTransactionsController < ApplicationController
 
     protected
         def inventory_transactions_params
-            params.require(:inventory_transaction).permit(:done_at)
+            params.require(:inventory_transaction).permit(:done_at, inventory_transaction_details_attributes: [:id, :product, :quantity, :_destroy])
         end
 end
