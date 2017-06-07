@@ -1,0 +1,18 @@
+namespace :users do
+  desc "Generates admin user"
+  task generate_admin: :environment do
+    user = User.new(
+      username: "admin",
+      first_name: "Administrador",
+      last_name: "Honducaribe",
+      email: "admin@honducaribe.com",
+      password: "admin",
+      password_confirmation: "admin"
+    )
+
+    unless user.save
+      puts "Failed to create admin user"
+    end
+  end
+
+end

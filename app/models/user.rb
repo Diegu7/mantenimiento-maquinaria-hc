@@ -7,6 +7,6 @@ class User < ApplicationRecord
     mount_uploader :avatar, UserImageUploader
 
     def full_name
-        first_name << " " << middle_name << " " << last_name
+        first_name << " " << (middle_name || "") << " " << last_name
     end
 end

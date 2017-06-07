@@ -1,6 +1,5 @@
 <tr>
 	<td><%= machine.name %></td>
-	<td><%= machine.machine_category.name %></td>
 	<td><%= machine.machine_section.name %></td>
 	<td>
 		<div class="input-group-btn">
@@ -14,7 +13,7 @@
 				<font>Editar</font>
 			<% end %>
 
-			<%= link_to machine, class: "btn bg-red btn-flat", method: :delete, data: { confirm: "¿Seguro que deseas borrar #{machine.name}?" } do %>
+			<%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": machine_path(machine) do %>
 				<span class="fa fa-trash"></span>
 				<font>Borrar</font>
 			<% end %>
