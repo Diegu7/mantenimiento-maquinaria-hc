@@ -3,6 +3,10 @@
   <%= f.text_field :name, class: "form-control" %>
 </div>
 <div class="form-group">
+  <%= f.label :specifications, "Especificaciones" %>
+  <%= f.text_area :specifications, class: "form-control" %>
+</div>
+<div class="form-group">
   <%= f.label :product_brand_id, "Marca" %>
   <%= f.select :product_brand_id, ProductBrand.pluck(:name, :id), {}, class: "form-control" %>
 </div>

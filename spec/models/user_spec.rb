@@ -7,7 +7,7 @@ RSpec.describe User, type: :model do
   let(:user_without_middle_name) {build :user, middle_name: nil }
   let(:user_without_last_name) { build :user, last_name: nil }
   let(:user_without_email) { build :user, email: nil }
-  let(:user_wihtout_image) { build :user, image: nil }
+  let(:user_wihtout_avatar) { build :user, avatar: nil }
   let(:user_without_password) { build :user, password: nil }
 
   it "is valid with name, username, first name, last name, email, and password" do
@@ -18,33 +18,33 @@ RSpec.describe User, type: :model do
     expect(user_without_middle_name).to be_valid
   end
   
-  it "is valid without an image" do
-    expect(user_wihtout_image).to be_valid
+  it "is valid without an avatar" do
+    expect(user_wihtout_avatar).to be_valid
   end
 
   it "is invalid without a username" do
     user_without_username.valid?
-    expect(user_without_username.errors[:username]).to include("can't be blank")
+    expect(user_without_username.errors[:username]).to include("no puede estar en blanco")
   end
 
   it "is invalid without a first name" do
     user_without_first_name.valid?
-    expect(user_without_first_name.errors[:first_name]).to include("can't be blank")
+    expect(user_without_first_name.errors[:first_name]).to include("no puede estar en blanco")
   end
   
   it "is invalid without a last name" do
     user_without_last_name.valid?
-    expect(user_without_last_name.errors[:last_name]).to include("can't be blank")
+    expect(user_without_last_name.errors[:last_name]).to include("no puede estar en blanco")
   end
 
   it "is invalid without an email" do
     user_without_email.valid?
-    expect(user_without_email.errors[:email]).to include("can't be blank")
+    expect(user_without_email.errors[:email]).to include("no puede estar en blanco")
   end
 
   it "is invalid without a password" do
     user_without_password.valid?
-    expect(user_without_password.errors[:password]).to include("can't be blank")
+    expect(user_without_password.errors[:password]).to include("no puede estar en blanco")
   end
   
 end 
