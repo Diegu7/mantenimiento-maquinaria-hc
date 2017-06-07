@@ -1,0 +1,10 @@
+<tr class="nested-fields">  
+   <td>     
+      <%= f.select :product_id, 
+        options_from_collection_for_select(@products, :id, :name), {:style => "width:300px" }, { :class => "form-control", :id => "products-list" } %>
+   </td>
+   <td><%= f.number_field :quantity, label: false %></td>
+   <td>
+      <%= link_to_remove_association "Eliminar", f, class: 'btn btn-danger' %>
+  </td>
+</tr>

@@ -8,21 +8,21 @@
 </div>
 
 <h3>Detalles de Productos</h3>
-<table class='table'>
+<table class="table table-hover">
   <thead>
-    <tr>
+    <tr role="row">
       <th>Producto</th>
-      <th>Cantidad</th>
-      <th></th>
+      <th style="width: 5px; padding:0;">Cantidad</th>
+      <th width="1"></th>
     </tr>
   </thead>
-  <tbody class='tasks'>
+  <tbody class='details'>
     <%= f.fields_for :inventory_transaction_details do |detail| %>
-      <%= render 'details_fields', f: detail %>
+      <%= render 'inventory_transaction_detail_fields', :f => detail %>
     <% end %>
   </tbody>
 </table>
 
 <div class="form-actions" align="right">
-    <%= link_to_add_association 'Agregar detalle', f, :inventory_transaction_details, class: 'btn btn-primary', data: { association_insertion_node: '.tasks', association_insertion_method: :append } %>
+    <%= link_to_add_association 'Agregar detalle', f, :inventory_transaction_details, class: 'btn btn-primary', data: { association_insertion_node: '.details', association_insertion_method: :append } %>
 </div>

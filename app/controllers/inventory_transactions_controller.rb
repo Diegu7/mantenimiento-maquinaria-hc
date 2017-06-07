@@ -6,10 +6,12 @@ class InventoryTransactionsController < ApplicationController
     def new
         @inventory_transaction = InventoryTransaction.new
 		@inventory_transaction.inventory_transaction_details.build
+        @products = Product.all.order(:name)
     end
     
     def create
         @inventory_transaction = InventoryTransaction.new(inventory_transactions_params)
+        @products = Product.all.order(:name)
 
         if @inventory_transaction.save
             redirect_to inventory_transactions_path
@@ -37,6 +39,6 @@ class InventoryTransactionsController < ApplicationController
 
     protected
         def inventory_transactions_params
-            params.require(:inventory_transaction).permit(:done_at, inventory_transaction_details_attributes: [:id, :product, :quantity, :_destroy])
+            params.require(:inventory_transaction).permit(:done_at)
         end
 end
