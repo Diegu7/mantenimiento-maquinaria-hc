@@ -1,0 +1,22 @@
+<div class="box box-success">
+  <div class="box-header">
+    <div class="box-tools">
+      <%= link_to "Nueva Transacción",new_inventory_transaction_path ,class:"btn bg-green btn-flat"%>
+    </div>
+  </div>
+
+  <div class="box-body table-responsive no-padding">
+    <table class="table table-hover">
+      <thead>
+        <tr role="row">
+          <th>Fecha</th>
+          <th>Tipo de transacción</th>
+          <th width="1"></th>
+        </tr>
+      </thead>
+      <tbody>
+          <%= render inventory_transactions %>
+      </tbody>
+    </table>
+  </div>
+</div>

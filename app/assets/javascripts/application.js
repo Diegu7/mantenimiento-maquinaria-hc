@@ -19,6 +19,8 @@
 //= require bootstrap-modalmanager
 //= require admin-lte/dist/js/app.min
 //= require jquery-slimscroll/jquery.slimscroll.min
+//= require cocoon
+//= require select2
 
 $(document).ready(function() {
     $(".btn[data-deletion-path]").click( function() {
@@ -29,4 +31,14 @@ $(document).ready(function() {
     $("tr[data-link]").dblclick(function() {
         window.location = $(this).data("link")
     });
+    
+    $('select#products-list').select2({
+        placeholder: "Seleccione un producto",
+        allowClear: true
+    });
+
+   $('form').bind('cocoon:after-insert', function(e, inserted_item) {
+      inserted_item.find('select#products-list').select2();
+    });
 });
+

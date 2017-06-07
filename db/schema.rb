@@ -10,10 +10,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170531014546) do
+ActiveRecord::Schema.define(version: 20170606162621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "inventory_transaction_details", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "inventory_transaction_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["inventory_transaction_id"], name: "index_inventory_transaction_details_on_inventory_transaction_id"
+    t.index ["product_id"], name: "index_inventory_transaction_details_on_product_id"
+  end
+
+  create_table "inventory_transactions", force: :cascade do |t|
+    t.date "done_at"
+    t.integer "transaction_type", default: 0
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "machine_areas", force: :cascade do |t|
     t.string "name"
@@ -132,6 +149,8 @@ ActiveRecord::Schema.define(version: 20170531014546) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "inventory_transaction_details", "inventory_transactions"
+  add_foreign_key "inventory_transaction_details", "products"
   add_foreign_key "machines", "machine_sections"
   add_foreign_key "materials_for_maintenances", "products"
   add_foreign_key "materials_for_maintenances", "programmed_maintenances"
