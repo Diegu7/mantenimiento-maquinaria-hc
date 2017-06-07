@@ -14,20 +14,16 @@ class InventoryTransactionsController < ApplicationController
         @products = Product.all.order(:name)
 
         if @inventory_transaction.save
+            @product_details = @inventory_transaction.inventory_transaction_details
+
+            # @product_details.each do |detail|
+            #     detail.product.increment!(:current_stock,detail.quantity)
+            # end
+
             redirect_to inventory_transactions_path
         else
             flash[:errors] = "No se pudo crear la transacción"
             render :new
-        end
-    end
-    
-    def update
-        @inventory_transaction = InventoryTransaction.find(params[:id])
-
-        if @inventory_transaction.update_attributes(inventory_transactions_params)
-            redirect_to inventory_transactions_path
-        else
-            render :edit
         end
     end
     
@@ -39,6 +35,6 @@ class InventoryTransactionsController < ApplicationController
 
     protected
         def inventory_transactions_params
-            params.require(:inventory_transaction).permit(:done_at)
+            params.require(:inventory_transaction).permit(:done_at, inventory_transaction_details_attributes: [:id, :quantity, :product_id])
         end
 end
