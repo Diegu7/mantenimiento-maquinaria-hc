@@ -1,2 +1,18 @@
-<h1>MileageLogs#index</h1>
-<p>Find me in app/views/mileage_logs/index.html.erb</p>
+<section class="content-header">
+	<h1>
+		Horometrajes
+		<small><%=@machine.name%></small>
+	</h1>
+
+	<ol class="breadcrumb">
+		<li><i class="fa fa-cog"></i> <span>Equipos</span></li>
+		<li><%= link_to "Máquinas", machines_path %></li>
+        <li><%= link_to @machine.name, @machine %></li>
+		<li class="active">Horometrajes</li>
+	</ol>
+</section>
+
+<section class="content">
+	<%= render partial: "mileage_logs_table", locals: { machine: @machine } %>
+	<%= render partial: "shared/deletion_modal" %>
+</section>

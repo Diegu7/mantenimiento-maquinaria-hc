@@ -1,5 +1,6 @@
 class MileageLogsController < ApplicationController
   def index
+    @machine = Machine.find(params[:machine_id])
   end
 
   def new
@@ -12,7 +13,7 @@ class MileageLogsController < ApplicationController
     @mileage_log = @machine.mileage_logs.build(mileage_log_params)
 
     if @mileage_log.save
-      redirect_to @machine
+      redirect_to machine_mileage_logs_path(@machine)
     else
       flash[:errors] = "No se pudo ingresar el horometraje"
       render :new
@@ -20,6 +21,10 @@ class MileageLogsController < ApplicationController
   end
 
   def destroy
+    @machine = Machine.find(params[:machine_id])
+    @mileage_log = @machine.mileage_logs.find(params[:id])
+    @mileage_log.destroy
+    redirect_to machine_mileage_logs_path(@machine)
   end
 
   protected
