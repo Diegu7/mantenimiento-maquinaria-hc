@@ -14,4 +14,19 @@ Rails.application.routes.draw do
   resources :users, except: :show
 
   resources :inventory_transactions, except: :edit
+
+  resources :programmed_maintenances do 
+    collection do
+      get :new_corrective
+      post :create_corrective
+    end
+  end
+  # get '/programmed_maintenances/new_corrective', to: "programmed_maintenances#new_corrective"
+  # post '/programmed_maintenances', to: "programmed_maintenances#create_corrective"
+  # do 
+  #   collection do
+  #     get :new_corrective
+  #     post :create_corrective
+  #   end
+  # end
 end
