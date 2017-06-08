@@ -13,4 +13,5 @@ class Machine < ApplicationRecord
   def total_hours
     mileage_logs.sum(:hours)
   end
+  
 end

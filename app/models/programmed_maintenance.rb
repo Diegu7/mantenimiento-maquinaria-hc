@@ -1,9 +1,19 @@
 class ProgrammedMaintenance < ApplicationRecord
-     belongs_to :machine
+   before_save :default_values
 
-     has_many :materials_for_maintenances
+   belongs_to :machine
 
-     validates_presence_of :description, :scheduled_at,:estimated_duration, :comments, :done_at
+   has_many :materials_for_maintenances, inverse_of: :programmed_maintenance, dependent: :destroy
+   accepts_nested_attributes_for :materials_for_maintenances, reject_if: :all_blank, allow_destroy: true
 
-     validates :estimated_duration, numericality:  { greater_than_or_equal_to: 0 }
+   validates_presence_of :estimated_duration, :comments, :done_at, :materials_for_maintenances
+
+   validates :estimated_duration, numericality:  { greater_than: 0 }
+
+   def default_values
+      self.description ||= 'Correctivo'
+      self.scheduled_at ||= Date.today
+      self.done?
+      self.preventive?
+   end
 end

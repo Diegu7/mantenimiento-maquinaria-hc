@@ -17,12 +17,17 @@
       <div class="box box-success">
         <div class="box-body">
           <div class="col-md-4">
-            <dl>
-              <dt>Nombre</dt>
-              <dd>&nbsp;&nbsp;&nbsp;<%=@machine.name%></dd>
-              <dt>Seccion</dt>
-              <dd>&nbsp;&nbsp;&nbsp;<%=@machine.machine_section.name%></dd>
-            </dl>
+            <div class="col-md-8">
+              <dl>
+                <dt>Nombre</dt>
+                <dd>&nbsp;&nbsp;&nbsp;<%=@machine.name%></dd>
+                <dt>Seccion</dt>
+                <dd>&nbsp;&nbsp;&nbsp;<%=@machine.machine_section.name%></dd>
+              </dl>
+            </div>
+            <div class="col-md-4 ">
+              <%= link_to "Horometraje", machine_mileage_logs_path(@machine), class: "btn bg-blue btn-flat" %>
+            </div>
             <%unless @machine.image_url%>
               <%=image_tag ("favicon.png"),class: "img-responsive"%>
             <%else%>
@@ -44,12 +49,11 @@
                   <a href="#tab2" data-toggle="tab">Ficha de Reg y Ejecucion</a>
                 </li>
                 <li class= "<%='active' if params[:tab]== 'tab3'%>">
-                  <a href="#tab3" data-toggle="tab">Cronograma/Control de Mantenimiento</a>
+                  <a href="#tab3" data-toggle="tab">Mantenimientos Requeridos</a>
                 </li>
               </ul>
               <div class= "tab-content">
                 <div class="<%= if (params[:tab] == 'tab1' || !params[:tab])then 'tab-pane active'  else 'tab-pane' end%>" id= "tab1">
-
                   <div class="box-body table-responsive no-padding">
                     <table class="table table-hover">
                       <thead>
@@ -70,10 +74,58 @@
                   </div>
                 </div>
                 <div class="<%= if (params[:tab] == 'tab2')then 'tab-pane active'  else 'tab-pane' end%>" id= "tab2">
-
+                  <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr role="row">
+                          <th>Descripcion</th>
+                          <th>Programado Para</th>
+                          <th>Duracion Estimada</th>
+                          <th>Se termino</th>
+                          <th>Commentarios</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <%if @finishedMaintenances%>
+                          <%for maint in @finishedMaintenances %>
+                            <tr>
+                              <td><%=maint.description%></td>
+                              <td><%=maint.scheduled_at%></td>
+                              <td><%=maint.estimated_duration%></td>
+                              <td><%=maint.done_at%></td>
+                              <td><%=maint.comments%></td>
+                            </tr>
+                          <%end%>
+                        <%end%>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
                 <div class="<%= if (params[:tab] == 'tab3')then 'tab-pane active'  else 'tab-pane' end%>" id= "tab3">
-
+                  <div class="box-body table-responsive no-padding">
+                    <table class="table table-hover">
+                      <thead>
+                        <tr role="row">
+                          <th>Descripcion</th>
+                          <th>Duracion Estimada</th>
+                          <th>Frecuencia en Horas</th>
+                          <th>Frecuencia en Dias</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <%if @requiredMaintenances%>
+                          <%for maint in @requiredMaintenances %>
+                            <tr>
+                              <td><%=maint.description%></td>
+                              <td><%=maint.estimated_duration%></td>
+                              <td><%=maint.frequency_in_hours%></td>
+                              <td><%=maint.frequency_in_days%></td>
+                            </tr>
+                          <%end%>
+                        <%end%>
+                      </tbody>
+                    </table>
+                  </div>
                 </div>
               </div>
             </div>

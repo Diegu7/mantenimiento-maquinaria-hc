@@ -23,9 +23,9 @@ Rails.application.routes.draw do
   resources :inventory_transactions, except: :edit
 
   resources :programmed_maintenances do
-    collection do
-      get :new_corrective
-      post :create_corrective
+      collection do
+        get :new_corrective
+        post :create_corrective
     end
   end
 end

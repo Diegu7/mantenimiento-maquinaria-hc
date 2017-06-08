@@ -15,6 +15,8 @@ class MachinesController < ApplicationController
   def show
     @machine = Machine.find(params[:id])
     @datasheets= @machine.technical_specifications
+    @finishedMaintenances= @machine.programmed_maintenances.find_by done?: "true"
+    @requiredMaintenances= @machine.required_maintenances
   end
 
   def create
