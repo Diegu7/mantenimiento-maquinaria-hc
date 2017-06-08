@@ -29,12 +29,6 @@ class TechnicalSpecificationsController < ApplicationController
       end
     end
     redirect_to @machine
-#    if @datasheet.save
-#      redirect_to @machine
-#    else
-#      flash[:errors] = "No se pudo registrar la maquina"
-#      render :new
-#    end
   end
 
   protected
