@@ -4,9 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate
 
   def current_user
-    if session[:user_id]
-      @current_user = User.find(session[:user_id])
-    end
+    @current_user = User.find(session[:user_id]) if session[:user_id]
   end
 
   def login(user)
@@ -20,8 +18,6 @@ class ApplicationController < ActionController::Base
   end
 
   def authenticate
-    unless current_user
-      redirect_to login_path
-    end
+    redirect_to login_path unless current_user
   end
 end

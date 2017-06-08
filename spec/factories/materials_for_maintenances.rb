@@ -3,5 +3,5 @@ FactoryGirl.define do
         used_quantity 10
         programmed_maintenance
         product
-    end 
+    end
 end

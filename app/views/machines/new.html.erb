@@ -3,7 +3,6 @@
     Máquinas
     <small>Nuevo</small>
   </h1>
-
   <ol class="breadcrumb">
 		<li><i class="fa fa-cog"></i> <span>Equipos</span></li>
 		<li><%= link_to "Máquinas", machines_path %></li>
@@ -11,18 +10,17 @@
 	</ol>
   <%= render partial: "shared/errors", locals: { obj: @machine } %>
 </section>
-
 <section class="content">
   <div class="row">
     <div class="col-md-6">
       <div class="box box-success">
         <div class="box-body">
           <%= form_for(@machine) do |f| %>
-            <%= render partial: "form", locals: {f: f} %>
-            <div class="input-group-btn">
-              <%= link_to "Cancelar", machines_path, class: "btn bg-red btn-flat" %>
-              <%= f.submit "Crear", class: "btn bg-green btn-flat" %>
-            </div>
+          <%= render partial: "form", locals: {f: f} %>
+          <div class="input-group-btn">
+            <%= link_to "Cancelar", machines_path, class: "btn bg-red btn-flat" %>
+            <%= f.submit "Crear", class: "btn bg-green btn-flat" %>
+          </div>
           <% end %>
         </div>
       </div>

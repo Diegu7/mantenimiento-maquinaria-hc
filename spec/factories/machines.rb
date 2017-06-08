@@ -1,9 +1,9 @@
-FactoryGirl.define do    
-    #factories used for Machines    
+FactoryGirl.define do
+    #factories used for Machines
     factory :machine_section do
         name "Desfibrado"
     end
-    
+
     factory :machine do
         name "Tractor"
         image "tractor.jpeg"

@@ -8,5 +8,5 @@ FactoryGirl.define do
         done_at { Time.now }
         preventive? false
         machine
-    end 
+    end
 end

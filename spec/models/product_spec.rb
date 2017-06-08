@@ -11,26 +11,26 @@ RSpec.describe Product, type: :model do
   let(:product_without_valid_maximum) { build :product, maximum: -1 }
   let(:product_without_valid_minimum) { build :product, minimum: -5 }
 
-  it "is valid with a name, initial stock, current stock, product brand, product category minimum and maximum" do  
+  it 'is valid with a name, initial stock, current stock, product brand, product category minimum and maximum' do
     expect(valid_product).to be_valid
   end
 
-  it "is valid without a name" do
+  it 'is valid without a name' do
     product_without_name.valid?
     expect(product_without_name.errors[:name]).to include("no puede estar en blanco")
   end
 
-  it "is invalid without a valid initial stock" do
+  it 'is invalid without a valid initial stock' do
     product_without_valid_initial_stock.valid?
     expect(product_without_valid_initial_stock.errors[:initial_stock]).to include("debe ser mayor que o igual a 0")
   end
 
-  it "is invalid without a valid current stock" do
+  it 'is invalid without a valid current stock' do
     product_without_valid_current_stock.valid?
     expect(product_without_valid_current_stock.errors[:current_stock]).to include("debe ser mayor que o igual a 0")
   end
 
-  it "is valid without an image" do
+  it 'is valid without an image' do
     expect(product_without_image).to be_valid
   end
 
@@ -44,12 +44,12 @@ RSpec.describe Product, type: :model do
     expect(product_without_product_brand.errors[:product_brand]).to include("no puede estar en blanco")
   end
 
-  it "is invalid without a valid minimum" do
+  it 'is invalid without a valid minimum' do
     product_without_valid_minimum.valid?
     expect(product_without_valid_minimum.errors[:minimum]).to include("debe ser mayor que o igual a 0")
   end
 
-  it "is invalid without a valid maximum" do
+  it 'is invalid without a valid maximum' do
     product_without_valid_maximum.valid?
     expect(product_without_valid_maximum.errors[:maximum]).to include("debe ser mayor que o igual a 0")
   end

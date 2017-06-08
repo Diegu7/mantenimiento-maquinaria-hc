@@ -14,5 +14,4 @@ FactoryGirl.define do
         minimum 2
         maximum 10
     end
-
 end

@@ -10,17 +10,17 @@ RSpec.describe TechnicalSpecification, type: :model do
     expect(valid_technical_specification).to be_valid
   end
 
-  it "is invalid without a key" do
+  it 'is invalid without a key' do
     specification_without_key.valid?
     expect(specification_without_key.errors[:key]).to include("no puede estar en blanco")
   end
-  
-  it "is invalid without a value" do
+
+  it 'is invalid without a value' do
     specification_without_value.valid?
     expect(specification_without_value.errors[:value]).to include("no puede estar en blanco")
   end
-  
-  it "is invalid without a machine" do
+
+  it 'is invalid without a machine' do
     specification_without_machine.valid?
     expect(specification_without_machine.errors[:machine]).to include("debe existir")
   end
