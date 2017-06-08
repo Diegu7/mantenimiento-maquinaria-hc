@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
+  post '/machines/:machine_id/technical_specifications/new', to: 'technical_specifications#create' 
 
   resources :machines do
     resources :technical_specifications
