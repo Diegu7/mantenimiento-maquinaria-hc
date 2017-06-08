@@ -28,12 +28,6 @@
           <table class="table table-striped">
             <tbody>
               <tr>
-                <td><strong>Categoría:</strong></td>
-                <td>
-                  <%=@product.product_category.name %>
-                </td>
-              </tr>
-              <tr>
                 <td><strong>Marca:</strong></td>
                 <td>
                   <%=@product.product_brand.name %>
@@ -61,6 +55,12 @@
                 <td><strong>Máximo:</strong></td>
                 <td>
                   <%=@product.maximum %>
+                </td>
+              </tr>
+              <tr>
+                <td><strong>Especificaciones:</strong></td>
+                <td align="justify">
+                  <%=@product.specifications %>
                 </td>
               </tr>
             </tbody>

@@ -1,5 +1,4 @@
 class Machine < ApplicationRecord
-  belongs_to :machine_category
   belongs_to :machine_section
 
   has_many :mileage_logs
@@ -9,8 +8,9 @@ class Machine < ApplicationRecord
 
   validates_presence_of :name
   validates_presence_of :machine_section
-  validates_presence_of :machine_category
-
   mount_uploader :image, UserImageUploader
 
+  def total_hours
+    mileage_logs.sum(:hours)
+  end
 end

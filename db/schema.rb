@@ -10,18 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170516152545) do
+ActiveRecord::Schema.define(version: 20170606162621) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "machine_areas", force: :cascade do |t|
-    t.string "name"
+  create_table "inventory_transaction_details", force: :cascade do |t|
+    t.integer "quantity"
+    t.bigint "inventory_transaction_id"
+    t.bigint "product_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["inventory_transaction_id"], name: "index_inventory_transaction_details_on_inventory_transaction_id"
+    t.index ["product_id"], name: "index_inventory_transaction_details_on_product_id"
+  end
+
+  create_table "inventory_transactions", force: :cascade do |t|
+    t.date "done_at"
+    t.integer "transaction_type", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "machine_categories", force: :cascade do |t|
+  create_table "machine_areas", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -37,11 +48,18 @@ ActiveRecord::Schema.define(version: 20170516152545) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.bigint "machine_category_id"
     t.bigint "machine_section_id"
     t.string "image"
-    t.index ["machine_category_id"], name: "index_machines_on_machine_category_id"
     t.index ["machine_section_id"], name: "index_machines_on_machine_section_id"
+  end
+
+  create_table "maintenance_plans", force: :cascade do |t|
+    t.string "description"
+    t.date "scheduled_at"
+    t.date "done_at"
+    t.boolean "done?"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "materials_for_maintenances", force: :cascade do |t|
@@ -63,23 +81,7 @@ ActiveRecord::Schema.define(version: 20170516152545) do
     t.index ["machine_id"], name: "index_mileage_logs_on_machine_id"
   end
 
-  create_table "postponed_maintenance_logs", force: :cascade do |t|
-    t.text "reason"
-    t.date "previous_date"
-    t.date "new_date"
-    t.bigint "programmed_maintenance_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["programmed_maintenance_id"], name: "index_postponed_maintenance_logs_on_programmed_maintenance_id"
-  end
-
   create_table "product_brands", force: :cascade do |t|
-    t.string "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "product_categories", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -90,14 +92,13 @@ ActiveRecord::Schema.define(version: 20170516152545) do
     t.integer "initial_stock"
     t.integer "current_stock"
     t.string "image"
-    t.bigint "product_category_id"
     t.bigint "product_brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "minimum"
     t.integer "maximum"
+    t.string "specifications"
     t.index ["product_brand_id"], name: "index_products_on_product_brand_id"
-    t.index ["product_category_id"], name: "index_products_on_product_category_id"
   end
 
   create_table "programmed_maintenances", force: :cascade do |t|
@@ -148,14 +149,13 @@ ActiveRecord::Schema.define(version: 20170516152545) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "machines", "machine_categories"
+  add_foreign_key "inventory_transaction_details", "inventory_transactions"
+  add_foreign_key "inventory_transaction_details", "products"
   add_foreign_key "machines", "machine_sections"
   add_foreign_key "materials_for_maintenances", "products"
   add_foreign_key "materials_for_maintenances", "programmed_maintenances"
   add_foreign_key "mileage_logs", "machines"
-  add_foreign_key "postponed_maintenance_logs", "programmed_maintenances"
   add_foreign_key "products", "product_brands"
-  add_foreign_key "products", "product_categories"
   add_foreign_key "programmed_maintenances", "machines"
   add_foreign_key "required_maintenances", "machine_areas"
   add_foreign_key "required_maintenances", "machines"

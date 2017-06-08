@@ -1,7 +1,8 @@
 class RequiredMaintenance < ApplicationRecord
-  belongs_to :machine
-  belongs_to :area
+     belongs_to :machine
+     belongs_to :machine_area
 
-  validates_presence_of :description
-  validates_presence_of :estimated_duration
+     validates_presence_of :description, :machine, :machine_area, :estimated_duration, :frequency_in_hours, :frequency_in_days
+
+     validates :estimated_duration, :frequency_in_hours, :frequency_in_days, numericality:  { greater_than_or_equal_to: 0 }
 end

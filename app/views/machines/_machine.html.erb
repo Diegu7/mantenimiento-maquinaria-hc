@@ -1,12 +1,11 @@
 <tr>
 	<td><%= machine.name %></td>
-	<td><%= machine.machine_category.name %></td>
 	<td><%= machine.machine_section.name %></td>
 	<td>
 		<div class="input-group-btn">
 			<%= link_to machine, class: "btn bg-purple btn-flat" do %>
-			<span class="fa fa-file-text"></span>
-			<font>Ver</font>
+				<span class="fa fa-file-text"></span>
+				<font>Ver</font>
 			<% end %>
 
 			<%= link_to edit_machine_path(machine), class: "btn bg-blue btn-flat" do %>
