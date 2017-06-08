@@ -49,7 +49,12 @@
                   <a href="#tab2" data-toggle="tab">Ficha de Reg y Ejecucion</a>
                 </li>
                 <li class= "<%='active' if params[:tab]== 'tab3'%>">
-                  <a href="#tab3" data-toggle="tab">Mantenimientos Requeridos</a>
+                  <a href="#tab3" data-toggle="tab">
+                    Mantenimientos Requeridos
+                    <div class="input-group-btn">
+                      <%= link_to "Añadir", new_machine_technical_specification_path(@machine.id),:style=>"width: 100px", class: "btn bg-green btn-flat" %>
+                    </div>
+                  </a>
                 </li>
               </ul>
               <div class= "tab-content">
