@@ -15,12 +15,13 @@ class InventoryTransactionsController < ApplicationController
 
         if @inventory_transaction.save
             @product_details = @inventory_transaction.inventory_transaction_details
+            @type = @inventory_transaction.transaction_type  
                 
             @product_details.each do |detail|
                 @product = Product.find(detail.product_id)
-                if @inventory_transaction.transaction_type = 0
-                    @product.increment!(:current_stock,detail.quantity)
-                else
+                if @type == 'Entrada'
+                    @product.increment!(:current_stock,detail.quantity)                          
+                elsif @type == 'Salida'
                     @product.decrement!(:current_stock,detail.quantity)
                 end
             end
@@ -34,12 +35,24 @@ class InventoryTransactionsController < ApplicationController
     
     def destroy
         @inventory_transaction = InventoryTransaction.find(params[:id])
+        @product_details = @inventory_transaction.inventory_transaction_details  
+        @type = @inventory_transaction.transaction_type  
+                
+        @product_details.each do |detail|
+            @product = Product.find(detail.product_id)
+            if @type == 'Entrada'
+                @product.decrement!(:current_stock,detail.quantity)           
+            elsif @type == 'Salida'
+                @product.increment!(:current_stock,detail.quantity)
+            end
+        end
+
         @inventory_transaction.destroy
         redirect_to inventory_transactions_path
     end
 
     protected
         def inventory_transactions_params
-            params.require(:inventory_transaction).permit(:done_at, inventory_transaction_details_attributes: [:id, :quantity, :product_id])
+            params.require(:inventory_transaction).permit(:done_at, :transaction_type ,inventory_transaction_details_attributes: [:id, :quantity, :product_id])
         end
 end
