@@ -37,7 +37,12 @@ $(document).ready(function() {
         allowClear: true
     });
 
-   $('form').bind('cocoon:after-insert', function(e, inserted_item) {
+    $('select#machines-list').select2({
+        placeholder: "Seleccione una máquina",
+        allowClear: true
+    });
+
+    $('form').bind('cocoon:after-insert', function(e, inserted_item) {
       inserted_item.find('select#products-list').select2();
     });
 });
