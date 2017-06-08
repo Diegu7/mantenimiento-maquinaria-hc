@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20170606162621) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "machine_section_id"
-    t.string "image"
+    t.string "image_url"
     t.index ["machine_section_id"], name: "index_machines_on_machine_section_id"
   end
 
@@ -91,7 +91,7 @@ ActiveRecord::Schema.define(version: 20170606162621) do
     t.string "name"
     t.integer "initial_stock"
     t.integer "current_stock"
-    t.string "image"
+    t.string "image_url"
     t.bigint "product_brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -144,9 +144,9 @@ ActiveRecord::Schema.define(version: 20170606162621) do
     t.string "middle_name"
     t.string "last_name"
     t.string "email"
-    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
   end
 
   add_foreign_key "inventory_transaction_details", "inventory_transactions"

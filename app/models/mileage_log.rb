@@ -1,7 +1,6 @@
 class MileageLog < ApplicationRecord
-     belongs_to :machine
-     
-     validates_presence_of :date, :hours, :machine
+    belongs_to :machine
 
-     validates :hours, numericality:  { greater_than_or_equal_to: 0 }
+    validates_presence_of :date, :hours
+    validates :hours, numericality: { greater_than: 0 }
 end

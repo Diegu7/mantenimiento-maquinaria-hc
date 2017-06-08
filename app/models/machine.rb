@@ -8,4 +8,8 @@ class Machine < ApplicationRecord
   
   validates_presence_of :name
   validates_presence_of :machine_section
+
+  def total_hours
+    mileage_logs.sum(:hours)
+  end
 end
