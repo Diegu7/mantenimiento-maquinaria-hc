@@ -12,7 +12,8 @@ class ProgrammedMaintenancesController < ApplicationController
         @machines = Machine.all.order(:name)
 
          if @programmed_maintenance.save
-            redirect_to @programmed_maintenance.machine
+            # redirect_to new_corrective_programmed_maintenances_path
+            redirect_to root_path
         else
             flash[:errors] = "No se pudo crear el mantenimiento"
             render :new_corrective
@@ -21,6 +22,6 @@ class ProgrammedMaintenancesController < ApplicationController
 
     protected
         def corrective_maintenance_params
-            params.require(:programmed_maintenance).permit(:done_at,:comment,:machine, materials_for_maintenances_attributes: [:id, :used_quantity, :product_id])
+            params.require(:programmed_maintenance).permit(:estimated_duration, :done_at,:comments,:machine_id, materials_for_maintenances_attributes: [:id, :used_quantity, :product_id])
         end
 end

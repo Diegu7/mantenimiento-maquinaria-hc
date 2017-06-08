@@ -8,10 +8,12 @@ class ProgrammedMaintenance < ApplicationRecord
      
      validates_presence_of :estimated_duration, :comments, :done_at, :materials_for_maintenances
 
-     validates :estimated_duration, numericality:  { greater_than_or_equal_to: 0 }
+     validates :estimated_duration, numericality:  { greater_than: 0 }
 
      def default_values
         self.description ||= 'Correctivo'
         self.scheduled_at ||= Date.today
+        self.done? 
+        self.preventive?
      end
 end
