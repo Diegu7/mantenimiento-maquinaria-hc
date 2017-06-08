@@ -1,6 +1,6 @@
 <tr>
 	<td><%= mileage_log.hours %></td>
-	<td><%= mileage_log.date %></td>
+	<td><%= spanish_date(mileage_log.date) %></td>
 	<td>
 		<div class="input-group-btn">
 			<%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": machine_mileage_log_path(mileage_log.machine, mileage_log) do %>
