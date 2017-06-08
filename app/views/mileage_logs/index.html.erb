@@ -13,6 +13,7 @@
 </section>
 
 <section class="content">
+	<p><strong>Total Horas:</strong> <%=@machine.total_hours%></p>
 	<%= render partial: "mileage_logs_table", locals: { machine: @machine } %>
 	<%= render partial: "shared/deletion_modal" %>
 </section>
