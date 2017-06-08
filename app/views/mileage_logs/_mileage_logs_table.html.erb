@@ -1,0 +1,22 @@
+<div class="box box-success">
+  <div class="box-header">
+    <div class="box-tools">
+      <%= link_to "Nuevo Horometraje", new_machine_mileage_log_path(machine) ,class:"btn bg-green btn-flat"%>
+    </div>
+  </div>
+
+  <div class="box-body table-responsive no-padding">
+    <table class="table table-hover">
+      <thead>
+        <tr role="row">
+          <th>Horas</th>
+          <th>Fecha</th>
+          <th width="1"></th>
+        </tr>
+      </thead>
+      <tbody>
+          <%= render machine.mileage_logs.order(date: :desc) %>
+      </tbody>
+    </table>
+  </div>
+</div>
