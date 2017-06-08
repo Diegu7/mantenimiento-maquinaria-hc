@@ -3,7 +3,6 @@
     Máquinas
     <small>Nuevo</small>
   </h1>
-
   <ol class="breadcrumb">
 		<li><i class="fa fa-cog"></i> <span>Equipos</span></li>
 		<li><%= link_to "Máquinas", machines_path %></li>
@@ -11,35 +10,18 @@
 	</ol>
   <%= render partial: "shared/errors", locals: { obj: @machine } %>
 </section>
-
 <section class="content">
   <div class="row">
-    <div class="col-md-12">
+    <div class="col-md-6">
       <div class="box box-success">
         <div class="box-body">
-          <div class="col-md-6">
           <%= form_for(@machine) do |f| %>
-            <%= render partial: "form", locals: {f: f} %>
-            <div class="input-group-btn">
-              <%= link_to "Cancelar", machines_path, class: "btn bg-red btn-flat" %>
-              <%= f.submit "Crear", class: "btn bg-green btn-flat" %>
-            </div>
-            <% end %>
+          <%= render partial: "form", locals: {f: f} %>
+          <div class="input-group-btn">
+            <%= link_to "Cancelar", machines_path, class: "btn bg-red btn-flat" %>
+            <%= f.submit "Crear", class: "btn bg-green btn-flat" %>
           </div>
-          <div class="col-md-6">
-            <div class= "box box-solid box-info">
-              <div class= "box-header ">
-                <h4 class="box-title">
-                  Ficha Tecnica
-                </h3>
-              </div>
-              <div class="box-body">
-                <%= form_for @datasheet do |f| %>
-                  <%= render partial: "/technical_specifications/form", locals: {f: f} %>
-                <% end %>
-              </div>
-            </div>
-          </div>
+          <% end %>
         </div>
       </div>
     </div>

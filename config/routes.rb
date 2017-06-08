@@ -5,8 +5,9 @@ Rails.application.routes.draw do
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
 
-  resources :machines
-  resources :technical_specifications
+  resources :machines do
+    resources :technical_specifications
+  end
   resources :machine_sections
   resources :machine_sections, :machine_areas, except: :show
 

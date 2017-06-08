@@ -5,17 +5,18 @@ class MachinesController < ApplicationController
 
   def new
     @machine = Machine.new
-    @datasheet= @machine.technical_specifications.build
   end
 
   def show
     @machine = Machine.find(params[:id])
+    @datasheets= @machine.technical_specifications
   end
 
   def create
     @machine = Machine.new(machine_params)
 
     if @machine.save
+      @machine.technical_specifications.create
       redirect_to @machine
     else
       flash[:errors] = 'No se pudo registrar la maquina'

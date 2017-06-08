@@ -35,7 +35,12 @@
             <div class= "nav-tabs-custom">
               <ul class= "nav nav-tabs">
                 <li class= "<%='active' if params[:tab]== 'tab1'%>">
-                  <a href="#tab1" data-toggle="tab">Ficha Tecnica</a>
+                  <a href="#tab1" data-toggle="tab">
+                    Ficha Tecnica
+                    <div class="input-group-btn">
+                      <%= link_to "", new_machine_technical_specification_path(@machine.id), class: "btn bg-green btn-flat" %>
+                    </div>
+                  </a>
                 </li>
                 <li class= "<%='active' if params[:tab]== 'tab2'%>">
                   <a href="#tab2" data-toggle="tab">Ficha de Reg y Ejecucion</a>
@@ -46,7 +51,10 @@
               </ul>
               <div class= "tab-content">
                 <div class="<%= if (params[:tab] == 'tab1' || !params[:tab])then 'tab-pane active'  else 'tab-pane' end%>" id= "tab1">
-                  <%=@machine.name%>
+                  <%for sheet in @datasheets %>
+                    <%=sheet.key%>
+                    <%=sheet.value%>
+                  <%end%>
                 </div>
                 <div class="<%= if (params[:tab] == 'tab2')then 'tab-pane active'  else 'tab-pane' end%>" id= "tab2">
 

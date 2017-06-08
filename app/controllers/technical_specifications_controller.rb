@@ -9,10 +9,11 @@ class TechnicalSpecificationsController < ApplicationController
   end
 
   def create
-    @machine= Machine.find(params[:machine_id]
-    @datasheet = TechnicalSpecification.new(specification_params)
+    @machine= Machine.find(params[:machine_id])
+    @datasheet = @machine.technical_specifications.new(specification_params)
 
     if @datasheet.save
+      redirect_to @machine
     else
       flash[:errors] = "No se pudo registrar la maquina"
       render :new
@@ -21,7 +22,7 @@ class TechnicalSpecificationsController < ApplicationController
 
   protected
     def specification_params
-      params.require(:techncial_specification).permit(:key, :value, :machine_id)
+      params.require(:technical_specification).permit(:key, :value, :machine_id)
     end
 
 end

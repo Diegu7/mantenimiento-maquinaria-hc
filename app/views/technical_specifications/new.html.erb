@@ -1,3 +1,15 @@
-<%= form_for @datasheet do |f| %>
-  <%= render partial: "form", locals: {f: f} %>
-<% end %>
+<section class="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class="box-body">
+          <%= form_for [@machine,@datasheet] do |f| %>
+            <%= render partial: "form", locals: {f: f} %>
+            <%= link_to "Cancelar", @machine, class: "btn bg-red btn-flat" %>
+            <%= f.submit "Crear", class: "btn bg-green btn-flat" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
