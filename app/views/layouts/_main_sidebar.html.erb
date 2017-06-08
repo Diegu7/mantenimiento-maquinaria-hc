@@ -32,9 +32,8 @@
 
                 <ul class="treeview-menu">
                     <li><%=link_to "Productos",products_path%></li>
-                    <li><%=link_to "Marcas",product_brands_path%></a></li>  
-                    <li><%=link_to "Categorías",product_categories_path%></a></li>   
-                    <li><a href="#">Entrada de inventario</a></li>
+                    <li><%=link_to "Marcas",product_brands_path%></a></li>
+                   <li><%=link_to "Transacciones de Inventario",inventory_transactions_path%></li>
                 </ul>
             </li>
 
@@ -45,8 +44,8 @@
                 </a>
 
                 <ul class="treeview-menu">
-                    <li><a href="#">Ingresar kilometraje</a></li>
-                    <li><a href="#">Nuevo mantenimiento correctivo</a></li>
+                    <li><%=link_to "Nuevo mantenimiento correctivo",new_corrective_programmed_maintenances_path%></li>
+                    <li><a href="#">Planes de Mantenimiento</a></li>
                 </ul>
             </li>
 
