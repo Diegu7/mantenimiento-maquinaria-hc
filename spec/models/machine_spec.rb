@@ -12,12 +12,12 @@ RSpec.describe Machine, type: :model do
 
   it "is invalid without a name" do
     machine_without_name.valid?
-    expect(machine_without_name.errors[:name]).to include("can't be blank")
+    expect(machine_without_name.errors[:name]).to include("no puede estar en blanco")
   end
 
   it "is invalid without a section" do
     machine_without_section.valid?
-    expect(machine_without_section.errors[:machine_section]).to include("can't be blank")
+    expect(machine_without_section.errors[:machine_section]).to include("no puede estar en blanco")
   end
 
   it "is valid without an image" do

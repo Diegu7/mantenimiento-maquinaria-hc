@@ -2,6 +2,11 @@ class ProductsController < ApplicationController
     def index
         @products = Product.all.order(:name)
         @product = Product.new
+
+        if params[:brand].present?
+            brand = ProductBrand.find(params[:brand])
+            @products = brand.products.order(:name)
+        end
     end
 
     def show
@@ -45,6 +50,6 @@ class ProductsController < ApplicationController
 
     protected
         def product_params
-            params.require(:product).permit(:name, :image, :product_brand_id, :initial_stock, :current_stock, :minimum, :maximum)
+            params.require(:product).permit(:name, :image, :product_brand_id, :initial_stock, :current_stock, :minimum, :maximum, :specifications)
         end
 end

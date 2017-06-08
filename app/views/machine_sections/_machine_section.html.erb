@@ -1,5 +1,5 @@
-<tr>
-	<td><%= machine_section.name %></td>
+<tr data-link="<%= machines_path(section: machine_section) %>">
+	<td title="Doble Click para ver máquinas de esta sección"><%= machine_section.name %></td>
 	<td>
 		<div class="input-group-btn">
 			<%= link_to edit_machine_section_path(machine_section), class: "btn bg-blue btn-flat" do %>

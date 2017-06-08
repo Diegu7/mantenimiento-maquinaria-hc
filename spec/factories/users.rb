@@ -6,6 +6,6 @@ FactoryGirl.define do
         middle_name "Josue"
         last_name "Ramos"
         email "jimmy.ramos@unitec.edu"
-        image "jimmy.jpg"
+        avatar "jimmy.jpg"
     end
 end
