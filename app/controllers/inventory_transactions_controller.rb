@@ -15,10 +15,15 @@ class InventoryTransactionsController < ApplicationController
 
         if @inventory_transaction.save
             @product_details = @inventory_transaction.inventory_transaction_details
-
-            # @product_details.each do |detail|
-            #     detail.product.increment!(:current_stock,detail.quantity)
-            # end
+                
+            @product_details.each do |detail|
+                @product = Product.find(detail.product_id)
+                if @inventory_transaction.transaction_type = 0
+                    @product.increment!(:current_stock,detail.quantity)
+                else
+                    @product.decrement!(:current_stock,detail.quantity)
+                end
+            end
 
             redirect_to inventory_transactions_path
         else
