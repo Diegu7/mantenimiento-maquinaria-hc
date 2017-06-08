@@ -4,7 +4,7 @@
 </div>
 <div class="form-group">
   <%= f.label :transaction_type, "Tipo de transacción" %>
-    <%= f.select :transaction_type, InventoryTransaction.transaction_types.keys, {}, class: "form-control" %>
+    <%= f.select :transaction_type, InventoryTransaction.transaction_types.keys.to_a, {}, class: "form-control" %>
 </div>
 
 <h3>Detalles de Productos</h3>
