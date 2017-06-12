@@ -13,7 +13,7 @@ class ProgrammedMaintenance < ApplicationRecord
    def default_values
       self.description ||= 'Correctivo'
       self.scheduled_at ||= Date.today
-      self.done?
-      self.preventive?
+      self.done ||= true
+      self.preventive ||= false
    end
 end
