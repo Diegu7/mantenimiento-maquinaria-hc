@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606162621) do
+ActiveRecord::Schema.define(version: 20170612023823) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -57,7 +57,7 @@ ActiveRecord::Schema.define(version: 20170606162621) do
     t.string "description"
     t.date "scheduled_at"
     t.date "done_at"
-    t.boolean "done?"
+    t.boolean "done"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -106,9 +106,9 @@ ActiveRecord::Schema.define(version: 20170606162621) do
     t.date "scheduled_at"
     t.integer "estimated_duration"
     t.text "comments"
-    t.boolean "done?"
+    t.boolean "done"
     t.date "done_at"
-    t.boolean "preventive?"
+    t.boolean "preventive"
     t.bigint "machine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

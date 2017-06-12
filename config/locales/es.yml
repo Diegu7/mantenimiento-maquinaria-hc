@@ -60,9 +60,9 @@ es:
         scheduled_at: Programación
         estimated_duration: Duración estimada
         comments: Comentarios
-        done?: Terminado
+        done: Terminado
         done_at: Terminado en
-        preventive?: Preventivo
+        preventive: Preventivo
         machine_id: ID de máquina
       required_maintenance:
         description: Descripción

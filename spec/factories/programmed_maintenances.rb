@@ -4,9 +4,9 @@ FactoryGirl.define do
         scheduled_at { Time.now }
         estimated_duration 1
         comments "Sin comentarios"
-        done? true
+        done true
         done_at { Time.now }
-        preventive? false
+        preventive false
         machine
     end
 end
