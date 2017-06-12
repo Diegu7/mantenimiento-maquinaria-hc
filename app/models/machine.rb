@@ -7,7 +7,7 @@ class Machine < ApplicationRecord
   has_many :programmed_maintenances, :dependent => :destroy
 
   validates_presence_of :name
-  validates_presence_of :machine_section
+  validates_presence_of :machine_section, :description
   mount_uploader :image, UserImageUploader
 
   def total_hours
