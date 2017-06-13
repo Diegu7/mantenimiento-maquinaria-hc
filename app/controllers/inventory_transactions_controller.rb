@@ -2,6 +2,11 @@ class InventoryTransactionsController < ApplicationController
     def index
         @inventory_transactions = InventoryTransaction.all.order(:done_at)
     end
+
+    def show
+        @transaction = InventoryTransaction.find(params[:id])
+        @details = @transaction.inventory_transaction_details
+    end
     
     def new
         @inventory_transaction = InventoryTransaction.new

@@ -1,0 +1,68 @@
+<section class="content-header">
+  <h1>
+    Transacción de Inventario
+    <small><%=@transaction.id%></small>
+  </h1>
+
+  <ol class="breadcrumb">
+    <li><i class="fa fa-cog"></i> <span>Transacciones de Inventario</span></li>
+    <li>
+      <%= link_to "Transacciones de Inventario", inventory_transactions_path %>
+    </li>
+    <li class="active">
+      <%= @transaction.id %>
+    </li>
+  </ol>
+</section>
+
+<section class="content">
+  <div class="box box-warning">
+    <div class="box-header">
+      <div class="">
+        <h4>
+          Hecho el:
+          <small><%=@transaction.done_at%></small>
+          - Tipo de Transacción:
+          <small><%=@transaction.transaction_type%></small>
+        </h4>
+      </div>
+      <div class="col-md-8">
+        <h2>Detalles</h2>
+        <div class=" col-md-9 col-lg-9 box-body table-responsive no-padding">
+          <table class="table table-striped">
+           <thead>
+              <tr role="row">
+                <th>Producto</th>
+                <th>Cantiddad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%if @details%>
+                <%for detail in @details %>
+                  <tr>
+                    <td><%=detail.product.name%></td>
+                    <td><%=detail.quantity%></td>
+                  </tr>
+                <%end%>
+              <%end%>
+            </tbody>
+          </table>
+
+          </br>
+
+            <div class="input-group-btn">
+              <%= link_to inventory_transactions_path, class: "btn bg-purple btn-flat" do %>
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <font>Regresar</font>
+              <% end %>
+              <%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": inventory_transaction_path(@transaction) do %>
+                <span class="fa fa-trash"></span>
+                <font>Borrar</font>
+              <% end %>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <%= render partial: "shared/deletion_modal" %>
+</section>
