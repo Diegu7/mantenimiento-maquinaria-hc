@@ -1,5 +1,6 @@
 class InventoryTransactionDetail < ApplicationRecord
     belongs_to :inventory_transaction
+    belongs_to :product
 
     validates_presence_of :quantity
    
