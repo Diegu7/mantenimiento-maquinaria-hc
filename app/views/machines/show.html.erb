@@ -18,21 +18,24 @@
         <div class="box-body">
           <div class="col-md-4">
             <div class="col-md-8">
+              <%unless @machine.image_url%>
+                <%=image_tag ("favicon.png"),class: "img-responsive"%>
+              <%else%>
+                <%=image_tag (@machine.image_url),class: "img-responsive"%>
+              <%end%>
               <dl>
                 <dt>Nombre</dt>
                 <dd>&nbsp;&nbsp;&nbsp;<%=@machine.name%></dd>
                 <dt>Seccion</dt>
                 <dd>&nbsp;&nbsp;&nbsp;<%=@machine.machine_section.name%></dd>
+                <dt>Descripción</dt>
+                <dd>&nbsp;&nbsp;&nbsp;<%=@machine.description%></dd>
               </dl>
             </div>
             <div class="col-md-4 ">
               <%= link_to "Horometraje", machine_mileage_logs_path(@machine), class: "btn bg-blue btn-flat" %>
             </div>
-            <%unless @machine.image_url%>
-              <%=image_tag ("favicon.png"),class: "img-responsive"%>
-            <%else%>
-              <%=image_tag (@machine.image_url),class: "img-responsive"%>
-            <%end%>
+           
           </div>
           <div class="col-md-8">
             <div class= "nav-tabs-custom">
