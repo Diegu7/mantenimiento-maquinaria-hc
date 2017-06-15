@@ -20,6 +20,8 @@ class ProductsController < ApplicationController
     def create
         @product = Product.new(product_params)
 
+        @product.name = @product.name << ' ' <<(@product.code || '')
+
         if @product.save
             redirect_to @product
         else
@@ -50,6 +52,6 @@ class ProductsController < ApplicationController
 
     protected
         def product_params
-            params.require(:product).permit(:name, :image, :product_brand_id, :initial_stock, :current_stock, :minimum, :maximum, :specifications)
+            params.require(:product).permit(:name, :image, :product_brand_id, :initial_stock, :current_stock, :minimum, :maximum, :specifications, :code)
         end
 end
