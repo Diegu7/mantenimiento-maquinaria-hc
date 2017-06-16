@@ -5,14 +5,15 @@ class TechnicalSpecificationsController < ApplicationController
 
   def new
     @machine= Machine.find(params[:machine_id])
-    @datasheet=[]
-    @datasheet << @machine.technical_specifications.new
-    @datasheet << @machine.technical_specifications.new
-    @datasheet << @machine.technical_specifications.new
-    @datasheet << @machine.technical_specifications.new
-    @datasheet << @machine.technical_specifications.new
-    @datasheet << @machine.technical_specifications.new
-    #@datasheet= @machine.technical_specifications.new
+    @machine.technical_specifications.build
+    # @datasheet=[]
+    # @datasheet << @machine.technical_specifications.new
+    # @datasheet << @machine.technical_specifications.new
+    # @datasheet << @machine.technical_specifications.new
+    # @datasheet << @machine.technical_specifications.new
+    # @datasheet << @machine.technical_specifications.new
+    # @datasheet << @machine.technical_specifications.new
+    # @datasheet= @machine.technical_specifications.new
   end
 
   def create
