@@ -51,35 +51,8 @@ class MachinesController < ApplicationController
     end
   end
 
-  # def new_technical_specification
-  #     # @programmed_maintenance = ProgrammedMaintenance.new
-  #     # @programmed_maintenance.materials_for_maintenances.build
-  #     # @products = Product.all.order(:name)
-  #     # @machines = Machine.all.order(:name)
-  #     @machine= Machine.find(params[:machine_id])
-  #     @machine.technical_specifications.build
-  # end
-
-  # def create_technical_specification
-  #     @programmed_maintenance = ProgrammedMaintenance.new(technical_specification_params)
-  #     @products = Product.all.order(:name)
-  #     @machines = Machine.all.order(:name)
-
-  #       if @programmed_maintenance.save
-  #         # redirect_to new_corrective_programmed_maintenances_path
-  #         redirect_to root_path
-  #     else
-  #         flash[:errors] = "No se pudo crear el mantenimiento"
-  #         render :new_corrective
-  #     end
-  # end
-
   protected
       def machine_params
         params.require(:machine).permit(:name, :machine_category_id, :machine_section_id, :description, :image)
       end
-
-      # def technical_specification_params
-      #     params.require(:programmed_maintenance).permit(:estimated_duration, :done_at,:comments,:machine_id, materials_for_maintenances_attributes: [:id, :used_quantity, :product_id])
-      # end
 end

@@ -17,7 +17,7 @@
     <div class="col-md-6">
       <div class="box box-success">
         <div class="box-body">
-          <%= form_for(@machine, :url => machine_technical_specifications(@machine.id)) do |f| %>
+          <%= form_for(@machine, :url => create_technical_specification_path) do |f| %>
             <%= render partial: "form", locals: {f: f} %>
             <div class="input-group-btn">
               <%= link_to "Cancelar", @machine , class: "btn bg-red btn-flat" %>

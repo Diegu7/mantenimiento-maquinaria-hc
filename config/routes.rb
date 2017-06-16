@@ -8,17 +8,17 @@ Rails.application.routes.draw do
   get 'login', to: 'sessions#new'
   post 'login', to: 'sessions#create'
   delete 'logout', to: 'sessions#destroy'
-  # get '/machines/:machine_id/technical_specifications/new'
-  # post '/machines/:machine_id/technical_specifications/create'
-  get '/machines/:machine_id/technical_specifications/new', to: 'technical_specifications#new'
-  post '/machines/:machine_id/technical_specifications/create', to: 'technical_specifications#create'
+  # get '/machines/:machine_id/technical_specifications/new', to: 'technical_specifications#new', as: 'new_technical_specification'
+  # post '/machines/:machine_id/technical_specifications/create', to: 'technical_specifications#create', as: 'create_technical_specification'
+  post '/machines/:machine_id/technical_specifications/new', to: 'technical_specifications#create', as: 'create_technical_specification'
 
   resources :machines do
     resources :mileage_logs, except: [:edit, :update, :show]
-    resources :technical_specifications, except: [:index, :edit, :update, :show, :destroy]
+    resources :technical_specifications
+    # resources :technical_specifications, except: [:index, :edit, :update, :show, :destroy, :patch]
     # collection do
     #     get 'new_technical_specification/:machine_id' => :new_technical_specification, as: 'new_technical_specification'
-    #     post 'create_technical_specification/:machine_id' => :create_technical_specification, as: 'create_technical_specification'
+    #     post 'create_technical_specification/:machine_id' => :create_technical_specification, 
     # end
   end
   
