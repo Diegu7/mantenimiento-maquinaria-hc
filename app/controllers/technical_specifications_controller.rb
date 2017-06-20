@@ -13,30 +13,24 @@ class TechnicalSpecificationsController < ApplicationController
 
   def update
     @machine= Machine.find(params[:machine_id])
-    #@specifications = params[:machine][:technical_specifications_attributes]
+    # @specifications = params[:machine][:technical_specifications_attributes]
 
     params[:machine][:technical_specifications_attributes].each do |k, v|
-      key  = v["key"]
-      value = v["value"]
+      k  = v["key"]
+      v = v["value"]
       
-      @specification = TechnicalSpecification.new(key: key, value: value, machine_id: params[:machine_id])
-      tempTech=@machine.technical_specifications.new(specification_params(@specification))
-      tempTech.save
+      specification = TechnicalSpecification.new(key: k, value: v, machine_id: params[:machine_id])
+      # tempTech=@machine.technical_specifications.new(specification_params(specification))
+      User.find_or_initialize_by(name: "Roger") do |user|
+        user.save
+      end
+      if  !(specification.save!)
+        flash[:errors] = "No se pudo crear la especificacion"
+        redirect_to new
+      end
     end
 
-    redirect_to @machine
-
-    # for specification in @specifications do
-    #   if specification["key"] != "" || specification["value"] != ""
-    #     tempTech=@machine.technical_specifications.new(specification_params(specification))
-    #     tempTech.save
-    #   end
-
-    #   redirect_to @machine
-    # end
-
-    # flash[:errors] = "No se pudo crear la transacción"
-    # render :new
+    redirect_to @machine   
   end
   
   def destroy 
@@ -48,7 +42,7 @@ class TechnicalSpecificationsController < ApplicationController
     end
 
     def specification_params(my_params)
-      params.require(:technical_specification).permit(:key, :value, :machine_id)
+      my_params.permit(:key, :value, :machine_id)
     end
 
 end
