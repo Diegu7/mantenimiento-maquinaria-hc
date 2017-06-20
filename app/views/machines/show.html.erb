@@ -75,7 +75,7 @@
                   </div>
                 </div>
                 <div class="<%= if (params[:tab] == 'tab2')then 'tab-pane active'  else 'tab-pane' end%>" id= "tab2">
-                  <div class="box-body table-responsive no-padding">
+                  <div class="box-body table-responsive no-padding" >
                     <table class="table table-hover">
                       <thead>
                         <tr role="row">
@@ -88,7 +88,7 @@
                       </thead>
                       <tbody>
                         <%if @finishedMaintenances%>
-                          <%for maint in @finishedMaintenances %>
+                          <% @finishedMaintenances.each do |maint| %>
                             <tr>
                               <td><%=maint.description%></td>
                               <td><%=maint.scheduled_at%></td>
@@ -96,7 +96,7 @@
                               <td><%=maint.done_at%></td>
                               <td><%=maint.comments%></td>
                             </tr>
-                          <%end%>
+                          <% end %>
                         <%end%>
                       </tbody>
                     </table>
