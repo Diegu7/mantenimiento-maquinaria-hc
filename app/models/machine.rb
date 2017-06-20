@@ -8,7 +8,9 @@ class Machine < ApplicationRecord
 
   validates_presence_of :name
   validates_presence_of :machine_section, :description
-  mount_uploader :image, UserImageUploader
+  mount_uploader :image, MachineImageUploader
+
+  accepts_nested_attributes_for :technical_specifications, reject_if: :all_blank, allow_destroy: true
 
   def total_hours
     mileage_logs.sum(:hours)

@@ -1,10 +1,19 @@
-<div class="col-md-12" , style= "border: thin dotted black">
-  <div class="form-group col-md-6">
-    <%= f.label :key, "Llave" %>
-    <%= f.text_field :key, class: "form-control" %>
-  </div>
-  <div class="form-group col-md-6">
-    <%= f.label :value, "Valor" %>
-    <%= f.text_field :value, class: "form-control" %>
-  </div>
+<h3>Detalles de Ficha Técnica</h3>
+<table class="table table-hover">
+  <thead>
+    <tr role="row">
+      <th>Espeficicacion</th>
+      <th>Valor</th>
+      <th width="1"></th>
+    </tr>
+  </thead>
+  <tbody class='details'>
+    <%= f.fields_for :technical_specifications do |detail| %>
+      <%= render 'technical_specification_fields', :f => detail %>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="form-actions" align="right">
+    <%= link_to_add_association 'Agregar detalle', f, :technical_specifications, class: 'btn btn-primary', data: { association_insertion_node: '.details', association_insertion_method: :append } %>
 </div>
