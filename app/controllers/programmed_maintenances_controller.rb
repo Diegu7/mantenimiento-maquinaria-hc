@@ -10,10 +10,10 @@ class ProgrammedMaintenancesController < ApplicationController
         @programmed_maintenance = ProgrammedMaintenance.new(corrective_maintenance_params)
         @products = Product.all.order(:name)
         @machines = Machine.all.order(:name)
+        @machine = @programmed_maintenance.machine
 
          if @programmed_maintenance.save
-            # redirect_to new_corrective_programmed_maintenances_path
-            redirect_to root_path
+            redirect_to @machine
         else
             flash[:errors] = "No se pudo crear el mantenimiento"
             render :new_corrective
