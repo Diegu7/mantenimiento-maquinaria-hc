@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620171306) do
+ActiveRecord::Schema.define(version: 20170620211812) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -126,6 +126,7 @@ ActiveRecord::Schema.define(version: 20170620171306) do
     t.decimal "frequency_in_hours"
     t.decimal "frequency_in_days"
     t.date "last_time_done_at"
+    t.integer "mileage_when_last_done"
     t.index ["machine_area_id"], name: "index_required_maintenances_on_machine_area_id"
     t.index ["machine_id"], name: "index_required_maintenances_on_machine_id"
   end
