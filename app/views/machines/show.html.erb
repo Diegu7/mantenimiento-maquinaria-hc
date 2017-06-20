@@ -30,35 +30,32 @@
             </div>
             <div class="col-md-4 ">
               <%= link_to "Horometraje", machine_mileage_logs_path(@machine), class: "btn bg-blue btn-flat" %>
-            </div>
-           
+            </div>           
           </div>
           <div class="col-md-8">
             <div class= "nav-tabs-custom">
-              <ul class= "nav nav-tabs">
-                <li class= "<%='active' if params[:tab]== 'tab1'%>">
+              <ul class= "nav nav-tabs" role="tablist">
+                <li  class="active" class= "<%='active' if params[:tab]== 'tab1'%>">
                   <a href="#tab1" data-toggle="tab">
-                    Ficha Tecnica
-                    <div class="input-group-btn">
-                      <%= link_to "Añadir", new_machine_technical_specification_path(@machine.id),:style=>"width: 100px", class: "btn bg-green btn-flat" %>
-                    </div>
+                    Ficha Tecnica                 
                   </a>
                 </li>
                 <li class= "<%='active' if params[:tab]== 'tab2'%>">
-                  <a href="#tab2" data-toggle="tab">Ficha de Reg y Ejecucion</a>
+                  <a href="#tab2" data-toggle="tab">Ficha de Registro y Ejecucion</a>
                 </li>
                 <li class= "<%='active' if params[:tab]== 'tab3'%>">
                   <a href="#tab3" data-toggle="tab">
                     Mantenimientos Requeridos
-                    <div class="input-group-btn">
-                      <%= link_to "Añadir", new_machine_technical_specification_path(@machine.id),:style=>"width: 100px", class: "btn bg-green btn-flat" %>
-                    </div>
                   </a>
                 </li>
               </ul>
-              <div class= "tab-content">
+            </div>
+          <div class= "tab-content">
                 <div class="<%= if (params[:tab] == 'tab1' || !params[:tab])then 'tab-pane active'  else 'tab-pane' end%>" id= "tab1">
                   <div class="box-body table-responsive no-padding">
+                    <div class="input-group-btn">
+                      <%= link_to "Añadir", new_machine_technical_specification_path(@machine.id),:style=>"width: 100px", class: "btn bg-green btn-flat" %>
+                    </div>
                     <table class="table table-hover">
                       <thead>
                         <tr role="row">
@@ -107,6 +104,9 @@
                 </div>
                 <div class="<%= if (params[:tab] == 'tab3')then 'tab-pane active'  else 'tab-pane' end%>" id= "tab3">
                   <div class="box-body table-responsive no-padding">
+                    <div class="input-group-btn">
+                      <%= link_to "Añadir", new_machine_technical_specification_path(@machine.id),:style=>"width: 100px", class: "btn bg-green btn-flat" %>
+                    </div>
                     <table class="table table-hover">
                       <thead>
                         <tr role="row">
@@ -132,7 +132,6 @@
                   </div>
                 </div>
               </div>
-            </div>
           </div>
         </div>
       </div>
