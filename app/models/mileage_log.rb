@@ -7,10 +7,15 @@ class MileageLog < ApplicationRecord
 
     def generate_programmed_maintenace
         @required_maintenances = self.machine.required_maintenances
-
+        
         @required_maintenances.each  do |maintenance|
             if maintenance.frequency_in_hours.present?
-                puts maintenance.description
+                @mileage_when_last_done = maintenance.mileage_when_last_done
+                @current_mileage = self.machine.total_hours
+
+                if @current_mileage - @mileage_when_last_done >= maintenance.frequency_in_hours
+                    puts "MANTENIMIENTO CREADO"
+                end
             end
         end
     end
