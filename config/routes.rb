@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'mileage_logs/index'
-
+ 
   get 'mileage_logs/new'
 
   root 'dashboard#index'

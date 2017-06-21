@@ -1,0 +1,32 @@
+<div class="form-group">
+    <%= f.label :description, "Descripción" %>
+    <%= f.text_field :description, class: "form-control" %> 
+</div>
+<div class="form-group">
+    <%= f.label :machine_area_id, "Area" %>
+    <%= f.select :machine_area_id, MachineArea.pluck(:name, :id), {}, class: "form-control", id:  "machine-areas-list" %>
+</div>  
+<div class="form-group">
+    <%= f.label :estimated_duration, "Duración estimada (horas)" %>
+    <%= f.number_field :estimated_duration, class: "form-control" %> 
+</div>
+
+<%if @required_maintenance.frequency_in_hours > 0%>
+    <div class="form-group">
+        <%= f.label :frequency_in_hours, "Frecuencia (horas)" %>
+        <%= f.number_field :frequency_in_hours, class: "form-control" %> 
+    </div>
+    <div class="form-group">
+        <%= f.label :mileage_when_last_done, "Horometraje cuando se hizo por última vez" %>
+        <%= f.number_field :mileage_when_last_done, class: "form-control" %> 
+    </div>
+<%else%>
+    <div class="form-group">
+        <%= f.label :frequency_in_days, "Frecuencia (días)" %>
+        <%= f.number_field :frequency_in_days, class: "form-control" %> 
+    </div>
+    <div class="form-group">
+        <%= f.label :last_time_done_at, "Fecha de útlimo mantenimiento" %>
+        <%= f.date_field :last_time_done_at,as: :date, :value => '1900-01-01', class: 'form-control' %>
+    </div>
+<%end%>
