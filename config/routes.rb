@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :machines do
     resources :mileage_logs, except: [:edit, :update, :show]
-    resources :technical_specification
+    resources :technical_specifications
     resources :required_maintenances
   end
   
