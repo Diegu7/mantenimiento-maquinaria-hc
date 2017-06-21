@@ -19,7 +19,7 @@
       <div class="box box-success">
         <div class="box-body">
           <%= form_for [@machine, @required_maintenance] do |f| %>
-            <%= render partial: "form", locals: {f: f} %>
+            <%= render partial: "edit_form", locals: {f: f} %>
             <div class="input-group-btn">
               <%= link_to "Cancelar", @required_maintenance.machine, class: "btn bg-red btn-flat" %>
               <%= f.submit "Crear", class: "btn bg-green btn-flat" %>

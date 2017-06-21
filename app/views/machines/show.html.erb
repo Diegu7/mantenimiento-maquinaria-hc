@@ -124,7 +124,7 @@
                             <tr>
                               <td><%=maint.description%></td>
                               <td><%=maint.estimated_duration%> horas</td>
-                              <% if maint.frequency_in_hours.present? %>
+                              <% if maint.frequency_in_hours != 0 %>
                                 <td>cada <%=maint.frequency_in_hours%> horas</td>
                               <% else %>
                                 <td>cada <%=maint.frequency_in_days%> dias</td>

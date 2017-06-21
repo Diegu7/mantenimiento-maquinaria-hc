@@ -11,13 +11,7 @@
     <%= f.number_field :estimated_duration, class: "form-control" %> 
 </div>
 
-<div class="form-group">
-    <div class="checkbox">
-        <label><input type="checkbox" class="checkbox-class" data-toggle-div="#div-id"><b>¿Es calculado por horometraje?</b></label>
-    </div>
-</div>
-
-<div id="div-id" style="display:none">
+<%if @required_maintenance.frequency_in_hours > 0%>
     <div class="form-group">
         <%= f.label :frequency_in_hours, "Frecuencia (horas)" %>
         <%= f.number_field :frequency_in_hours, class: "form-control" %> 
@@ -26,9 +20,7 @@
         <%= f.label :mileage_when_last_done, "Horometraje cuando se hizo por última vez" %>
         <%= f.number_field :mileage_when_last_done, class: "form-control" %> 
     </div>
-</div>
-
-<div id="frequency_by_days" style="display:block">
+<%else%>
     <div class="form-group">
         <%= f.label :frequency_in_days, "Frecuencia (días)" %>
         <%= f.number_field :frequency_in_days, class: "form-control" %> 
@@ -37,4 +29,4 @@
         <%= f.label :last_time_done_at, "Fecha de útlimo mantenimiento" %>
         <%= f.date_field :last_time_done_at,as: :date, :value => '1900-01-01', class: 'form-control' %>
     </div>
-</div>
+<%end%>
