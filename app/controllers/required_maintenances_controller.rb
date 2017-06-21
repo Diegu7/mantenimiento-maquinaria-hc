@@ -1,10 +1,13 @@
 class RequiredMaintenancesController < ApplicationController
     def index
+        @machine = Machine.find(params[:machine_id])
     end
 
     def new
         @machine = Machine.find(params[:machine_id])
         @required_maintenance = @machine.required_maintenances.build
+    end
+    
     end
 
     def create
@@ -19,8 +22,9 @@ class RequiredMaintenancesController < ApplicationController
         end
     end
 
-    def destroy
-        @machine = Machine.find(params[:machine_id])
+    def destroy       
+        @required_maintenance = @machine.required_maintenances.find(params[:id])
+        @required_maintenance.destroy
         @required_maintenance = @machine.required_maintenances.find(params[:id])
         @required_maintenance.destroy
         redirect_to @machine

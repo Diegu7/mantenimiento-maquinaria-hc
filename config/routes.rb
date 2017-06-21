@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   get 'mileage_logs/index'
-
+ 
   get 'mileage_logs/new'
 
   root 'dashboard#index'
@@ -12,7 +12,7 @@ Rails.application.routes.draw do
 
   resources :machines do
     resources :mileage_logs, except: [:edit, :update, :show]
-    resources :technical_specifications
+    resources :technical_specification
     resources :required_maintenances
   end
   

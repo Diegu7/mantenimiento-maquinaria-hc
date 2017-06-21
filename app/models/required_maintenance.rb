@@ -7,8 +7,9 @@ class RequiredMaintenance < ApplicationRecord
 
      validates_presence_of :description, :machine, :machine_area, :frequency_in_hours, :frequency_in_days
 
-     validates :estimated_duration, :mileage_when_last_done, :frequency_in_hours, :frequency_in_days, numericality: { greater_or_equal_than: 0 }     
-     
+     validates :mileage_when_last_done, :frequency_in_hours, :frequency_in_days, numericality: { greater_or_equal_than: 0 }     
+     validates :estimated_duration, numericality:  { greater_than: 0 }
+
      def fill_nil_values
         if self.frequency_in_days == nil
              self.frequency_in_days = 0
