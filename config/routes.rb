@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   delete 'logout', to: 'sessions#destroy'
   post '/machines/:machine_id/technical_specifications/new', to: 'technical_specifications#create', as: 'create_technical_specification'
 
+  get '/pending_maintenances', to: 'programmed_maintenances#pending_maintenances'
+
   resources :machines do
     resources :mileage_logs, except: [:edit, :update, :show]
     resources :technical_specifications

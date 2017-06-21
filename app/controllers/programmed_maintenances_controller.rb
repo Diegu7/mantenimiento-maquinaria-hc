@@ -20,6 +20,11 @@ class ProgrammedMaintenancesController < ApplicationController
         end
     end
 
+    def pending_maintenances
+        @maintenances = ProgrammedMaintenance.pending
+        render json: @maintenances
+    end
+
     protected
         def corrective_maintenance_params
             params.require(:programmed_maintenance).permit(:estimated_duration, :done_at,:comments,:machine_id, materials_for_maintenances_attributes: [:id, :used_quantity, :product_id])
