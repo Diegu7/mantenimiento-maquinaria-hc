@@ -105,7 +105,7 @@
                 <div class="<%= if (params[:tab] == 'tab3')then 'tab-pane active'  else 'tab-pane' end%>" id= "tab3">
                   <div class="box-body table-responsive no-padding">
                     <div class="input-group-btn">
-                      <%= link_to "Añadir", new_machine_technical_specification_path(@machine.id),:style=>"width: 100px", class: "btn bg-green btn-flat" %>
+                      <%= link_to "Añadir", new_machine_required_maintenance_path(@machine.id),:style=>"width: 100px", class: "btn bg-green btn-flat" %>
                     </div>
                     <table class="table table-hover">
                       <thead>

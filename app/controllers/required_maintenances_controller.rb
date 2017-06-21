@@ -1,6 +1,6 @@
 class RequiredMaintenancesController < ApplicationController
     def index
-        @machine = Machine.find(params[:machine_id])
+        # @machine = Machine.find(params[:machine_id])
     end
 
     def new
