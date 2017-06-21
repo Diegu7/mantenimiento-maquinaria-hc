@@ -1,5 +1,6 @@
 class RequiredMaintenance < ApplicationRecord
      before_save :fill_nil_values
+     after_save :update_programmed_maintenances
      belongs_to :machine
      belongs_to :machine_area
 
@@ -11,7 +12,30 @@ class RequiredMaintenance < ApplicationRecord
 
      #This should be a query
      def self.coming_soon
-         RequiredMaintenance.all.select{ |m| m.last_time_done_at + m.frequency_in_days < Date.today + 5.day  }
+         RequiredMaintenance.where(queued: false).select{ |m| m.last_time_done_at + m.frequency_in_days < Date.today + 5.day  }
+     end
+
+     def self.create_programmed_maintenances
+        required_maintenances = RequiredMaintenance.coming_soon
+
+        required_maintenances.each do |required_maintenance|
+        programmed_maintenance = required_maintenance.new_programmed_maintenance
+        programmed_maintenance.save
+
+        required_maintenance.update_attributes(queued: true)
+        end
+     end
+
+     def new_programmed_maintenance
+         programmed_maintenances.build(
+             description: description,
+             estimated_duration: estimated_duration,
+             comments: description,
+             preventive: true,
+             done: false,
+             machine: machine,
+             scheduled_at: last_time_done_at.to_datetime + frequency_in_days + 8.hour
+        )
      end
 
      def fill_nil_values
@@ -27,5 +51,8 @@ class RequiredMaintenance < ApplicationRecord
              self.mileage_when_last_done = 0
         end
      end
-        
+
+     def update_programmed_maintenances
+         RequiredMaintenance.create_programmed_maintenances
+     end
 end
