@@ -6,7 +6,7 @@
   </div>
 
   <div class="box-body table-responsive no-padding">
-    <table id="machine-area-table"class="table table-hover">
+    <table id="paginated-table"class="table table-hover">
       <thead>
         <tr role="row">
           <th>Nombre</th>
@@ -19,17 +19,3 @@
     </table>
   </div>
 </div>
-
-<script type="text/javascript">
-  $(document).ready(function() {
-    $('#machine-area-table').DataTable({
-      "info":     false,
-      "pageLength": 12,
-      "lengthChange": false,
-      "dom": 'frt<"text-center"p>',
-      "language": {
-        "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
-      }
-    });
-  } );
-</script>

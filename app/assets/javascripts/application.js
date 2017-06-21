@@ -58,5 +58,15 @@ $(document).ready(function() {
         $($(this).data('toggle-div')).toggle(); 
         $('div#frequency_by_days').toggle();   
     });
+
+    $('#paginated-table').DataTable({
+        "info":     false,
+        "pageLength": 10,
+        "lengthChange": false,
+        "dom": 'frt<"text-center"p>',
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        }
+    });
 });
 
