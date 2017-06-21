@@ -20,9 +20,8 @@ class ProgrammedMaintenancesController < ApplicationController
         end
     end
 
-    def pending_maintenances
-        @maintenances = ProgrammedMaintenance.pending
-        render json: @maintenances
+    def events
+        render json: ProgrammedMaintenancesHelper.events
     end
 
     protected
