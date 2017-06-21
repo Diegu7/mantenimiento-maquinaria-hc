@@ -12,7 +12,7 @@ class ProgrammedMaintenance < ApplicationRecord
 
    validates :estimated_duration, numericality:  { greater_than: 0 }
 
-   scope :pending, -> { where(done: false) }
+   scope :pending, -> { where(done: false, preventive: true) }
 
    def default_values
       self.description ||= 'Correctivo'
