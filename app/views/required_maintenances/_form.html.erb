@@ -10,19 +10,31 @@
     <%= f.label :estimated_duration, "Duración estimada (horas)" %>
     <%= f.number_field :estimated_duration, class: "form-control" %> 
 </div>
+
 <div class="form-group">
-    <%= f.label :frequency_in_hours, "Frecuencia (horas)" %>
-    <%= f.number_field :frequency_in_hours, class: "form-control" %> 
+    <div class="checkbox">
+        <label><input type="checkbox" class="checkbox-class" data-toggle-div="#div-id"><b>¿Es calculado por horometraje?</b></label>
+    </div>
 </div>
-<div class="form-group">
-    <%= f.label :mileage_when_last_done, "Horometraje cuando se hizo por última vez" %>
-    <%= f.number_field :mileage_when_last_done, class: "form-control" %> 
+
+<div id="div-id" style="display:none">
+   <div class="form-group">
+        <%= f.label :frequency_in_days, "Frecuencia (días)" %>
+        <%= f.number_field :frequency_in_days, class: "form-control" %> 
+    </div>
+    <div class="form-group">
+        <%= f.label :last_time_done_at, "Fecha de útlimo mantenimiento" %>
+        <%= f.date_field :last_time_done_at,as: :date, :value => '1900-01-01', class: 'form-control' %>
+    </div>
 </div>
-<div class="form-group">
-    <%= f.label :frequency_in_days, "Frecuencia (días)" %>
-    <%= f.number_field :frequency_in_days, class: "form-control" %> 
-</div>
-<div class="form-group">
-    <%= f.label :last_time_done_at, "Fecha de útlimo mantenimiento" %>
-    <%= f.date_field :last_time_done_at,as: :date, :value => Date.today, class: 'form-control' %>
+
+<div id="frequency_by_days" style="display:block">
+    <div class="form-group">
+        <%= f.label :frequency_in_hours, "Frecuencia (horas)" %>
+        <%= f.number_field :frequency_in_hours, class: "form-control" %> 
+    </div>
+    <div class="form-group">
+        <%= f.label :mileage_when_last_done, "Horometraje cuando se hizo por última vez" %>
+        <%= f.number_field :mileage_when_last_done, class: "form-control" %> 
+    </div>
 </div>
