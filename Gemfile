@@ -8,6 +8,8 @@ end
 # Use Ruby 2.4.0
 ruby '2.4.0'
 
+#Cron jobs
+gem 'whenever', :require => false
 # Use rails-i18n for internationalization
 gem 'rails-i18n', '~> 5.0.0'
 # Use ionicons

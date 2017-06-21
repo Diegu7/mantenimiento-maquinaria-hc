@@ -2,10 +2,6 @@
 //= require fullcalendar/dist/fullcalendar.min
 //= require fullcalendar/dist/locale/es
 
-function fillCalendar(maintenances) {
-
-}
-
 $(document).ready(function() {
     $("#calendar").fullCalendar({
         locale: "es",
