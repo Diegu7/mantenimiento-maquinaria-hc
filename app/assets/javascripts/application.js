@@ -50,5 +50,10 @@ $(document).ready(function() {
     $('form').bind('cocoon:after-insert', function(e, inserted_item) {
       inserted_item.find('select#products-list').select2();
     });
+
+    $('.checkbox-class').change(function(e) {
+        $($(this).data('toggle-div')).toggle(); 
+        $('div#frequency_by_days').toggle();   
+    });
 });
 

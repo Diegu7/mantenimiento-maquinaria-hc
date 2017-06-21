@@ -1,0 +1,33 @@
+<section class="content-header">
+  <h1>
+    Mantenimientos Requeridos
+    <small>Editar</small>
+  </h1>
+
+  <ol class="breadcrumb">
+		<li><i class="fa fa-cog"></i> <span>Mantenimientos Requeridos</span></li>
+		<li><%= link_to "Máquinas", machines_path %></li>
+        <li><%= link_to @required_maintenance.machine.name, @machine %></li>
+		<li class="active">Editar</li>
+	</ol>
+  <%= render partial: "shared/errors", locals: { obj: @required_maintenance } %>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class="box-body">
+          <%= form_for [@machine, @required_maintenance] do |f| %>
+            <%= render partial: "edit_form", locals: {f: f} %>
+            <div class="input-group-btn">
+              <%= link_to "Cancelar", @required_maintenance.machine, class: "btn bg-red btn-flat" %>
+              <%= f.submit "Crear", class: "btn bg-green btn-flat" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+

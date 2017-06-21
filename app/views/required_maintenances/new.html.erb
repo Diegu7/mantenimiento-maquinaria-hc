@@ -7,7 +7,7 @@
   <ol class="breadcrumb">
 		<li><i class="fa fa-cog"></i> <span>Equipos</span></li>
 		<li><%= link_to "Máquinas", machines_path %></li>
-        <li><%= link_to @machine.name, @machine %></li>
+    <li><%= link_to @machine.name, @machine %></li>
 		<li class="active">Mantenimientos Requeridos</li>
 	</ol>
   <%= render partial: "shared/errors", locals: { obj: @required_maintenance } %>
@@ -19,35 +19,8 @@
       <div class="box box-success">
         <div class="box-body">
           <%= form_for [@machine, @required_maintenance] do |f| %>
-            <div class="form-group">
-              <%= f.label :description, "Descripción" %>
-              <%= f.text_field :description, class: "form-control" %> 
-            </div>
-            <div class="form-group">
-              <%= f.label :machine_area_id, "Area" %>
-              <%= f.select :machine_area_id, MachineArea.pluck(:name, :id), {}, class: "form-control", id:  "machine-areas-list" %>
-            </div>  
-            <div class="form-group">
-              <%= f.label :estimated_duration, "Duración estimada (horas)" %>
-              <%= f.number_field :estimated_duration, class: "form-control" %> 
-            </div>
-            <div class="form-group">
-              <%= f.label :frequency_in_hours, "Frecuencia (horas)" %>
-              <%= f.number_field :frequency_in_hours, class: "form-control" %> 
-            </div>
-            <div class="form-group">
-              <%= f.label :mileage_when_last_done, "Horometraje cuando se hizo por última vez" %>
-              <%= f.number_field :mileage_when_last_done, class: "form-control" %> 
-            </div>
-            <div class="form-group">
-              <%= f.label :frequency_in_days, "Frecuencia (días)" %>
-              <%= f.number_field :frequency_in_days, class: "form-control" %> 
-            </div>
-            <div class="form-group">
-              <%= f.label :last_time_done_at, "Fecha de útlimo mantenimiento" %>
-              <%= f.date_field :last_time_done_at,as: :date, :value => Date.today, class: 'form-control' %>
-            </div>
-            <div class="input-group-btn">
+             <%= render partial: "form", locals: {f: f} %>
+             <div class="input-group-btn">
               <%= link_to "Cancelar", @machine, class: "btn bg-red btn-flat" %>
               <%= f.submit "Crear", class: "btn bg-green btn-flat" %>
             </div>
