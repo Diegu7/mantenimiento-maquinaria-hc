@@ -1,0 +1,8 @@
+<div class="form-group">
+  <%= f.label :description, "Descripción" %>
+  <%= f.text_area :description, class: "form-control" %>
+</div>
+<div class="form-group">
+  <%= f.label :scheduled_at, "Programar para" %>
+  <%= f.date_field :scheduled_at,as: :date, :value => Date.today, class: 'form-control' %>
+</div>

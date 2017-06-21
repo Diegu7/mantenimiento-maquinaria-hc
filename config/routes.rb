@@ -32,4 +32,6 @@ Rails.application.routes.draw do
         post :create_corrective
     end
   end
+
+  resources :maintenance_plans
 end

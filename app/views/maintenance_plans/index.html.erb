@@ -1,0 +1,17 @@
+<section class="content-header">
+	<h1>
+		Planes de Mantenimiento
+		<small>Índice</small>
+	</h1>
+
+	<ol class="breadcrumb">
+		<li><i class="fa fa-cog"></i> <span>Planes</span></li>
+		<li><%= link_to "Planes de Mantenimiento", maintenance_plans_path %></li>
+		<li class="active">Índice</li>
+	</ol>
+</section>
+
+<section class="content">
+	<%= render partial: "maintenance_plans_table", locals: { plans: @plans } %>
+	<%= render partial: "shared/deletion_modal" %>
+</section>

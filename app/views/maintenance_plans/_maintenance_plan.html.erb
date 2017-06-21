@@ -1,0 +1,22 @@
+<tr>
+	<td><%= plan.description %></td>
+	<td><%= plan.scheduled_at %></td>
+	<td>
+		<div class="input-group-btn">
+			<%= link_to plan, class: "btn bg-purple btn-flat" do %>
+				<span class="fa fa-file-text"></span>
+				<font>Ver</font>
+			<% end %>
+
+			<%= link_to edit_maintenance_plan_path(plan), class: "btn bg-blue btn-flat" do %>
+				<span class="fa fa-pencil"></span>
+				<font>Editar</font>
+			<% end %>
+
+			<%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": maintenance_plan(plan) do %>
+				<span class="fa fa-trash"></span>
+				<font>Borrar</font>
+			<% end %>
+		</div>
+	</td>
+</tr>
