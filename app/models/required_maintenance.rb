@@ -1,6 +1,5 @@
 class RequiredMaintenance < ApplicationRecord
      belongs_to :machine
-     belongs_to :
      
      has_many :programmed_maintenances
 
