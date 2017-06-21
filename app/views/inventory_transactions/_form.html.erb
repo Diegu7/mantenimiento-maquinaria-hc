@@ -1,10 +1,10 @@
 <div class="form-group">
   <%= f.label :done_at, "Fecha" %>
-    <%= f.date_field :done_at,as: :date, :value => Date.today, class: 'form-control' %>
+  <%= f.date_field :done_at,as: :date, :value => Date.today, class: 'form-control' %>
 </div>
 <div class="form-group">
   <%= f.label :transaction_type, "Tipo de transacción" %>
-    <%= f.select :transaction_type, InventoryTransaction.transaction_types.keys.to_a, {}, class: "form-control" %>
+  <%= f.select :transaction_type, InventoryTransaction.transaction_types.keys.to_a, {}, class: "form-control" %>
 </div>
 
 <h3>Detalles de Productos</h3>
