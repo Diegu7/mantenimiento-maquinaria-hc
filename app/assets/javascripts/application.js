@@ -13,6 +13,9 @@
 //= require rails-ujs
 //= require jquery
 //= require jquery_ujs
+//= require dataTables/jquery.dataTables
+//= require dataTables/bootstrap/3/jquery.dataTables.bootstrap
+//= require dataTables/extras/dataTables.buttons
 //= require_tree .
 //= require bootstrap-sprockets
 //= require bootstrap-modal
@@ -54,6 +57,16 @@ $(document).ready(function() {
     $('.checkbox-class').change(function(e) {
         $($(this).data('toggle-div')).toggle(); 
         $('div#frequency_by_days').toggle();   
+    });
+
+    $('#paginated-table').DataTable({
+        "info":     false,
+        "pageLength": 10,
+        "lengthChange": false,
+        "dom": 'frt<"text-center"p>',
+        "language": {
+            "url": "//cdn.datatables.net/plug-ins/1.10.15/i18n/Spanish.json"
+        }
     });
 });
 

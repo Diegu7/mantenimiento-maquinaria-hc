@@ -136,11 +136,10 @@
                                     <span class="fa fa-pencil"></span>
                                     <font>Editar</font>
                                   <% end %>
-
-                                <%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": machine_required_maintenance_path(maint) do %>
-                                  <span class="fa fa-trash"></span>
-                                  <font>Borrar</font>
-                                <% end %>
+                                  <%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": machine_required_maintenance_path(maint.machine, maint) do %>
+                                    <span class="fa fa-trash"></span>
+                                    <font>Borrar</font>
+                                  <% end %>
                                 </div>
                               </td>
                             </tr>
@@ -156,4 +155,5 @@
       </div>
     </div>
   </div>
+  <%= render partial: "shared/deletion_modal" %>
 </section>
