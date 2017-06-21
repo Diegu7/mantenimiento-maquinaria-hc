@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620171306) do
+ActiveRecord::Schema.define(version: 20170621021124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -113,7 +113,9 @@ ActiveRecord::Schema.define(version: 20170620171306) do
     t.bigint "machine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "required_maintenance_id"
     t.index ["machine_id"], name: "index_programmed_maintenances_on_machine_id"
+    t.index ["required_maintenance_id"], name: "index_programmed_maintenances_on_required_maintenance_id"
   end
 
   create_table "required_maintenances", force: :cascade do |t|
@@ -126,6 +128,7 @@ ActiveRecord::Schema.define(version: 20170620171306) do
     t.decimal "frequency_in_hours"
     t.decimal "frequency_in_days"
     t.date "last_time_done_at"
+    t.integer "mileage_when_last_done"
     t.index ["machine_area_id"], name: "index_required_maintenances_on_machine_area_id"
     t.index ["machine_id"], name: "index_required_maintenances_on_machine_id"
   end
@@ -159,6 +162,7 @@ ActiveRecord::Schema.define(version: 20170620171306) do
   add_foreign_key "mileage_logs", "machines"
   add_foreign_key "products", "product_brands"
   add_foreign_key "programmed_maintenances", "machines"
+  add_foreign_key "programmed_maintenances", "required_maintenances"
   add_foreign_key "required_maintenances", "machine_areas"
   add_foreign_key "required_maintenances", "machines"
   add_foreign_key "technical_specifications", "machines"

@@ -1,6 +1,7 @@
 class RequiredMaintenance < ApplicationRecord
      belongs_to :machine
-     belongs_to :machine_area
+     
+     has_many :programmed_maintenances
 
      validates_presence_of :description, :machine, :machine_area, :estimated_duration, :frequency_in_hours, :frequency_in_days
 

@@ -92,7 +92,7 @@
                             <tr>
                               <td><%=maint.description%></td>
                               <td><%=maint.scheduled_at%></td>
-                              <td><%=maint.estimated_duration%></td>
+                              <td><%=maint.estimated_duration%> horas</td>
                               <td><%=maint.done_at%></td>
                               <td><%=maint.comments%></td>
                             </tr>
@@ -113,6 +113,7 @@
                           <th>Descripción</th>
                           <th>Duración Estimada</th>
                           <th>Frecuencia</th>
+                          <th>Último hecho</th>
                           <th>Próximo Mant. Estimado</th>
                         </tr>
                       </thead>
@@ -127,6 +128,7 @@
                               <% else %>
                                 <td>cada <%=maint.frequency_in_days%> dias</td>
                               <% end %>
+                              <td><%=maint.last_time_done_at%></td>
                             </tr>
                           <%end%>
                         <%end%>
