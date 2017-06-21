@@ -41,7 +41,7 @@ class RequiredMaintenancesController < ApplicationController
         @machine = Machine.find(params[:machine_id])
         @required_maintenance = @machine.required_maintenances.find(params[:id])
         @required_maintenance.destroy
-        redirect_to machine_mileage_logs_path(@machine)
+        redirect_to @machine
     end
 
     protected
