@@ -20,6 +20,10 @@ class ProgrammedMaintenancesController < ApplicationController
         end
     end
 
+    def events
+        render json: ProgrammedMaintenancesHelper.events
+    end
+
     protected
         def corrective_maintenance_params
             params.require(:programmed_maintenance).permit(:estimated_duration, :done_at,:comments,:machine_id, materials_for_maintenances_attributes: [:id, :used_quantity, :product_id])
