@@ -114,7 +114,7 @@
                           <th>Duración Estimada</th>
                           <th>Frecuencia</th>
                           <th>Último hecho</th>
-                          <th>Próximo Mant. Estimado</th>
+                          <th>Próxima Fecha</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -129,6 +129,7 @@
                                 <td>cada <%=maint.frequency_in_days%> dias</td>
                               <% end %>
                               <td><%=maint.last_time_done_at%></td>
+                              <td><%=maint.last_time_done_at + maint.frequency_in_days %></td>
                             </tr>
                           <%end%>
                         <%end%>
