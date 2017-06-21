@@ -43,7 +43,7 @@ $(document).ready(function() {
     });
 
     $('select#machine-areas-list').select2({
-        placeholder: "Seleccione una máquina",
+        placeholder: "Seleccione una área de mantenimiento",
         allowClear: true
     });
 
