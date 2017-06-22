@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170621150537) do
+ActiveRecord::Schema.define(version: 20170622013802) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(version: 20170621150537) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "machine_section_id"
-    t.string "image_url"
+    t.string "image"
     t.text "description"
     t.index ["machine_section_id"], name: "index_machines_on_machine_section_id"
   end
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(version: 20170621150537) do
     t.string "description"
     t.date "scheduled_at"
     t.date "done_at"
-    t.boolean "done"
+    t.boolean "done", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 20170621150537) do
     t.string "name"
     t.integer "initial_stock"
     t.integer "current_stock"
-    t.string "image_url"
+    t.string "image"
     t.bigint "product_brand_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -149,9 +149,9 @@ ActiveRecord::Schema.define(version: 20170621150537) do
     t.string "middle_name"
     t.string "last_name"
     t.string "email"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "avatar"
   end
 
   add_foreign_key "inventory_transaction_details", "inventory_transactions"
