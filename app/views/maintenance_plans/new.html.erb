@@ -17,19 +17,6 @@
         <div class="box-body">
           <%= form_for(@maintenance_plan) do |f| %>
           <%= render partial: "form", locals: {f: f} %>
-
-          <div class="field" style="overflow:scroll; height: 500px">
-            <%= f.label "Seleccione los mantenimientos a programar" %><br />
-            <%= f.collection_check_boxes :programmed_maintenance_ids, @programmed_maintenances, :id, :description do |b| %>
-              <div class="collection-check-box form-control input-lg">
-                <%= b.check_box %>
-                <%= b.label %>
-              </div>
-            <% end %>
-          </div>
-
-          </br>
-
           <div class="input-group-btn">
             <%= link_to "Cancelar", maintenance_plans_path, class: "btn bg-red btn-flat" %>
             <%= f.submit "Crear", class: "btn bg-green btn-flat" %>
