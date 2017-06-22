@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170622034250) do
+ActiveRecord::Schema.define(version: 20170622045124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -119,6 +119,7 @@ ActiveRecord::Schema.define(version: 20170622034250) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.bigint "required_maintenance_id"
+    t.boolean "scheduled", default: false
     t.index ["machine_id"], name: "index_programmed_maintenances_on_machine_id"
     t.index ["required_maintenance_id"], name: "index_programmed_maintenances_on_required_maintenance_id"
   end
