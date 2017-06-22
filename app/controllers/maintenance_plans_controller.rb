@@ -35,13 +35,13 @@ class MaintenancePlansController < ApplicationController
 
     def destroy
         @maintenance_plan = MaintenancePlan.find(params[:id])
-        @programmed_maintenances = @maintenance_plan.programmed_maintenances      
+        @programmed_maintenances = @maintenance_plan.programmed_maintenances
 
-        if @maintenance_plan.destroy
-            @programmed_maintenances.each do |maintenance|
-                maintenance.scheduled.toggle!
-            end
-        end
+        @programmed_maintenances.each do |maintenance|
+            ProgrammedMaintenance.where(id: maintenance.id).update_all(scheduled: false)
+        end      
+
+        @maintenance_plan.destroy
         
         redirect_to maintenance_plans_path
     end
