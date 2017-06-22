@@ -18,4 +18,8 @@ class ProgrammedMaintenance < ApplicationRecord
       self.scheduled_at ||= Date.today
       self.preventive ||= false
    end
+
+  def full_description
+    description << '  Maquina:  ' << machine.name << '  Duración aprox.:  '  << estimated_duration.to_s
+   end
 end

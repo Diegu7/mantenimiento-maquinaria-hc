@@ -77,6 +77,24 @@ $(document).ready(function() {
       "info": true,
       "autoWidth": false
     });
+
+    $('#maintenance-plan-details-table2').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
+
+    $('#maintenance-plan-details-table3').DataTable({
+      "paging": true,
+      "lengthChange": false,
+      "searching": false,
+      "ordering": true,
+      "info": true,
+      "autoWidth": false
+    });
 });
 
 
