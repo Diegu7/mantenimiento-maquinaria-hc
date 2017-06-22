@@ -5,6 +5,7 @@ class MaintenancePlansController < ApplicationController
 
     def new
         @maintenance_plan = MaintenancePlan.new
+        @programmed_maintenances = ProgrammedMaintenance.where(done: false, preventive: true)
     end
 
     def show
@@ -44,6 +45,6 @@ class MaintenancePlansController < ApplicationController
 
     protected
         def plan_params
-            params.require(:maintenance_plan).permit(:description, :scheduled_at)
+            params.require(:maintenance_plan).permit(:description, :scheduled_at, programmed_maintenance_ids:[])
         end
 end

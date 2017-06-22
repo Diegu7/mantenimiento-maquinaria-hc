@@ -1,14 +1,13 @@
 class ProgrammedMaintenance < ApplicationRecord
    before_save :default_values
 
-   belongs_to :machine
-   #belongs_to :required_maintenance
+   belongs_to :machine  
+   has_and_belongs_to_many :maintenance_plans, dependent: :destroy
 
    has_many :materials_for_maintenances, inverse_of: :programmed_maintenance, dependent: :destroy
    accepts_nested_attributes_for :materials_for_maintenances, reject_if: :all_blank, allow_destroy: true
 
    validates_presence_of :estimated_duration, :comments
-   #, :materials_for_maintenances
 
    validates :estimated_duration, numericality:  { greater_than: 0 }
 
