@@ -9,21 +9,23 @@ class MileageLog < ApplicationRecord
         @required_maintenances = self.machine.required_maintenances
         
         @required_maintenances.each  do |maintenance|
-            if maintenance.frequency_in_hours.present?
+            if maintenance.frequency_in_hours > 0
                 @mileage_when_last_done = maintenance.mileage_when_last_done
                 @current_mileage = self.machine.total_hours
                 @maintenance = RequiredMaintenance.find(maintenance.id)
 
-                if @current_mileage - @mileage_when_last_done >= maintenance.frequency_in_hours
+                puts "ANTES DEL IF"
+
+                if (@current_mileage - @mileage_when_last_done) >= maintenance.frequency_in_hours
                     # Validate if already exists a programmed maintenance for this required maintenance in this machine
-                    if !(ProgrammedMaintenance.exists?(required_maintenance_id: maintenance.id))                        
+                    if !(ProgrammedMaintenance.exists?(required_maintenance_id: maintenance.id, scheduled: false))                        
                         programmed = ProgrammedMaintenance.new
                         programmed.description = maintenance.description
                         programmed.scheduled_at = Date.today
                         programmed.estimated_duration = maintenance.estimated_duration
                         programmed.comments = "."
                         programmed.done_at = 1.day.from_now
-                        programmed.preventive ||= false
+                        programmed.preventive ||= true
                         programmed.machine = self.machine
                         programmed.required_maintenance_id = @maintenance.id
                         programmed.save!

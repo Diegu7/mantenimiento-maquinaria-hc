@@ -42,9 +42,8 @@ class ProgrammedMaintenancesController < ApplicationController
 
     def update
         @programmed_maintenance = ProgrammedMaintenance.find(params[:id])
-        @products = Product.all.order(:name)
-        @machines = Machine.all.order(:name)
-        
+
+        # Getting the maintenace plan to which current programmed maintenance belongs
         @maintenance_plan =  @programmed_maintenance.maintenance_plans.first
 
         @programmed_maintenance.done = true
@@ -53,17 +52,33 @@ class ProgrammedMaintenancesController < ApplicationController
 
             @product_details = @programmed_maintenance.materials_for_maintenances
 
+            # Decrementing current stock in products with used materials for this maintenace
             @product_details.each do |detail|
                 @product = Product.find(detail.product_id)
                 @product.decrement!(:current_stock,detail.used_quantity)           
             end
 
+            # Setting the maintenance plan done when all its programmed maintenaces are set done
+            # Setting done_at with the first programmed maintenance done date
             if @maintenance_plan.programmed_maintenances_are_done
                 @maintenance_plan.done = true
                 @maintenance_plan.done_at = @maintenance_plan.programmed_maintenances.first.done_at
 
                 @maintenance_plan.save!
             end
+
+            # Update last time done or last mileage log when done in the required maintenace 
+            @required_maintenance = RequiredMaintenance.find(@programmed_maintenance.required_maintenance_id)
+
+            puts @required_maintenance.description
+
+            if @required_maintenance.frequency_in_hours > 0 # Then uses days to calculate incoming programmed maintenances
+                @required_maintenance.mileage_when_last_done += @required_maintenance.frequency_in_hours
+                @required_maintenance.save!
+            else # Uses mileage log, set mileage_when_last_done
+                @required_maintenance.last_time_done_at = @programmed_maintenance.done_at
+                @required_maintenance.save!
+            end                
 
             if (@maintenance_plan.done)
                  redirect_to @maintenance_plan
