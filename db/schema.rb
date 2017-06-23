@@ -135,6 +135,7 @@ ActiveRecord::Schema.define(version: 20170622045124) do
     t.decimal "frequency_in_days"
     t.date "last_time_done_at"
     t.integer "mileage_when_last_done"
+    t.boolean "queued", default: false
     t.index ["machine_area_id"], name: "index_required_maintenances_on_machine_area_id"
     t.index ["machine_id"], name: "index_required_maintenances_on_machine_id"
   end
