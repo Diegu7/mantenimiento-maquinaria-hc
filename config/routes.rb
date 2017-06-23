@@ -33,5 +33,5 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :maintenance_plans, except: :edit
+  resources :maintenance_plans
 end

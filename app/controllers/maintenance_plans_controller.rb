@@ -5,7 +5,6 @@ class MaintenancePlansController < ApplicationController
 
     def new
         @maintenance_plan = MaintenancePlan.new
-        #@programmed_maintenances = ProgrammedMaintenance.where(done: false, preventive: true, scheduled: false)
     end
 
     def show
@@ -40,6 +39,20 @@ class MaintenancePlansController < ApplicationController
         @maintenance_plan.destroy
         
         redirect_to maintenance_plans_path
+    end
+
+    def edit
+        @maintenance_plan = MaintenancePlan.find(params[:id])
+    end
+
+    def update
+        @maintenance_plan = MaintenancePlan.find(params[:id])
+
+        if @plan.update_attributes(plan_params)
+            redirect_to @maintenance_plan
+        else
+            render :edit
+        end
     end
 
     protected

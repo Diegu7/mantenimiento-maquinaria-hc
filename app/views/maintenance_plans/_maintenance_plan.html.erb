@@ -7,6 +7,11 @@
 				<span class="fa fa-file-text"></span>
 				<font>Ver</font>
 			<% end %>
+
+			<%= link_to edit_maintenance_plan_path(maintenance_plan), class: "btn bg-blue btn-flat" do %>
+				<span class="fa fa-pencil"></span>
+				<font>Hecho</font>
+			<% end %>
 			
 			<%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": maintenance_plan_path(maintenance_plan) do %>
 				<span class="fa fa-trash"></span>
