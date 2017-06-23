@@ -1,0 +1,56 @@
+<section class="content-header">
+  <h1>
+    Mantenimiento preventivo
+    <small><%=@programmed_maintenance.id%></small>
+  </h1>
+
+  <ol class="breadcrumb">
+    <li><i class="fa fa-cog"></i> <span>Mantenimiento preventivo</span></li>
+    <li>
+      <%= link_to "Mantenimiento preventivo", inventory_transactions_path %>
+    </li>
+    <li class="active">
+      <%= @programmed_maintenance.id %>
+    </li>
+  </ol>
+</section>
+
+<section class="content">
+  <div class="box box-warning">
+    <div class="box-header">
+      <div class="col-md-8">
+        <h2>Detalles</h2>
+        <div class=" col-md-9 col-lg-9 box-body">
+          <table id="maintenance-plan-details-table" class="table table-bordered table-striped">
+           <thead>
+              <tr role="row">
+                <th>Producto</th>
+                <th>Cantiddad</th>
+              </tr>
+            </thead>
+            <tbody>
+              <%if @programmed_maintenance.materials_for_maintenances %>
+                <%for detail in @programmed_maintenance.materials_for_maintenances %>
+                  <tr>
+                    <td><%=Product.find(detail.product_id).name%></td>
+                    <td><%=detail.used_quantity%></td>
+                  </tr>
+                <%end%>
+              <%end%>
+            </tbody>
+          </table>
+
+          </br>
+
+            <div class="input-group-btn">
+              <%= link_to @programmed_maintenance.machine, class: "btn bg-purple btn-flat" do %>
+                <span class="glyphicon glyphicon-chevron-left"></span>
+                <font>Regresar</font>
+              <% end %>
+            </div>
+        </div>
+      </div>
+    </div>
+
+    <%= render partial: "shared/deletion_modal" %>
+</section>

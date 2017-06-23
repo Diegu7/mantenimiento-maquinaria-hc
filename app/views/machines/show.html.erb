@@ -84,6 +84,7 @@
                           <th>Duracion Estimada</th>
                           <th>Se termino</th>
                           <th>Commentarios</th>
+                          <th></th>
                         </tr>
                       </thead>
                       <tbody>
@@ -95,6 +96,13 @@
                               <td><%=maint.estimated_duration%> horas</td>
                               <td><%=maint.done_at%></td>
                               <td><%=maint.comments%></td>
+                              <td>
+                                  <%= link_to maint, class: "btn bg-purple btn-flat" do %>
+                                    <span class="fa fa-file-text"></span>
+                                    <font>Ver</font>
+                                  <% end %>
+                              </div>
+                              </td>
                             </tr>
                           <% end %>
                         <%end%>
