@@ -18,11 +18,10 @@
     <div class="col-md-6">
       <div class="box box-success">
         <div class="box-body">
-          <%= form_for(@maintenance_plan) do |f| %>
+          <%= form_for(@maintenance_plan, :url => maintenance_plan_path) do |f| %>
             <%= render partial: "done", locals: {f: f} %>
             <div class="input-group-btn">
               <%= link_to "Cancelar", maintenance_plans_path, class: "btn bg-red btn-flat" %>
-              <%= f.submit "Marcar como hecho", class: "btn bg-green btn-flat" %>
             </div>
           <% end %>
         </div>

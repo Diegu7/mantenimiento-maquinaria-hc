@@ -3,13 +3,10 @@
     <%= f.select :machine_id, Machine.pluck(:name, :id), {}, class: "form-control", id:  "machines-list" %>
 </div>
 <div class="form-group">
-    <%= f.label :done_at, "Fecha" %>
+    <%= f.label :done_at, "Hecho el" %>
     <%= f.date_field :done_at,as: :date, :value => Date.today, class: 'form-control' %>
 </div>
-<div class="form-group">
-    <%= f.label :estimated_duration, "Duración en horas" %>
-    <%= f.number_field :estimated_duration, class: 'form-control' %>
-</div>
+
 <div class="form-group">
     <%= f.label :comments, "Comentarios" %>
     <%= f.text_area :comments, class: "form-control" %>

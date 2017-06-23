@@ -21,7 +21,7 @@
           <%= form_for(@programmed_maintenance) do |f| %>
             <%= render partial: "edit_form", locals: {f: f} %>
             <div class="input-group-btn">
-              <%= link_to "Cancelar", programmed_maintenances_path, class: "btn bg-red btn-flat" %>
+              <%= link_to "Cancelar", maintenance_plans_path, class: "btn bg-red btn-flat" %>
               <%= f.submit "Actualizar", class: "btn bg-green btn-flat" %>
             </div>
           <% end %>

@@ -7,11 +7,6 @@
     
 	<td>
 		<div class="input-group-btn">
-			<%= link_to edit_programmed_maintenance_path(programmed_maintenance), class: "btn bg-blue btn-flat" do %>
-				<span class="fa fa-pencil"></span>
-				<font>Marcar como hecho</font>
-			<% end %>
-
 			<%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": programmed_maintenance_path(programmed_maintenance) do %>
 				<span class="fa fa-trash"></span>
 				<font>Borrar</font>

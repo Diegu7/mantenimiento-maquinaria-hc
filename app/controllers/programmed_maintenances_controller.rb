@@ -16,7 +16,14 @@ class ProgrammedMaintenancesController < ApplicationController
         @machines = Machine.all.order(:name)
         @machine = @programmed_maintenance.machine
 
+        @product_details = @programmed_maintenance.materials_for_maintenances
+
          if @programmed_maintenance.save
+            @product_details.each do |detail|
+                @product = Product.find(detail.product_id)
+                @product.decrement!(:current_stock,detail.used_quantity)           
+            end
+
             redirect_to @machine
         else
             flash[:errors] = "No se pudo crear el mantenimiento"
@@ -30,6 +37,7 @@ class ProgrammedMaintenancesController < ApplicationController
 
     def edit
         @programmed_maintenance = ProgrammedMaintenance.find(params[:id])
+        @programmed_maintenance.materials_for_maintenances.build
     end
 
     def update
@@ -42,9 +50,29 @@ class ProgrammedMaintenancesController < ApplicationController
         @programmed_maintenance.done = true
 
         if @programmed_maintenance.update_attributes(corrective_maintenance_params)
-            redirect_to @maintenance_plan
+
+            @product_details = @programmed_maintenance.materials_for_maintenances
+
+            @product_details.each do |detail|
+                @product = Product.find(detail.product_id)
+                @product.decrement!(:current_stock,detail.used_quantity)           
+            end
+
+            if @maintenance_plan.programmed_maintenances_are_done
+                @maintenance_plan.done = true
+                @maintenance_plan.done_at = @maintenance_plan.programmed_maintenances.first.done_at
+
+                @maintenance_plan.save!
+            end
+
+            if (@maintenance_plan.done)
+                 redirect_to @maintenance_plan
+            else
+                 redirect_to edit_maintenance_plan_path(@maintenance_plan)
+            end
         else
-            render :template => "maintenance_plans/done"
+            flash[:errors] = "No se pudo crear el mantenimiento"
+            render :edit
         end
     end
 
