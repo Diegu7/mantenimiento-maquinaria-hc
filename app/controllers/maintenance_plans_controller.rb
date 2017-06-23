@@ -1,42 +1,55 @@
 class MaintenancePlansController < ApplicationController
     def index
-        @plans = MaintenancePlan.all.order(:scheduled_at)
+        @maintenance_plans = MaintenancePlan.all.order(:scheduled_at)
     end
 
     def new
-        @plan = MaintenancePlan.new
+        @maintenance_plan = MaintenancePlan.new
     end
 
     def show
-        @plan = MaintenancePlan.find(params[:id])
+        @maintenance_plan = MaintenancePlan.find(params[:id])
     end
 
     def create
-        @plan = MaintenancePlan.new(plan_params)
+        @maintenance_plan = MaintenancePlan.new(plan_params)
 
-        if @plan.save
-            redirect_to @plan
+        if @maintenance_plan.save
+            @programmed_maintenances = @maintenance_plan.programmed_maintenances
+
+            @programmed_maintenances.each do |maintenance|
+                maintenance.scheduled = true
+                maintenance.save!
+            end
+            redirect_to @maintenance_plan
         else
             flash[:errors] = 'No se pudo crear el plan de mantemiento'
             render :new
         end
     end
 
-    def edit
-        @plan = MaintenancePlan.find(params[:id])
-    end
-
     def destroy
-        @plan = MaintenancePlan.find(params[:id])
-        @plan.destroy
+        @maintenance_plan = MaintenancePlan.find(params[:id])
+        @programmed_maintenances = @maintenance_plan.programmed_maintenances
+
+        @programmed_maintenances.each do |maintenance|
+            ProgrammedMaintenance.where(id: maintenance.id).update_all(scheduled: false)
+        end      
+
+        @maintenance_plan.destroy
+        
         redirect_to maintenance_plans_path
     end
 
+    def edit
+        @maintenance_plan = MaintenancePlan.find(params[:id])
+    end
+
     def update
-        @plan = MaintenancePlan.find(params[:id])
+        @maintenance_plan = MaintenancePlan.find(params[:id])
 
         if @plan.update_attributes(plan_params)
-            redirect_to @plan
+            redirect_to @maintenance_plan
         else
             render :edit
         end
@@ -44,6 +57,6 @@ class MaintenancePlansController < ApplicationController
 
     protected
         def plan_params
-            params.require(:plan).permit(:description, :scheduled_at)
+            params.require(:maintenance_plan).permit(:description, :scheduled_at, programmed_maintenance_ids:[])
         end
 end

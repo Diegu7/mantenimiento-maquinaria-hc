@@ -6,3 +6,22 @@
   <%= f.label :scheduled_at, "Programar para" %>
   <%= f.date_field :scheduled_at,as: :date, :value => Date.today, class: 'form-control' %>
 </div>
+
+<div class="field" style="overflow:scroll; height: 400px">
+  <%= f.label "Seleccione los mantenimientos a programar" %><br />
+  <%= f.collection_check_boxes :programmed_maintenance_ids, ProgrammedMaintenance.where(done: false, preventive: true, scheduled: false).order(:scheduled_at), :id, :description do |b| %>
+    <div class="check-box">
+      <%= b.check_box %>
+      <%= b.label do%>
+        &nbsp;Descripción: <i><%= b.object.description %></i> 
+        <br/>
+        &nbsp;Maquina: <i><%= b.object.machine.name %></i>
+        <br/>
+        &nbsp;Fecha recomendada: <i><%= b.object.scheduled_at %></i>
+        <br/>
+        &nbsp;Duración approx: <i><%= b.object.estimated_duration.to_s %></i>
+      <%end%>
+    </div>
+    <br>
+  <% end %>
+</div>      
