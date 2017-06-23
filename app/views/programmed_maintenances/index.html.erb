@@ -1,0 +1,17 @@
+<section class="content-header">
+	<h1>
+		Mantenimientos Programados
+		<small>Índice</small>
+	</h1>
+
+	<ol class="breadcrumb">
+		<li><i class="fa fa-cog"></i> <span>Planes</span></li>
+		<li><%= link_to "Mantenimientos Programados", programmed_maintenances_path %></li>
+		<li class="active">Índice</li>
+	</ol>
+</section>
+
+<section class="content">
+	<%= render partial: "programmed_maintenances_table", locals: { programmed_maintenances: @programmed_maintenances } %>
+	<%= render partial: "shared/deletion_modal" %>
+</section>

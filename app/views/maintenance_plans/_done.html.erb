@@ -1,0 +1,45 @@
+<div class="form-group">
+  <%= f.label :done_at, "Fecha realitado" %>
+  <%= f.date_field :done_at,as: :date, :value => Date.today, class: 'form-control' %>
+</div>
+
+<h3>Detalles de Mantenimientos en este plan</h3>
+<h4>Debe cerrarlos uno a uno para detallar los materiales usados, luego cierra el plan</h4>
+<section class="content">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="box box-success">
+        <div class="box-body">
+           <table id="maintenance-plan-details-table3" class="table table-bordered table-striped">
+            <thead>
+              <tr role="row">
+                <th>Maquina</th>
+                <th>Descripción</th>
+                <th>Duración Estimada</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+              <%if @maintenance_plan.programmed_maintenances%>
+                <%for maint in @maintenance_plan.programmed_maintenances %>
+                  <tr>
+                    <td><%=maint.machine.name%></td>
+                    <td><%=maint.description%> horas</td>                  
+                    <td><%=maint.estimated_duration%></td>                   
+                    <td>
+                        <%= link_to edit_programmed_maintenance_path(maint), class: "btn bg-blue btn-flat" do %>
+                          <span class="fa fa-pencil"></span>
+                          <font>Cerrar</font>
+                        <% end %>
+                      </div>
+                    </td>
+                  </tr>
+                <%end%>
+              <%end%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

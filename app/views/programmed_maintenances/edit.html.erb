@@ -1,0 +1,32 @@
+<section class="content-header">
+  <h1>
+    Mantenimiento Programado
+    <small>Editar</small>
+  </h1>
+
+  <ol class="breadcrumb">
+		<li><i class="fa fa-cog"></i> <span> Mantenimientos</span></li>
+		<li><%= link_to " Mantenimiento Programado", programmed_maintenances_path %></li>
+        <li><%= @programmed_maintenance.id %></li>
+		<li class="active">Editar</li>
+	</ol>
+  <%= render partial: "shared/errors", locals: { obj: @programmed_maintenance } %>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class="box-body">
+          <%= form_for(@programmed_maintenance) do |f| %>
+            <%= render partial: "edit_form", locals: {f: f} %>
+            <div class="input-group-btn">
+              <%= link_to "Cancelar", programmed_maintenances_path, class: "btn bg-red btn-flat" %>
+              <%= f.submit "Actualizar", class: "btn bg-green btn-flat" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
