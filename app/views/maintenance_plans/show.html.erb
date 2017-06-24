@@ -40,17 +40,21 @@
             </div>
 
           <div class="footer">
-              <div class="btn-group">
-                <%= link_to maintenance_plans_path, class: "btn bg-purple btn-flat" do %>
-                  <span class="glyphicon glyphicon-chevron-left"></span>
-                  <font>Regresar</font>
-                <% end %>
-                <%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": maintenance_plan_path(@maintenance_plan) do %>
-                  <span class="fa fa-trash"></span>
-                  <font>Borrar</font>
-                <% end %>
-              </div>
-          </div>     
+            <span class="left">
+                <div class="input-group-btn" >
+                  <%= link_to maintenance_plans_path, class: "btn bg-purple btn-flat" do %>
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <font>Regresar</font>
+                  <% end %>
+                  <%if !(@maintenance_plan.done)%>
+                    <%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": maintenance_plan_path(@maintenance_plan) do %>
+                      <span class="fa fa-trash"></span>
+                      <font>Borrar</font>
+                    <% end %>
+                  <% end %>
+                </div>
+            </span> 
+          </div>    
       </div>
 
       <div class="col-md-8">

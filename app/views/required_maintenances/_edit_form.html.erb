@@ -27,6 +27,6 @@
     </div>
     <div class="form-group">
         <%= f.label :last_time_done_at, "Fecha de útlimo mantenimiento" %>
-        <%= f.date_field :last_time_done_at,as: :date, :value => '1900-01-01', class: 'form-control' %>
+        <%= f.date_field :last_time_done_at,as: :date, :value => Date.today, class: 'form-control' %>
     </div>
 <%end%>
