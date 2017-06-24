@@ -1,23 +1,22 @@
 <div class="box box-success">
   <div class="box-header">
-    <div class="box-tools">
-      <%= link_to "Nuevo Plan de Mantenimiento",new_maintenance_plan_path ,class:"btn bg-green btn-flat"%>
-    </div>
+  
   </div>
 
   <div class="box-body table-responsive no-padding">
     <table id="paginated-table" class="table table-hover">
       <thead>
         <tr role="row">
+          <th>Máquina</th>
           <th>Descripción</th>
           <th>Programado para</th>
-          <th>Hecho el</th>
-          <th>¿Está hecho?</th>
+          <th>Duración estimada</th>
+          <th>Comentarios</th>
           <th width="1"></th>
         </tr>
       </thead>
       <tbody>
-          <%= render maintenance_plans %>
+          <%= render programmed_maintenances %>
       </tbody>
     </table>
   </div>

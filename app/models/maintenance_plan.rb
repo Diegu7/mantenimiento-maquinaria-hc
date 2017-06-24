@@ -6,5 +6,16 @@ class MaintenancePlan < ApplicationRecord
 
     def default_values
         self.description ||= "Plan de mantenimiento " + Date.today.to_s + ' # ' + rand(20).to_s
-     end
+    end
+
+    def programmed_maintenances_are_done
+        self.programmed_maintenances.each do |maintenance|
+            if  !maintenance.done
+                return false
+            end
+        end
+        return true
+    end
+    
+        
 end

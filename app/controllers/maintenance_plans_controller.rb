@@ -48,7 +48,7 @@ class MaintenancePlansController < ApplicationController
     def update
         @maintenance_plan = MaintenancePlan.find(params[:id])
 
-        if @plan.update_attributes(plan_params)
+        if @maintenance_plan.update_attributes(plan_params)
             redirect_to @maintenance_plan
         else
             render :edit
