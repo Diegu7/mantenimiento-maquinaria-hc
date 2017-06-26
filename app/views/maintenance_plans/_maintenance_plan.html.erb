@@ -1,0 +1,37 @@
+<tr>
+	<td><%= maintenance_plan.description %></td>
+	<td><%= maintenance_plan.scheduled_at %></td>
+	<td><%= maintenance_plan.done_at %></td>
+	<%if maintenance_plan.done%>
+		<td>Si</td>
+	<%else%>
+		<td>No</td>
+	<%end%>
+	<td>
+		<div class="input-group-btn">	
+			<%if maintenance_plan.done%>
+				<%= link_to maintenance_plan, class: "btn bg-purple btn-flat" do %>
+					<span class="fa fa-file-text"></span>
+					<font>Ver</font>
+				<% end %>	
+			<%else%>
+				<%= link_to maintenance_plan, class: "btn bg-purple btn-flat" do %>
+					<span class="fa fa-file-text"></span>
+					<font>Ver</font>
+				<% end %>
+				<%= link_to edit_maintenance_plan_path(maintenance_plan), class: "btn bg-blue btn-flat" do %>
+					<span class="fa fa-pencil"></span>
+					<font>Marcar como Hecho</font>
+				<% end %>
+
+				<%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": maintenance_plan_path(maintenance_plan) do %>
+					<span class="fa fa-trash"></span>
+					<font>Borrar</font>
+				<% end %>			
+			<%end%>
+
+			
+		
+		</div>
+	</td>
+</tr>

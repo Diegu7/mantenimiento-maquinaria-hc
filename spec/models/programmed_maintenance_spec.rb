@@ -6,9 +6,9 @@ RSpec.describe ProgrammedMaintenance, type: :model do
   let(:maintenance_without_scheduled_at) { build :programmed_maintenance, scheduled_at: nil }
   let(:maintenance_without_comments) { build :programmed_maintenance, comments: nil }
   let(:maintenance_without_valid_estimated_duration) { build :programmed_maintenance, estimated_duration: -1 }
-  let(:maintenance_without_done) { build :programmed_maintenance, done?: nil }
+  let(:maintenance_without_done) { build :programmed_maintenance, done: nil }
   let(:maintenance_without_done_at) { build :programmed_maintenance, done_at: nil }
-  let(:maintenance_without_preventive) { build :programmed_maintenance, preventive?: nil }
+  let(:maintenance_without_preventive) { build :programmed_maintenance, preventive: nil }
   let(:maintenance_without_machine) { build :programmed_maintenance, machine: nil }
 
   it 'is valid with a description, scheduled at, estimated duration, done, done at, preventive and machine' do

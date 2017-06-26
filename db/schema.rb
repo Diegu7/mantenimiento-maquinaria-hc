@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170606162621) do
+ActiveRecord::Schema.define(version: 20170622045124) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -50,6 +50,7 @@ ActiveRecord::Schema.define(version: 20170606162621) do
     t.datetime "updated_at", null: false
     t.bigint "machine_section_id"
     t.string "image"
+    t.text "description"
     t.index ["machine_section_id"], name: "index_machines_on_machine_section_id"
   end
 
@@ -57,9 +58,14 @@ ActiveRecord::Schema.define(version: 20170606162621) do
     t.string "description"
     t.date "scheduled_at"
     t.date "done_at"
-    t.boolean "done?"
+    t.boolean "done", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "maintenance_plans_programmed_maintenances", id: false, force: :cascade do |t|
+    t.bigint "programmed_maintenance_id", null: false
+    t.bigint "maintenance_plan_id", null: false
   end
 
   create_table "materials_for_maintenances", force: :cascade do |t|
@@ -106,13 +112,16 @@ ActiveRecord::Schema.define(version: 20170606162621) do
     t.date "scheduled_at"
     t.integer "estimated_duration"
     t.text "comments"
-    t.boolean "done?"
+    t.boolean "done", default: true
     t.date "done_at"
-    t.boolean "preventive?"
+    t.boolean "preventive"
     t.bigint "machine_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "required_maintenance_id"
+    t.boolean "scheduled", default: false
     t.index ["machine_id"], name: "index_programmed_maintenances_on_machine_id"
+    t.index ["required_maintenance_id"], name: "index_programmed_maintenances_on_required_maintenance_id"
   end
 
   create_table "required_maintenances", force: :cascade do |t|
@@ -124,6 +133,9 @@ ActiveRecord::Schema.define(version: 20170606162621) do
     t.datetime "updated_at", null: false
     t.decimal "frequency_in_hours"
     t.decimal "frequency_in_days"
+    t.date "last_time_done_at"
+    t.integer "mileage_when_last_done"
+    t.boolean "queued", default: false
     t.index ["machine_area_id"], name: "index_required_maintenances_on_machine_area_id"
     t.index ["machine_id"], name: "index_required_maintenances_on_machine_id"
   end
@@ -157,6 +169,7 @@ ActiveRecord::Schema.define(version: 20170606162621) do
   add_foreign_key "mileage_logs", "machines"
   add_foreign_key "products", "product_brands"
   add_foreign_key "programmed_maintenances", "machines"
+  add_foreign_key "programmed_maintenances", "required_maintenances"
   add_foreign_key "required_maintenances", "machine_areas"
   add_foreign_key "required_maintenances", "machines"
   add_foreign_key "technical_specifications", "machines"

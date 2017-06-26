@@ -1,0 +1,31 @@
+<section class="content-header">
+  <h1>
+    Planes de Mantenimiento
+    <small>Marcar como hecho</small>
+  </h1>
+
+  <ol class="breadcrumb">
+		<li><i class="fa fa-cog"></i> <span>Planes</span></li>
+		<li><%= link_to "Planes de Mantenimiento", maintenance_plans_path %></li>
+    <li><%= @maintenance_plan.id %></li>
+		<li class="active">Marcar como hecho</li>
+	</ol>
+  <%= render partial: "shared/errors", locals: { obj: @maintenance_plan } %>
+</section>
+
+<section class="content">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="box box-success">
+        <div class="box-body">
+          <%= form_for(@maintenance_plan, :url => maintenance_plan_path) do |f| %>
+            <%= render partial: "done", locals: {f: f} %>
+            <div class="input-group-btn">
+              <%= link_to "Cancelar", maintenance_plans_path, class: "btn bg-red btn-flat" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

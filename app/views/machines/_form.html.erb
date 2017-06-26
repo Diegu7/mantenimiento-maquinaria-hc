@@ -6,6 +6,10 @@
   <%= f.label :machine_section_id, "Sección" %>
   <%= f.select :machine_section_id, MachineSection.pluck(:name, :id), {}, class: "form-control" %>
 </div>
+<div class="form-group">
+  <%= f.label :description, "Descripción" %>
+  <%= f.text_area :description, class: "form-control" %>
+</div>
 <div class= "form-group">
    <%= f.label :image, "Imagen" %>
    <%= f.file_field :image%>

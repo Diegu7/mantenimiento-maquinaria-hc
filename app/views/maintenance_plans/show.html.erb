@@ -1,0 +1,87 @@
+<section class="content-header">
+  <h1>
+    Planes de mantenimiento
+    <small><%=@maintenance_plan.description%></small>
+  </h1>
+
+  <ol class="breadcrumb">
+    <li><i class="fa fa-cog"></i> <span>Planes</span></li>
+    <li>
+      <%= link_to "Planes de Mantenimiento", maintenance_plans_path %>
+    </li>
+    <li class="active">
+      <%= @maintenance_plan.id %>
+    </li>
+  </ol>
+</section>
+
+<section class="content">
+  <div class="box box-warning">
+    <div class="box-header">
+      <div class="col-md-4">
+       <h2>Información General</h2>
+            <div class="col-md-8">                
+              <dl>
+                <dt>Descripción</dt>
+                <dd align="justify">&nbsp;&nbsp;&nbsp;<%=@maintenance_plan.description%></dd>
+                <dt>Programado para</dt>
+                <dd>&nbsp;&nbsp;&nbsp;<%=@maintenance_plan.scheduled_at%></dd>
+                <dt>Está hecho</dt>
+                <dd>&nbsp;&nbsp;&nbsp;
+                    <%if @maintenance_plan.done%>
+                        Si
+                    <%else%>
+                        No
+                    <%end%>
+                </dd>
+                <dt>Fecha realizado</dt>
+                <dd>&nbsp;&nbsp;&nbsp;<%=@maintenance_plan.done_at%></dd>
+              </dl>
+            </div>
+
+          <div class="footer">
+            <span class="left">
+                <div class="input-group-btn" >
+                  <%= link_to maintenance_plans_path, class: "btn bg-purple btn-flat" do %>
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <font>Regresar</font>
+                  <% end %>
+                  <%if !(@maintenance_plan.done)%>
+                    <%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": maintenance_plan_path(@maintenance_plan) do %>
+                      <span class="fa fa-trash"></span>
+                      <font>Borrar</font>
+                    <% end %>
+                  <% end %>
+                </div>
+            </span> 
+          </div>    
+      </div>
+
+      <div class="col-md-8">
+        <h2>Detalles</h2>
+        <div class="box-body">
+          <table id="maintenance-plan-details-table" class="table table-bordered table-striped">
+            <thead>
+                <tr role="row">
+                    <th>Descripción</th>
+                    <th>Duración Estimada</th>
+                    <th>Máquina</th>
+                    <th>Comentarios</th>
+                </tr>
+            </thead>
+            <tbody>
+            <%for maint in @maintenance_plan.programmed_maintenances %>
+                <tr>
+                    <td><%=maint.description%></td>
+                    <td><%=maint.estimated_duration%> horas</td>                
+                    <td><%=maint.machine.name%></td>
+                    <td><%=maint.comments%></td>
+                </tr>
+            <%end%>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <%= render partial: "shared/deletion_modal" %>
+</section>

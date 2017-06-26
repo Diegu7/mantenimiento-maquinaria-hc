@@ -8,6 +8,8 @@ end
 # Use Ruby 2.4.0
 ruby '2.4.0'
 
+#Cron jobs
+gem 'whenever', :require => false
 # Use rails-i18n for internationalization
 gem 'rails-i18n', '~> 5.0.0'
 # Use ionicons
@@ -32,6 +34,7 @@ gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
+gem 'jquery-datatables-rails', '~> 3.4.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '~> 4.2'
