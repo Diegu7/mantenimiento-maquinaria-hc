@@ -18,7 +18,7 @@
         <div class="box-body">
           <div class="col-md-4">
             <div class="col-md-8">
-                <%=image_tag (@machine.image_url),class: "img-responsive"%>
+                <%= image_tag @machine.image.url(:medium)%>
               <dl>
                 <dt>Nombre</dt>
                 <dd>&nbsp;&nbsp;&nbsp;<%=@machine.name%></dd>
