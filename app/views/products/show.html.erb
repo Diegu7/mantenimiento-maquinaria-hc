@@ -19,7 +19,7 @@
   <div class="box box-warning">
     <div class="box-header">
       <div class="col-xs-4 item-photo">
-        <%= image_tag(@product.image_url, style: 'max-width:100%;' ) %>
+        <%= image_tag @product.image.url(:medium)%>
       </div>
 
       <div class="col-md-8">
