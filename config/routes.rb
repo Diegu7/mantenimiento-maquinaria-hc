@@ -34,4 +34,7 @@ Rails.application.routes.draw do
   end
 
   resources :maintenance_plans
+
+  resources :maintenance_notifications
+
 end

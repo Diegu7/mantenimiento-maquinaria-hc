@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170806084526) do
+ActiveRecord::Schema.define(version: 20170808052952) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,16 @@ ActiveRecord::Schema.define(version: 20170806084526) do
     t.integer "image_file_size"
     t.datetime "image_updated_at"
     t.index ["machine_section_id"], name: "index_machines_on_machine_section_id"
+  end
+
+  create_table "maintenance_notifications", force: :cascade do |t|
+    t.string "machine_name"
+    t.text "description"
+    t.date "scheduled_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "programmed_maintenance_id"
+    t.integer "remaining_days"
   end
 
   create_table "maintenance_plans", force: :cascade do |t|

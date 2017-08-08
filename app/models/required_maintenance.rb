@@ -2,10 +2,13 @@ class RequiredMaintenance < ApplicationRecord
      before_save :fill_nil_values
      after_save :update_programmed_maintenances
      after_initialize :fill_nil_values
+     after_update :update_maintenance_notifications 
+
      belongs_to :machine
      belongs_to :machine_area
-
+     
      has_many :programmed_maintenances
+     has_many :maintenance_notifications
 
      validates_presence_of :description, :machine, :machine_area, :frequency_in_hours, :frequency_in_days
 
@@ -40,10 +43,10 @@ class RequiredMaintenance < ApplicationRecord
              done: false,
              machine: machine,
              scheduled_at: last_time_done_at.to_datetime + frequency_in_days + 8.hour
-        )
-     end
+        ) 
+     end 
 
-     def fill_nil_values
+    def fill_nil_values
         if self.frequency_in_days == nil
              self.frequency_in_days = 0
         end
@@ -53,13 +56,17 @@ class RequiredMaintenance < ApplicationRecord
         end
     end
 
-     def fill_nil_values
+    def fill_nil_values
         self.frequency_in_days ||= 0
         self.frequency_in_hours ||= 0
         self.mileage_when_last_done ||= 0
-     end
+    end
 
-     def update_programmed_maintenances
-         RequiredMaintenance.create_programmed_maintenances
-     end
+    def update_programmed_maintenances
+        RequiredMaintenance.create_programmed_maintenances
+    end
+    def update_maintenance_notifications
+        
+    end
+
 end
