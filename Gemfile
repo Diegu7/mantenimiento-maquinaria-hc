@@ -49,7 +49,6 @@ gem 'carrierwave', '~> 1.0'
 # Use coccon for nested forms 
 gem 'cocoon'
 gem 'select2-rails'
-
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
