@@ -1,0 +1,17 @@
+	
+<%- @maintenance_notifications.each do |maintenance_notification| %>
+	<tr>
+		<td><%= maintenance_notification.machine_name %></td>
+		<td><%= maintenance_notification.description %></td>
+		<td><%= maintenance_notification.scheduled_at %></td>
+		<td><%= (maintenance_notification.scheduled_at - Date.today).to_i %> dias</td>
+		<td>
+		<div class="input-group-btn">
+			<%= button_tag class: "btn bg-red btn-flat", "data-deletion-path": maintenance_notification_path(maintenance_notification) do %>
+				<span class="fa fa-trash"></span>
+				<font>Descartar</font>
+			<% end %>
+		</div>
+	</td>
+	</tr>
+<%- end %>

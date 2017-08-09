@@ -57,6 +57,16 @@ ActiveRecord::Schema.define(version: 20170808213451) do
     t.index ["machine_section_id"], name: "index_machines_on_machine_section_id"
   end
 
+  create_table "maintenance_notifications", force: :cascade do |t|
+    t.string "machine_name"
+    t.text "description"
+    t.date "scheduled_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.decimal "programmed_maintenance_id"
+    t.integer "remaining_days"
+  end
+
   create_table "maintenance_plans", force: :cascade do |t|
     t.string "description"
     t.date "scheduled_at"
