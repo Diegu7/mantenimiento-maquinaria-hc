@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170808052952) do
+ActiveRecord::Schema.define(version: 20170808213451) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -106,6 +106,15 @@ ActiveRecord::Schema.define(version: 20170808052952) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "product_durabilities", force: :cascade do |t|
+    t.string "product"
+    t.integer "durability"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "materials_for_maintenances_id"
+    t.index ["materials_for_maintenances_id"], name: "index_product_durabilities_on_materials_for_maintenances_id"
+  end
+
   create_table "products", force: :cascade do |t|
     t.string "name"
     t.integer "initial_stock"
@@ -183,6 +192,7 @@ ActiveRecord::Schema.define(version: 20170808052952) do
   add_foreign_key "materials_for_maintenances", "products"
   add_foreign_key "materials_for_maintenances", "programmed_maintenances"
   add_foreign_key "mileage_logs", "machines"
+  add_foreign_key "product_durabilities", "materials_for_maintenances", column: "materials_for_maintenances_id"
   add_foreign_key "products", "product_brands"
   add_foreign_key "programmed_maintenances", "machines"
   add_foreign_key "programmed_maintenances", "required_maintenances"

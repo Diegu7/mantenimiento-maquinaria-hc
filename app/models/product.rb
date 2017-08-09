@@ -1,6 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :product_brand
-
+  has_many :materials_for_maintenances
   validates_presence_of :name
   validates_presence_of :product_brand, :initial_stock, :current_stock, :minimum, :maximum, :specifications
   validates :initial_stock, :current_stock, :minimum, :maximum, numericality:  { greater_than_or_equal_to: 0 }
