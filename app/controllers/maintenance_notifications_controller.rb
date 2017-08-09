@@ -32,13 +32,13 @@ class MaintenanceNotificationsController < ApplicationController
 
 	def destroy
 		@maintenance_notification = MaintenanceNotification.find(params[:id])
-        @maintenance_notification.destroy
-        redirect_to maintenance_notification_path
+    @maintenance_notification.destroy
+    redirect_to @maintenance_notification
   end
 
     private
     	
     def maintenance_notification_params
-        params.require(:MaintenanceNotification).permit(:name, :description, :scheduled_at, :required_maintenance_id)
+        params.require(:MaintenanceNotification).permit(:name, :description, :scheduled_at, :required_maintenance_id, :remaining_days)
     end
 end

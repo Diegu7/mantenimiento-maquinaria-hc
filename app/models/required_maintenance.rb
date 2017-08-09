@@ -2,7 +2,6 @@ class RequiredMaintenance < ApplicationRecord
      before_save :fill_nil_values
      after_save :update_programmed_maintenances
      after_initialize :fill_nil_values
-     after_update :update_maintenance_notifications 
 
      belongs_to :machine
      belongs_to :machine_area
@@ -64,9 +63,6 @@ class RequiredMaintenance < ApplicationRecord
 
     def update_programmed_maintenances
         RequiredMaintenance.create_programmed_maintenances
-    end
-    def update_maintenance_notifications
-        
     end
 
 end
