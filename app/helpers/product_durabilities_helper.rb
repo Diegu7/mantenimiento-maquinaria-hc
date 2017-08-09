@@ -1,0 +1,2 @@
+module ProductDurabilitiesHelper
+end

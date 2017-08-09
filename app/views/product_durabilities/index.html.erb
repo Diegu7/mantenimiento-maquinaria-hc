@@ -1,0 +1,56 @@
+<section class="content-header">
+	<h1>
+		Durabilidad de Repuestos
+		<small>Índice</small>
+	</h1>
+
+	<ol class="breadcrumb">
+		<li><i class="fa fa-cog"></i> <span>Reportes</span></li>
+		<li><%= link_to "Durabilidad de Repuestos", "#" %></li>
+		<li class="active">Índice</li>
+	</ol>
+</section>
+
+<section class="content">
+<div class="box box-success">
+  <div class="box-header">
+  </div>
+  <div class="box-body table-responsive no-padding">
+    <table id="paginated-table" class="table table-hover">
+      <thead>
+        <tr role="row">
+          <th>Producto</th>
+          <th>Durabilidad</th>
+          <th width="1"></th>
+        </tr>
+      </thead>
+      <% $i = 0 %>
+      <% $durability = 0 %>
+      <% @product_durability = ProgrammedMaintenance.joins(:materials_for_maintenances).order(:scheduled_at)%>
+      <% @product_durability_comp.each do |grouped| %>
+      <tbody>
+      <% @product_durability.each do |notg| %>
+          <%if $i > 1 %>
+          <%break%>
+          <%end%>
+          <%if grouped.id == notg.id %>
+          <%if $i == 0 %>
+          <% $durability = (notg.scheduled_at.to_i)*(-1) %>
+          <% $i = $i + 1 %>
+          <%else%>
+          <% $durability = $durability + notg.done_at.to_i %>
+          <%end%>
+          <%end%>
+      <%end%>
+      <% $durability = ($durability/365.25).to_i %>
+      <tr>
+        <td> <%= grouped.name %> </td>
+        <td> <%= durability %> </td>
+      </tr>
+      </tbody>
+      <%end%>
+    </table>
+  </div>
+</div>
+	<%= render partial: "shared/deletion_modal" %>
+</section>
