@@ -1,6 +1,6 @@
 class ProgrammedMaintenance < ApplicationRecord
    before_save :default_values
-   after_create :create_maintenance_notifications
+   after_create :update_maintenance_notifications
    after_update :update_maintenance_notifications
    belongs_to :machine
 
@@ -47,12 +47,8 @@ class ProgrammedMaintenance < ApplicationRecord
             description: description,
             scheduled_at: scheduled_at,
             programmed_maintenance_id: id,
-            remaining_days: scheduled_at
+            remaining_days: (scheduled_at - Date.today).to_i
         )
-    end
-
-    def create_maintenance_notifications
-        ProgrammedMaintenance.create_maintenance_notifications
     end
 
     def update_maintenance_notifications

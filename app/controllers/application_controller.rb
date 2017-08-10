@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
   before_action :authenticate
   helper_method :notification_count
   helper_method :notification
+  helper_method :notification_mssg
 
   def current_user
     @current_user = User.find(session[:user_id]) if session[:user_id]
@@ -25,6 +26,16 @@ class ApplicationController < ActionController::Base
 
   def notification_count
     @maintenance_notifications = MaintenanceNotification.all.count()
+  end
+
+  def notification_mssg
+    @maintenance_notifications = MaintenanceNotification.all.count()
+
+    if @maintenance_notifications > 0
+      return flash[:alert] = "Tienen notificaciones disponibles."
+    else
+      return flash[:alert] = "No hay notificaciones disponibles."
+    end 
   end
 
   def notification
