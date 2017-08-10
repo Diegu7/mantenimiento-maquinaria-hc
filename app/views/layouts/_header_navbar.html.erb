@@ -19,7 +19,7 @@
             <li>
             <!-- Inner Menu: contains the notifications -->
             <ul class="menu">
-                <%- notification.each do |mn| %>
+                 <%- notification.each do |mn| %>
                 <li><!-- start notification -->
                 <a href="#">
                     <i class="fa fa-users text-aqua"></i><%= (mn.scheduled_at - Date.today).to_i %> dias para mantenimiento de <%= mn.machine_name %> 
