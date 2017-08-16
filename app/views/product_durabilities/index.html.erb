@@ -28,26 +28,27 @@
       <% $durability = 0 %>
       <% $started_at = Time.new %>
       <% $done_at = Time.new %>
-      <% @product_durability_comp = ProgrammedMaintenance.joins(:materials_for_maintenances).order(:scheduled_at).group(:id)%>
-      <% @product_durability = ProgrammedMaintenance.joins(:materials_for_maintenances).order(:scheduled_at)%>
+      <% @product_durability_comp = ProgrammedMaintenance.joins(:materials_for_maintenances).includes(:materials_for_maintenances).order(:scheduled_at).group(:id).count(:estimated_duration)%>
+      <% @product_durability = ProgrammedMaintenance.joins(:materials_for_maintenances).includes(:materials_for_maintenances).order(:scheduled_at)%>
       <% @product_durability_comp.each do |yesg| %>
       <tbody>
       <% @product_durability.each do |notg| %>
           <%if $i > 1 %>
           <%break%>
           <%end%>
-          <%if yesg.id  == notg.id %>
+          <%if notg.id  == notg.id %>
           <%if $i == 0 %>
           <% $started_at = notg.done_at %>
           <% $i = $i + 1 %>
           <%else%>
-          <% $done_at = notg.started_at%>
+          <% $done_at = notg.scheduled_at%>
           <%end%>
           <%end%>
       <%end%>
+      <% $i = 0%>
       <% $durability = ($started_at..$done_at).count %>
       <tr>
-        <td> <%= yesg.id%> </td>
+        <td> <%#= yesg.id%> </td>
         <td> <%= $durability %> </td>
       </tr>
       </tbody>

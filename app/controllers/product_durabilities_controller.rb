@@ -1,6 +1,6 @@
 class ProductDurabilitiesController < ApplicationController
 	def index
-		@product_durability_comp = ProgrammedMaintenance.joins(:materials_for_maintenances).order(:scheduled_at).group(:id).count(:estimated_duration)
+		#@product_durability_comp = ProgrammedMaintenance.joins(:materials_for_maintenances).order(:scheduled_at).group(:id).count(:estimated_duration)
 	end
 
 	def new
