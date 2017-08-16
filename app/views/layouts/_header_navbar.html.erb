@@ -6,27 +6,29 @@
     <!-- Navbar Right Menu -->
     <div class="navbar-custom-menu">
     <ul class="nav navbar-nav">
+
         <!-- Notifications Menu -->
         <li class="dropdown notifications-menu">
         <!-- Menu toggle button -->
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-bell-o"></i>
-            <span class="label label-warning">10</span>
+            <span class="label label-warning"><%= notification_count %></span>
         </a>
         <ul class="dropdown-menu">
-            <li class="header">You have 10 notifications</li>
+            <li class="header">Notificaciones actuales</li>
             <li>
             <!-- Inner Menu: contains the notifications -->
             <ul class="menu">
+                <%- notification.each do |mn| %>
                 <li><!-- start notification -->
                 <a href="#">
-                    <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                </a>
+                    <i class="fa fa-users text-aqua"></i><%= (mn.scheduled_at - Date.today).to_i %> dias para mantenimiento de <%= mn.machine_name %> 
                 </li>
+                <%-end%>
                 <!-- end notification -->
             </ul>
             </li>
-            <li class="footer"><a href="#">View all</a></li>
+            <li class="footer"><a href="/maintenance_notifications">Ver notificaciones</a></li>
         </ul>
         </li>
         <!-- Tasks Menu -->
@@ -34,7 +36,7 @@
         <!-- Menu Toggle Button -->
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">
             <i class="fa fa-flag-o"></i>
-            <span class="label label-danger">9</span>
+            <span class="label label-danger"></span>
         </a>
         <ul class="dropdown-menu">
             <li class="header">You have 9 tasks</li>
