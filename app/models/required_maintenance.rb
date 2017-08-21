@@ -19,7 +19,7 @@ class RequiredMaintenance < ApplicationRecord
 
      #This should be a query
      def self.coming_soon
-         RequiredMaintenance.where(queued: false).select{ |m| m.last_time_done_at + m.frequency_in_days < Date.today + 5.day  }
+         RequiredMaintenance.where(queued: false).select{ |m| m.last_time_done_at + m.frequency_in_days < Date.today + 1.month  }
      end
 
      def self.create_programmed_maintenances
