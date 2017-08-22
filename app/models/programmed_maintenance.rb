@@ -18,7 +18,7 @@ class ProgrammedMaintenance < ApplicationRecord
    scope :pending, -> { where(done: false, preventive: true) }
 
   def self.coming_soon
-      ProgrammedMaintenance.select{ |m| m.scheduled_at < Date.today + 7.day  }
+      ProgrammedMaintenance.select{ |m| m.scheduled_at < Date.today + 1.month }
   end
 
    def default_values
