@@ -43,9 +43,10 @@
       <% @materials_maintenances.each do |mat_maint| %>
       <tr>
          <% if $current_product_id != mat_maint.product_id%>
-         <% $current_product_id = mat_maint.product_id%>
-         <% if $current_product_id != 0%>
+         <% if $current_product_id != -1%>
+	 <% if $v_amt > 1%>
          <%$v_dur = $v_dur / ($v_amt - 1) %>
+	 <% end%>
          <td><%= $v_bname%></td>
          <td><%= $v_pname%></td>
          <td><%= $v_dur%></td>
@@ -54,6 +55,7 @@
          <%$v_pname = 0%>
          <%$v_amt = 0%>
          <% end%>
+	 <% $current_product_id = mat_maint.product_id%>
          <% if $amount_products == 1%>
          <% $durability = 0%>
          <% elsif $amount_products > 1%>
