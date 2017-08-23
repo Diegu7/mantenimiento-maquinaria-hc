@@ -31,10 +31,10 @@
       <% $v_started_at = Time.new %>
       <% $v_done_at = Time.new %>
       <% $v_is_first = 1 %>
-      <% $v_dur%>
-      <% $v_amt%>
-      <% $v_bname%>
-      <% $v_pname%>
+      <% $v_dur = 0%>
+      <% $v_amt = 0%>
+      <% $v_bname = 0%>
+      <% $v_pname = 0%>
       <% @materials_maintenances = MaterialsForMaintenance.select(:programmed_maintenance_id, :product_id).order(:product_id)%>
       <% @progrmmed_maintenances = ProgrammedMaintenance.select(:id, :scheduled_at, :done_at)%>
       <% @products = Product.select(:id, :name, :product_brand_id)%>
