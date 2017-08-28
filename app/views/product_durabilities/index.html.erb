@@ -19,40 +19,70 @@
     <table id="paginated-table" class="table table-hover">
       <thead>
         <tr role="row">
+          <th>Marca</th>
           <th>Producto</th>
-          <th>Durabilidad</th>
+          <th>Durabilidad en Días</th>
           <th width="1"></th>
         </tr>
       </thead>
-      <% $i = 0 %>
+      <% $current_product_id = -1 %>
       <% $durability = 0 %>
-      <% $started_at = Time.new %>
-      <% $done_at = Time.new %>
-      <% @product_durability_comp = ProgrammedMaintenance.joins(:materials_for_maintenances).includes(:materials_for_maintenances).order(:scheduled_at).group(:id).count(:estimated_duration)%>
-      <% @product_durability = ProgrammedMaintenance.joins(:materials_for_maintenances).includes(:materials_for_maintenances).order(:scheduled_at)%>
-      <% @product_durability_comp.each do |yesg| %>
+      <% $amount_products = 0 %>
+      <% $v_started_at = Time.new %>
+      <% $v_done_at = Time.new %>
+      <% $v_is_first = 1 %>
+      <% $v_dur%>
+      <% $v_amt%>
+      <% $v_bname%>
+      <% $v_pname%>
+      <% @materials_maintenances = MaterialsForMaintenance.select(:programmed_maintenance_id, :product_id).order(:product_id)%>
+      <% @progrmmed_maintenances = ProgrammedMaintenance.select(:id, :scheduled_at, :done_at)%>
+      <% @products = Product.select(:id, :name, :product_brand_id)%>
+      <% @product_brands = ProductBrand.select(:id, :name)%>
       <tbody>
-      <% @product_durability.each do |notg| %>
-          <%if $i > 1 %>
-          <%break%>
-          <%end%>
-          <%if notg.id  == notg.id %>
-          <%if $i == 0 %>
-          <% $started_at = notg.done_at %>
-          <% $i = $i + 1 %>
-          <%else%>
-          <% $done_at = notg.scheduled_at%>
-          <%end%>
-          <%end%>
-      <%end%>
-      <% $i = 0%>
-      <% $durability = ($started_at..$done_at).count %>
+      <% @materials_maintenances.each do |mat_maint| %>
       <tr>
-        <td> <%#= yesg.id%> </td>
-        <td> <%= $durability %> </td>
+         <% if $current_product_id != mat_maint.product_id%>
+         <% $current_product_id = mat_maint.product_id%>
+         <% if $current_product_id != 0%>
+         <%$v_dur = $v_dur / ($v_amt - 1) %>
+         <td><%= $v_bname%></td>
+         <td><%= $v_pname%></td>
+         <td><%= $v_dur%></td>
+         <%$v_dur = 0 %>
+         <%$v_bname = 0%>
+         <%$v_pname = 0%>
+         <%$v_amt = 0%>
+         <% end%>
+         <% if $amount_products == 1%>
+         <% $durability = 0%>
+         <% elsif $amount_products > 1%>
+         <% end%>
+         <% $amount_products = 0%>
+         <% $v_is_first = 1%>
+         <% $durability = 0%>
+         <% end%>
+         <% @m_maintenance_pm = ProgrammedMaintenance.select('id, scheduled_at ,done_at').find(mat_maint.programmed_maintenance_id)%>
+         <% @prods = Product.select('id, name, product_brand_id').find(mat_maint.product_id)%>
+         <% @brands = ProductBrand.select('id, name').find(@prods.product_brand_id)%>
+         <% if $v_is_first == 1%>
+         <% $v_done_at = @m_maintenance_pm.done_at%>
+         <%else%>
+         <% $v_started_at = @m_maintenance_pm.scheduled_at%>
+         <% $durability = $durability + ($v_started_at..$v_done_at).count %>
+         <% $v_done_at = @m_maintenance_pm.done_at%>
+         <%end%>
+         <% $v_is_first = 0%>
+         <% $amount_products = $amount_products + 1%>
+
+         <%$v_amt = $amount_products%>
+         <%$v_dur = $durability%>
+         <%$v_bname = @brands.name%>
+         <%$v_pname = @prods.name%>
+
       </tr>
-      </tbody>
       <%end%>
+      </tbody>
     </table>
   </div>
 </div>
